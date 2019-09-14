@@ -15,7 +15,12 @@ function Slider() {
     const [status, setStatus] = useState("static");
 
     useEffect(function componentDidMount() {
+        const pageContent = document.querySelector(".page-content");
+
+        pageContent.classList.add("page-fullscreen");
         setMaxSlide(-Math.abs(document.getElementById("Slider").children.length) + 1);
+
+        return () => pageContent.classList.remove("page-fullscreen");
     }, []);
 
     useEffect(function hashToSlide() {
