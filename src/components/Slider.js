@@ -16,6 +16,10 @@ function Slider() {
 
     useEffect(function componentDidMount() {
         setMaxPage(-Math.abs(document.getElementById("Slider").children.length) + 1);
+    
+        document.documentElement.style.overflow = "hidden";
+
+        return () => document.documentElement.style.overflow = "initial";
     }, []);
 
     useEffect(function hashToSlide() {
