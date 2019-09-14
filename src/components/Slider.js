@@ -20,7 +20,12 @@ function Slider() {
         pageContent.classList.add("page-fullscreen");
         setMaxSlide(-Math.abs(document.getElementById("Slider").children.length) + 1);
 
-        return () => pageContent.classList.remove("page-fullscreen");
+        document.documentElement.style.overflow = "hidden";
+
+        return () => {
+            pageContent.classList.remove("page-fullscreen");
+            document.documentElement.style.overflow = "initial";
+        }
     }, []);
 
     useEffect(function hashToSlide() {

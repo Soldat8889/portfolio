@@ -8,6 +8,9 @@ function AboutMe() {
             <div className="Slider" style={{transform: `translateY(-50%)`}}>
                 <AboutMeComponent />
             </div>
+            <div className="Article container">
+
+            </div>
         </React.Fragment>
     );
 }
