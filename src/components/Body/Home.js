@@ -5,13 +5,13 @@ import Parallax from "./../../utils/Parallax";
 import LanguageContext from "./../../contexts/LanguageContext";
 import ThemeContext from "../../contexts/ThemeContext";
 
-function Home() {
+function Home(props) {
     return (
         <LanguageContext.Consumer>
             {({ language, setLanguage, languageConfig }) => (
                 <ThemeContext.Consumer>
                     {({theme}) => (
-                        <section className="Slider__section Slider_wrapper container">
+                        <section className="Slider__section Slider_wrapper container" data-slide={props.slide}>
                             <div className="Slider__background">
                                 {theme === "light" ?
                                     <div className="Slider__background-element">

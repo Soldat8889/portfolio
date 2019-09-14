@@ -112,13 +112,34 @@
         }
 
         &_waypoint {
-            width: 20px;
+            width: 25px;
             margin: $inline_margin;
 
             fill: $--main-txt-color;
             fill: var(--main-txt-color);
 
             z-index: 10;
+            transform: scale(0.75) translateZ(0);
+
+            &[data-current-slide="true"] {
+                transform: scale(1) translateZ(0);
+
+                circle {
+                    -webkit-backface-visibility: hidden;
+                    fill: $--main-bg-color;
+                    fill: var(--main-bg-color);
+                    stroke-width: 3px;
+                    stroke: $--main-txt-color;
+                    stroke: var(--main-txt-color);
+
+                    transform: translateZ(0);
+                }
+            }
+
+            transition: 
+                fill $sm_tr,
+                stroke $sm_tr,
+                transform $me_tr;
         }
     }
 }
