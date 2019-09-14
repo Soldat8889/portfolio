@@ -1,0 +1,21 @@
+.set-language {
+    padding: 4px 8px 4px 10px;
+    display: table;
+
+    border-radius: 4px;
+    background-color: $--main-bg-color-box;
+    background-color: var(--main-bg-color-box);
+    box-shadow: 0px 0px 10px -8px var(--main-shadow-color);
+    box-shadow: 0px 0px 10px -8px var(--main-shadow-color);
+
+    transition: box-shadow $sm_tr;
+
+    &:hover {
+        box-shadow: 0px 0px 10px -6px $--main-shadow-color;
+        box-shadow: 0px 0px 10px -6px var(--main-shadow-color);
+    }
+
+    &__flag {
+        width: 60px;
+    }
+}

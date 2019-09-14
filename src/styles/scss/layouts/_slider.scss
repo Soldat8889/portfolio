@@ -1,0 +1,124 @@
+.Slider {
+    height: 70vh;
+    margin-top: 52vh;
+
+    background-color: $--main-bg-color;
+    background-color: var(--main-bg-color);
+    
+    transition: 
+        color $lo_tr cubic-bezier(0.645, 0.045, 0.355, 1) 0s,
+        background-color $lo_tr cubic-bezier(0.645, 0.045, 0.355, 1) 0s,
+        transform $lo_tr cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+    
+    &_wrapper {
+        position: relative;
+    }
+
+    &__section {
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        max-width: none;
+        position: relative;
+    }
+
+    &__background {
+        position: relative;
+        width: 100%;
+        height: 100%;
+
+        &-element {
+            position: absolute;
+        }
+    }
+
+    &__image {
+        position: absolute;
+        left: 70%;
+        max-height: 70vh;
+    }
+
+    &__title {
+        position: absolute;
+        top: 50%;
+        left: 7.5%;
+
+        transform: translateY(-50%);
+
+        &_text {
+            font-size: 4rem;
+            font-family: $title_font;
+            text-transform: uppercase;
+        }
+    }
+
+    &__btn {
+        margin-top: $basic_margin;
+        padding: 16px 28px;
+
+        border-radius: 18px;
+        background-color: #f6e0b3de;
+
+        font: {
+            size: 1.3rem;
+            weight: 600;
+            family: $text_font;
+        }
+        color: $--main-bg-color;
+        color: var(--main-bg-color);
+
+        &:hover {
+            background-color: #f6e0b3;
+        }
+
+        transition: background-color $sm_tr;
+    }
+
+    &__navigation {
+        &-bar {
+            position: fixed;
+            bottom: 5vh;
+            left: 0;
+            padding: 20px 20px;
+            width: 100vw;
+            height: 8vh;
+
+            background-color: $--main-bg-color-box;
+            background-color: var(--main-bg-color-box);
+
+            opacity: 0.7;
+        }
+
+        &-wrapper {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            position: relative;
+
+            &::after {
+                content: "";
+                display: block;
+                height: 3px;
+                width: 100%;
+                position: absolute;
+                top: 50%;
+                left: 0;
+
+                background-color: $--main-txt-color;
+                background-color: var(--main-txt-color);
+
+                transform: translateY(-50%);
+            }
+        }
+
+        &_waypoint {
+            width: 20px;
+            margin: $inline_margin;
+
+            fill: $--main-txt-color;
+            fill: var(--main-txt-color);
+
+            z-index: 10;
+        }
+    }
+}

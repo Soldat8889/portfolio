@@ -1,0 +1,33 @@
+// /*
+
+//  * SMACCS + SCSS
+//  * Inpired by SMACSS https://smacss.com
+
+// */
+
+/* Tools */
+@import "tools/_mixins";
+@import "tools/_private-variables";
+
+/* Base */
+@import "base/_reset-css";
+@import "base/_base";
+
+/* Utils Modules */
+
+/* Modules */
+@import "modules/_custom-select";
+@import "modules/_fontawesome";
+@import "modules/_page";
+@import "modules/_set-language";
+@import "modules/_theme-switcher";
+
+/* Layout */
+@import "layouts/_home";
+@import "layouts/_slider";
+@import "layouts/_topbar";
+
+/* Media */
+
+/* Tools */
+@import "tools/_states";

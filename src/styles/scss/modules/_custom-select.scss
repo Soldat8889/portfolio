@@ -1,0 +1,36 @@
+select.custom-select {
+    display: none;
+}
+
+.custom-select {
+    &__selected-item {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    &__chevron-icon {
+        margin-left: $inline_margin;
+
+        font-size: 1.4rem;
+        color: $--main-icon-color;
+        color: var(--main-icon-color);
+    }
+
+    &__items-list {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        &[data-state="folded"] {
+            display: none;
+        }
+    }
+
+    &__item {
+        &_selected {
+            display: none;
+        }
+    }
+}

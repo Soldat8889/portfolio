@@ -1,0 +1,13 @@
+.theme-switcher {
+    margin-right: $box_margin;
+
+    &__btn {
+        position: relative;
+    }
+
+    &__icon {
+        color: $--main-icon-color;
+        color: var(--main-icon-color);
+        font-size: 2rem;
+    }
+}
