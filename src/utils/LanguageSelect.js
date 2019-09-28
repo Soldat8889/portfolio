@@ -14,8 +14,8 @@ function LanguageSelect() {
                         defaultValue={language}
                         items={
                             {
-                                "fr-FR": '<img class="set-language__flag" src="icons/france.svg" alt="FR Lang" />',
-                                "en-UK": '<img class="set-language__flag" src="icons/united-kingdom.svg" alt="EN Lang - UK" />'
+                                "fr-FR": '<img class="set-language__flag" src="/icons/france.svg" alt="FR Lang" />',
+                                "en-UK": '<img class="set-language__flag" src="/icons/united-kingdom.svg" alt="EN Lang - UK" />'
                             }
                         }
                         events={
