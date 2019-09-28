@@ -22,20 +22,26 @@ const modes = {
     "light": {
         "--main-icon-color": "#2e2e2e",
         "--main-icon-color-contrast": "#fefefe",
-        "--main-txt-color": "#555",
+        "--main-txt-color": "#000",
+        "--main-txt-color-sub": "#555",
         "--main-bg-color": "#fff",
         "--main-bg-color-second": "#dfdfdf",
+        "--main-bg-color-deep": "#dfdfdf",
         "--main-bg-color-box": "#f0f0f0",
-        "--main-shadow-color": "#191919"
+        "--main-shadow-color": "#191919",
+        "--main-contrast-color": "#ffde59"
     },
     "dark": {
         "--main-icon-color": "#fefefe",
         "--main-icon-color-contrast": "#dfdfdf",
-        "--main-txt-color": "#fff",
+        "--main-txt-color": "#f3f3f3",
+        "--main-txt-color-sub": "#b8b8b8",
         "--main-bg-color": "#2b2b2b",
         "--main-bg-color-second": "#171717",
+        "--main-bg-color-deep": "#111111",
         "--main-bg-color-box": "#1d1d1d",
-        "--main-shadow-color": "#191919"
+        "--main-shadow-color": "#121212",
+        "--main-contrast-color": "#ffde59"
     }
 };
 
@@ -47,6 +53,7 @@ const languageConfig = {
             },
             "About": {
                 "Title": "À propos de moi",
+                "Subtitle": "Intéressé aux jeux vidéo, le dessin & le développement web",
                 "Btn": "Voir plus"
             }
         }
@@ -58,6 +65,7 @@ const languageConfig = {
             },
             "About": {
                 "Title": "About me",
+                "Subtitle": "Interested in video games, drawing & web development",
                 "Btn": "Show me more"
             }
         }
@@ -101,10 +109,8 @@ function App() {
                     setLanguage,
                     languageConfig: languageConfig[language]
                 }}>
-                    <div className="page-content page-part-wrapper">
-                        <Navigation />
-                        <Routing />
-                    </div>
+                    <Navigation />
+                    <Routing />
                 </LanguageContext.Provider>
             </ThemeContext.Provider>
         );

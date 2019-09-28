@@ -25,7 +25,7 @@ function Slider() {
         return () => {
             pageContent.classList.remove("page-fullscreen");
             document.documentElement.style.overflow = "initial";
-        }
+        };
     }, []);
 
     useEffect(function hashToSlide() {
@@ -127,13 +127,15 @@ function Slider() {
     
     return (
         <Fragment>
-            <div className="Slider" id="Slider" style={{transform: `translateX(${translateX}px) translateY(-50%)`}} data-current-slide={slide} data-status={status}>
-                <Home slide={0} />
-                <AboutMe slide={-1} />
+            <div className="page-content page-part-wrapper">
+                <div className="Slider" id="Slider" style={{transform: `translateX(${translateX}px) translateY(-50%)`}} data-current-slide={slide} data-status={status}>
+                    <Home slide={0} />
+                    <AboutMe slide={-1} />
+                </div>
+                <SliderNavigationBar 
+                    slide={slide}
+                    createWaypoint = {() => createWaypoint()} />
             </div>
-            <SliderNavigationBar 
-                slide={slide}
-                createWaypoint = {() => createWaypoint()} />
         </Fragment>
     );
 }

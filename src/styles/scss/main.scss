@@ -21,9 +21,11 @@
 @import "modules/_page";
 @import "modules/_set-language";
 @import "modules/_theme-switcher";
+@import "modules/_timeline";
 
 /* Layout */
 @import "layouts/_article";
+@import "layouts/_form";
 @import "layouts/_home";
 @import "layouts/_slider";
 @import "layouts/_topbar";
