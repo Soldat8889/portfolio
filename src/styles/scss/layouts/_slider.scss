@@ -153,17 +153,71 @@
     }
 }
 
+@keyframes sunbeams__1 {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes sunbeams__2 {
+    from {
+        transform: rotate(360deg);
+    }
+
+    to {
+        transform: rotate(0);
+    }
+}
+
 .Slider {
     &__background {
         &-element {
+            &__sun {
+                width: 48vh;
+                height: 48vh;
+                top: 10vh;
+                right: 8vw;
+
+                z-index: 1;
+
+                .sun {
+                    position: absolute;
+                    height: 48vh;
+
+                    z-index: 2;
+                }
+
+                .sunbeams {
+                    &__1 {
+                        position: absolute;
+                        height: 48vh;
+
+                        animation: 16s sunbeams__1 infinite linear;
+                        z-index: 2;
+                    }
+
+                    &__2 {
+                        position: absolute;
+                        height: 48vh;
+
+                        animation: 16s sunbeams__2 infinite linear;
+                        z-index: 1;
+                    }
+                }
+            }
+
             &__moon {
-                top: 5vh;
-                left: 2.5vw;
+                top: 10vh;
+                right: 8vw;
 
                 z-index: 1;
 
                 img {
-                    height: 65vh;
+                    height: 38vh;
                 }
             }
 
@@ -180,14 +234,12 @@
             &__cloud {
                 &__1 {
                     top: 8vh;
-                    left: 52vw;
+                    right: 30vw;
 
                     z-index: 2;
                     
-                    img {
+                    object {
                         height: 25vh;
-
-                        opacity: 0.6;
                     }
                 }
             }
@@ -195,14 +247,12 @@
             &__cloud {
                 &__2 {
                     top: 22vh;
-                    left: 36vw;
+                    right: 35vw;
 
                     z-index: 2;
                     
                     img {
                         height: 45vh;
-
-                        opacity: 0.5;
                     }
                 }
             }
@@ -210,14 +260,12 @@
             &__cloud {
                 &__3 {
                     top: 24vh;
-                    left: 64vw;
+                    right: 19vw;
 
                     z-index: 2;
                     
                     img {
                         height: 30vh;
-
-                        opacity: 0.65;
                     }
                 }
             }
