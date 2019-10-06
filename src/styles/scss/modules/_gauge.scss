@@ -1,0 +1,103 @@
+/*
+ * Inspired by Shankar Cabus
+ * Flat Progress Bar CSS e HTML
+ *
+*/
+
+$width: 165px;
+
+@mixin gauge($gauge-width) {
+    .gauge__#{$gauge-width} {
+        &.gg__50 {
+            background-color: $--main-contrast-color;
+            background-color: var(--main-contrast-color);
+        }
+
+        position: relative;
+        display: inline-block;
+        margin-right: $gauge-width / 10 + 12;
+        width: $gauge-width;
+        height: $gauge-width;
+    
+        background-color: $--main-bg-color-second;
+        background-color: var(--main-bg-color-second);
+        border-radius: 50%;
+    
+        &_wrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: $gauge-width - 15;
+            height: $gauge-width - 15;
+    
+            background-color: $--main-bg-color;
+            background-color: var(--main-bg-color);
+            border-radius: 50%;
+    
+            transform: translate(-50%, -50%);
+            z-index: 100;
+        }
+    
+        &_title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+    
+            font: {
+                size: 4.5rem;
+                weight: 600;
+                family: "Open Sans";
+            }
+            color: $--main-txt-color;
+            color: var(--main-txt-color);
+    
+            transform: translate(-50%, -50%);
+
+            > i {
+                display: block;
+            }
+        }
+        
+        &_progress {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: calc(50% - #{$gauge-width/2});
+            top: calc(50% - #{$gauge-width/2});
+    
+            border-radius: 50%;
+            
+            clip: rect(0, $gauge-width, $gauge-width, #{$gauge-width/2});
+    
+            &.gg__50 {
+                clip: rect(0, #{$gauge-width/2}, $gauge-width, 0);
+            }
+    
+            &-fill {
+                width: $gauge-width;
+                height: $gauge-width;
+                position: absolute;
+                left: calc(50% - #{$gauge-width/2});
+                top: calc(50% - #{$gauge-width/2});
+    
+                border-radius: 50%;
+                background-color: $--main-contrast-color;
+                background-color: var(--main-contrast-color);
+                
+                clip: rect(0, 82.5px, $gauge-width, 0);
+                transform: rotate(60deg);
+    
+                &.gg__50 {
+                    background-color: $--main-bg-color-second;
+                    background-color: var(--main-bg-color-second);
+
+                    clip: rect(0, $gauge-width, $gauge-width, #{$gauge-width/2});
+                } 
+            }
+        }
+    }
+}
+
+@include gauge(165px);
+@include gauge(130px);
+@include gauge(100px);

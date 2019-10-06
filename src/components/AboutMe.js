@@ -2,6 +2,9 @@ import React, { useEffect, Fragment, useContext } from "react";
 
 import AboutMeComponent from "./Body/AboutMe";
 
+// Utils
+import Gauge from "./../utils/Gauge";
+
 // Contexts
 import ThemeContext from "./../contexts/ThemeContext";
 
@@ -52,9 +55,9 @@ function Link(props) {
     );
 }
 
-function FirstPart() {
+function Profile() {
     return (
-        <div className="Article__section">
+        <Fragment>
             <div className="Article__section_theme Article_indent" id="profile">
                 <h2 className="Article__title_level-2">Profil</h2>
                 <p className="Article__text Article__text_indent">
@@ -68,7 +71,25 @@ function FirstPart() {
                 <h2 className="Article__title_level-2">Centres d'intérêt</h2>
                 <div className="Article__section">
                     <h3 className="Article__title_level-3">Principaux</h3>
-                    <p className="Article__text">
+                    <Gauge 
+                        percent="100"
+                        size="130"
+                    >
+                        <i className="fas fa-paint-brush"></i>
+                    </Gauge>
+                    <Gauge 
+                        percent="100"
+                        size="130"
+                    >
+                        <i className="fas fa-code"></i>
+                    </Gauge>
+                    <Gauge 
+                        percent="100"
+                        size="130"
+                    >
+                        <i className="fas fa-gamepad"></i>
+                    </Gauge>
+                    {/* <p className="Article__text">
                         Dessiner
                         <br />
                         <span className="Article__text_sub">
@@ -88,15 +109,41 @@ function FirstPart() {
                         <span className="Article__text_sub">
                             Joueur de jeux vidéo après de longues journées.
                         </span>
-                    </p>
+                    </p> */}
                 </div>
                 <div className="Article__section">
                     <h3 className="Article__title_level-3">Secondaires</h3>
-                    <p className="Article__text">
+                    <Gauge 
+                        percent="100"
+                        size="100"
+                    >
+                        <i className="fas fa-utensils"></i>
+                    </Gauge>
+                    <Gauge 
+                        percent="100"
+                        size="100"
+                    >
+                        <i className="fas fa-route"></i>
+                    </Gauge>
+                    <Gauge 
+                        percent="100"
+                        size="100"
+                    >
+                        <i className="fas fa-film"></i>
+                    </Gauge>
+                    {/* <p className="Article__text">
                         Manger / Cuisiner, Voyager & Regarder des séries
-                    </p>
+                    </p> */}
                 </div>
             </div>
+        </Fragment>
+    );
+}
+
+function FirstPart() {
+    return (
+        <div className="Article__section">
+            <Profile />
             <div className="Article__section_theme Article_indent" id="traits-skills">
                 <h2 className="Article__title_level-2">Traits de caractère & Compétences</h2>
                 <div className="Article__section" id="traits">
