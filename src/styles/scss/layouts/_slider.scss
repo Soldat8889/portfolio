@@ -33,6 +33,17 @@
         position: relative;
         width: 100%;
         height: 100%;
+
+        background-color: $--main-bg-color;
+        background-color: var(--main-bg-color);
+
+        transition: background-color $lo_tr cubic-bezier(0.645, 0.045, 0.355, 1);
+
+        &__scene {
+            &_light {
+                background-color: #28C2FF;
+            }
+        }
         
         &-element {
             position: absolute;
@@ -48,7 +59,7 @@
     &__title {
         position: absolute;
         top: 50%;
-        left: 7.5%;
+        left: 5%;
 
         transform: translateY(-50%);
         z-index: 3;
@@ -153,7 +164,7 @@
     }
 }
 
-@keyframes sunbeams__1 {
+@keyframes negative_rotate {
     from {
         transform: rotate(0);
     }
@@ -163,13 +174,23 @@
     }
 }
 
-@keyframes sunbeams__2 {
+@keyframes positive_rotate {
     from {
         transform: rotate(360deg);
     }
 
     to {
         transform: rotate(0);
+    }
+}
+
+@keyframes fog {
+    from {
+        transform: translateX(25px);
+    }
+
+    to {
+        transform: translateX(-10px);
     }
 }
 
@@ -179,8 +200,8 @@
             &__sun {
                 width: 48vh;
                 height: 48vh;
-                top: 10vh;
-                right: 8vw;
+                top: 2vh;
+                right: 2vw;
 
                 z-index: 1;
 
@@ -196,7 +217,7 @@
                         position: absolute;
                         height: 48vh;
 
-                        animation: 16s sunbeams__1 infinite linear;
+                        animation: 22s negative_rotate infinite linear;
                         z-index: 2;
                     }
 
@@ -204,20 +225,20 @@
                         position: absolute;
                         height: 48vh;
 
-                        animation: 16s sunbeams__2 infinite linear;
+                        animation: 18s positive_rotate infinite linear;
                         z-index: 1;
                     }
                 }
             }
 
-            &__moon {
-                top: 10vh;
-                right: 8vw;
-
-                z-index: 1;
+            &__mountains {
+                width: 100%;
+                height: 100%;
 
                 img {
-                    height: 38vh;
+                    position: absolute;
+                    right: 0;
+                    height: 100%;
                 }
             }
 
@@ -231,6 +252,38 @@
                 }
             }
 
+            &__moon {
+                top: 10vh;
+                right: 8vw;
+
+                z-index: 1;
+
+                img {
+                    height: 38vh;
+                }
+
+                &__shadow {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+
+                    z-index: 1;
+                }
+            }
+
+            &__fog {
+                bottom: 15vh;
+                right: 14vw;
+
+                z-index: 1;
+                opacity: 0.45;
+                animation: 15s fog infinite linear;
+
+                img {
+                    height: 35vh;
+                }
+            }
+
             &__cloud {
                 &__1 {
                     top: 8vh;
@@ -238,7 +291,7 @@
 
                     z-index: 2;
                     
-                    object {
+                    img {
                         height: 25vh;
                     }
                 }
