@@ -43,7 +43,7 @@ function Slider() {
             waypoints.push(
                 <button key={i} className="Slider__navigation_waypoint" data-slide={i} onClick={() => setSlide(i)}>
                     <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="50" cy="50" r="49" />
+                        <circle cx="50" cy="50" r="45" />
                     </svg>
                 </button>
             );
