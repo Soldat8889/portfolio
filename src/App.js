@@ -45,6 +45,9 @@ const modes = {
     }
 };
 
+// Convention Page.Component.Semantic1.Semantic...
+// e.g. : {languageConfig.AboutMe.Who.Interest[interestIndex].Title}
+
 const languageConfig = {
     "fr-FR": {
         "Slider": {
@@ -55,6 +58,36 @@ const languageConfig = {
                 "Title": "À propos de moi",
                 "Subtitle": "Intéressé aux jeux vidéo, le dessin & le développement web",
                 "Btn": "Voir plus"
+            }
+        },
+        "AboutMe": {
+            "Who": {
+                "Interest": {
+                    0: {
+                        "Title": "Développement web",
+                        "Sub": "Développeur web front-end à mes heures perdues depuis bientôt deux ans."
+                    },
+                    1: {
+                        "Title": "Jeux vidéo",
+                        "Sub": "Joueur de jeux vidéo après de longues journées."
+                    },
+                    2: {
+                        "Title": "Manger & Cuisiner",
+                        "Sub": ""
+                    },
+                    3: {
+                        "Title": "Voyager",
+                        "Sub": ""
+                    },
+                    4: {
+                        "Title": "Bingewatcher des séries",
+                        "Sub": ""
+                    },
+                    5: {
+                        "Title": "Dessiner",
+                        "Sub": "Je dessine de temps en temps, quand quelque chose me vient à l'envie."
+                    }
+                }
             }
         }
     },
@@ -67,6 +100,36 @@ const languageConfig = {
                 "Title": "About me",
                 "Subtitle": "Interested in video games, drawing & web development",
                 "Btn": "Show me more"
+            }
+        },
+        "AboutMe": {
+            "Who": {
+                "Interest": {
+                    0: {
+                        "Title": "Web Development",
+                        "Sub": "Front-end web developer in my spare time."
+                    },
+                    1: {
+                        "Title": "Video games",
+                        "Sub": "Video games player after long days."
+                    },
+                    2: {
+                        "Title": "Eating & Cooking",
+                        "Sub": ""
+                    },
+                    3: {
+                        "Title": "Travelling",
+                        "Sub": ""
+                    },
+                    4: {
+                        "Title": "Bingewatching series",
+                        "Sub": ""
+                    },
+                    5: {
+                        "Title": "Drawing",
+                        "Sub": "I draw sometimes, when I want to draw something."
+                    }
+                }
             }
         }
     }

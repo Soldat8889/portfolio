@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment, useContext } from "react";
+import React, { useEffect, Fragment, useContext, useState } from "react";
 
 import AboutMeComponent from "./Body/AboutMe";
 
@@ -7,6 +7,7 @@ import Gauge from "./../utils/Gauge";
 
 // Contexts
 import ThemeContext from "./../contexts/ThemeContext";
+import LanguageContext from "./../contexts/LanguageContext";
 
 function AboutMe() {
     const theme = useContext(ThemeContext);
@@ -55,6 +56,86 @@ function Link(props) {
     );
 }
 
+function Interest() {
+    const [interestIndex, setInterestIndex] = useState(5);
+
+    useEffect(function selectedIndex() {
+        const section = document.querySelector(`[data-section="hobbies-section"]`);
+        const interest = section.children[interestIndex].children[0];
+
+        // eslint-disable-next-line no-unused-vars
+        for (const item of section.children) {
+            item.children[0].style.transform = null;
+        }
+
+        interest.style.transform = "scale(1.2)";
+    }, [interestIndex]);
+
+    return (
+        <div className="Article__section">
+            <div className="col-m-6">
+                <ul className="circle-container" data-section="hobbies-section"> 
+                    <Gauge 
+                        percent="100"
+                        size="100"
+                        onClick={() => setInterestIndex(0)}
+                    >
+                        <i className="fas fa-code"></i>
+                    </Gauge>
+                    <Gauge 
+                        percent="100"
+                        size="100"
+                        onClick={() => setInterestIndex(1)}
+                    >
+                        <i className="fas fa-gamepad"></i>
+                    </Gauge>
+                    <Gauge 
+                        percent="100"
+                        size="100"
+                        onClick={() => setInterestIndex(2)}
+                    >
+                        <i className="fas fa-utensils"></i>
+                    </Gauge>
+                    <Gauge 
+                        percent="100"
+                        size="100"
+                        onClick={() => setInterestIndex(3)}
+                    >
+                        <i className="fas fa-route"></i>
+                    </Gauge>
+                    <Gauge 
+                        percent="100"
+                        size="100"
+                        onClick={() => setInterestIndex(4)}
+                    >
+                        <i className="fas fa-film"></i>
+                    </Gauge>
+                    <Gauge 
+                        percent="100"
+                        size="100"
+                        onClick={() => setInterestIndex(5)}
+                    >
+                        <i className="fas fa-paint-brush"></i>
+                    </Gauge>
+                </ul>
+            </div>
+            <div className="col-m-6 AboutMe__section_interest">
+                <LanguageContext.Consumer>
+                    {({ languageConfig }) => (
+                        <p className="Article__text">
+                            {languageConfig.AboutMe.Who.Interest[interestIndex].Title}
+                            <br />
+                            <span className="Article__text_sub">
+                                {languageConfig.AboutMe.Who.Interest[interestIndex].Sub}
+                            </span>
+                        </p>
+                    )}
+                </LanguageContext.Consumer>
+            </div>
+        </div>
+    );
+}
+
 function Profile() {
     return (
         <Fragment>
@@ -69,72 +150,7 @@ function Profile() {
             </div>
             <div className="Article__section_theme Article_indent" id="interest">
                 <h2 className="Article__title_level-2">Centres d'intérêt</h2>
-                <div className="Article__section">
-                    <h3 className="Article__title_level-3">Principaux</h3>
-                    <Gauge 
-                        percent="100"
-                        size="130"
-                    >
-                        <i className="fas fa-paint-brush"></i>
-                    </Gauge>
-                    <Gauge 
-                        percent="100"
-                        size="130"
-                    >
-                        <i className="fas fa-code"></i>
-                    </Gauge>
-                    <Gauge 
-                        percent="100"
-                        size="130"
-                    >
-                        <i className="fas fa-gamepad"></i>
-                    </Gauge>
-                    {/* <p className="Article__text">
-                        Dessiner
-                        <br />
-                        <span className="Article__text_sub">
-                            Je dessine de temps en temps, quand quelque chose me vient à l'envie.
-                        </span>
-                    </p>
-                    <p className="Article__text">
-                        Développement web
-                        <br />
-                        <span className="Article__text_sub">
-                            Développeur web front end à mes heures perdues depuis bientôt deux ans.
-                        </span>
-                    </p>
-                    <p className="Article__text">
-                        Jeux vidéo
-                        <br />
-                        <span className="Article__text_sub">
-                            Joueur de jeux vidéo après de longues journées.
-                        </span>
-                    </p> */}
-                </div>
-                <div className="Article__section">
-                    <h3 className="Article__title_level-3">Secondaires</h3>
-                    <Gauge 
-                        percent="100"
-                        size="100"
-                    >
-                        <i className="fas fa-utensils"></i>
-                    </Gauge>
-                    <Gauge 
-                        percent="100"
-                        size="100"
-                    >
-                        <i className="fas fa-route"></i>
-                    </Gauge>
-                    <Gauge 
-                        percent="100"
-                        size="100"
-                    >
-                        <i className="fas fa-film"></i>
-                    </Gauge>
-                    {/* <p className="Article__text">
-                        Manger / Cuisiner, Voyager & Regarder des séries
-                    </p> */}
-                </div>
+                <Interest />
             </div>
         </Fragment>
     );

@@ -23,6 +23,9 @@ $width: 165px;
         background-color: var(--main-bg-color-second);
         border-radius: 50%;
     
+        transition: all $sm_tr ease-in-out;
+        cursor: pointer;
+
         &_wrapper {
             position: absolute;
             top: 50%;
@@ -48,8 +51,8 @@ $width: 165px;
                 weight: 600;
                 family: "Open Sans";
             }
-            color: $--main-txt-color;
-            color: var(--main-txt-color);
+            color: $--main-icon-color;
+            color: var(--main-icon-color);
     
             transform: translate(-50%, -50%);
 

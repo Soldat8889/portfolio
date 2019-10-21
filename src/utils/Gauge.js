@@ -13,12 +13,14 @@ function Gauge(props) {
     }, [props.percent]);
 
     return (
-        <div className={`gauge__${props.size}px ${progress > 180 ? "gg__50" : null}`} data-progress={props.percent}>
-            <div className={`gauge__${props.size}px_wrapper`}>
-                <div className={`gauge__${props.size}px_title`}>{props.children}</div>
-            </div>
-            <div className={`gauge__${props.size}px_progress ${progress > 180 ? "gg__50" : null}`}>
-                <div className={`gauge__${props.size}px_progress-fill ${progress > 180 ? "gg__50" : null}`} style={{transform: `rotate(${progress}deg)`}}></div>
+        <div className="gauge__container" onClick={props.onClick && props.onClick}>
+            <div className={`gauge__${props.size}px ${progress > 180 ? "gg__50" : null}`} data-progress={props.percent}>
+                <div className={`gauge__${props.size}px_wrapper`}>
+                    <div className={`gauge__${props.size}px_title`}>{props.children}</div>
+                </div>
+                <div className={`gauge__${props.size}px_progress ${progress > 180 ? "gg__50" : null}`}>
+                    <div className={`gauge__${props.size}px_progress-fill ${progress > 180 ? "gg__50" : null}`} style={{transform: `rotate(${progress}deg)`}}></div>
+                </div>
             </div>
         </div>
     );

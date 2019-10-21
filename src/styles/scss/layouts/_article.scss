@@ -277,3 +277,11 @@ $Article__text: 1.8rem;
         }
     }
 }
+
+.AboutMe {
+    &__section {
+        &_interest {
+            height: 100%;
+        }
+    }
+}
