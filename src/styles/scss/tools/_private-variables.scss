@@ -30,6 +30,7 @@ $title_font: "QuickSand", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
 $text_font: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 
 // Variables of sizes
+$max-width_size: 1130px;
 $big_desktop_size: 1281px; // High res laptops / desktop
 $desktop_size: 1025px; // Big landscape tablets, desktops and laptops
 $landscape_tablet_size: 801px; // Landscape tablet, low res desktops and laptops

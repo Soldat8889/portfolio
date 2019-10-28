@@ -90,10 +90,26 @@ $Article__text: 1.8rem;
         }
     }
 
+    &__delimiter {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        padding: 40px 0;
+
+        background-color: $--main-bg-color;
+        background-color: var(--main-bg-color);
+    }
+
+    &__image {
+        display: inline-block;
+        margin: 0 20px;
+        height: 270px;
+    }
+
     &__container {
         display: flex;
         flex-direction: column;
-        max-width: 1130px;
+        max-width: $max-width_size;
         margin: 0 auto;
         padding: 0 2.5%;
 
