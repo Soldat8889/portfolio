@@ -11,15 +11,17 @@ function Carousel(props) {
         handleResize();
     }, []);
 
-    useEffect(() => {
+    function debugSlider() {
         if(transform > 25) {
             setTransform(25);
+            setEndX(0);
         }
 
         if(transform < -(props.max)) {
             setTransform(-(props.max));
+            setEndX(-(props.max));
         }
-    }, [transform]);
+    }
     
     const handleResize = useCallback(() => {
         const group = document.querySelector(`.Carousel__group[data-name="${props.name}"]`);
@@ -33,7 +35,7 @@ function Carousel(props) {
         } else {
             setIsDown(false);
             setStatus("movable");
-            group.style.cursor = "pointer";
+            group.style.cursor = "grab";
         }
     }, [props.groupSize, props.name]);
 
@@ -56,11 +58,16 @@ function Carousel(props) {
      * @param {Event} e Event
      */
     function handleMouseLeave(e) {
+        const group = document.querySelector(`.Carousel__group[data-name="${props.name}"]`);
+
         if(status !== "blocked") {
             const target = e.currentTarget;
 
-            target.style.cursor = "pointer";
+            target.style.cursor = "grab";
             setIsDown(false);
+            setEndX(isNaN(parseInt(/(-?[0-9])\d+/g.exec(group.style.transform), 10)) ? 0 : Math.round(parseInt(/(-?[0-9])\d+/g.exec(group.style.transform), 10)));
+        
+            debugSlider();            
         }
     }
 
@@ -74,9 +81,11 @@ function Carousel(props) {
         if(status !== "blocked") {
             const target = e.currentTarget;
 
-            target.style.cursor = "pointer";
+            target.style.cursor = "grab";
             setIsDown(false);
-            setEndX(isNaN(parseInt(/(-?[0-9])\d+/g.exec(group.style.transform), 10)) ? 0 : parseInt(/(-?[0-9])\d+/g.exec(group.style.transform), 10));
+            setEndX(isNaN(parseInt(/(-?[0-9])\d+/g.exec(group.style.transform), 10)) ? 0 : Math.round(parseInt(/(-?[0-9])\d+/g.exec(group.style.transform), 10)));
+        
+            debugSlider();
         }
     }
 
@@ -89,8 +98,7 @@ function Carousel(props) {
         
         const walk = e.pageX - startX;
 
-        setTransform(walk + endX);
-
+        setTransform(Math.round(walk + endX));
     }
 
     useEffect(function resizeEvent() {
