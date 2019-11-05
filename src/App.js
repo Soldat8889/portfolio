@@ -14,6 +14,7 @@ import AboutMe from "./components/AboutMe";
 // Utils
 import Cookie from "./utils/Cookie";
 import Navigation from "./components/Header/Navigation";
+import OutModal from "./utils/OutModal";
 
 const themeCookie = new Cookie("theme").getCookie();
 const languageCookie = new Cookie("lang").getCookie();
@@ -172,8 +173,10 @@ function App() {
                     setLanguage,
                     languageConfig: languageConfig[language]
                 }}>
-                    <Navigation />
-                    <Routing />
+                    <OutModal>
+                        <Navigation />
+                        <Routing />
+                    </OutModal>
                 </LanguageContext.Provider>
             </ThemeContext.Provider>
         );

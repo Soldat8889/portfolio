@@ -4,6 +4,7 @@ import AboutMeComponent from "./Body/AboutMe";
 
 // Utils
 import Gauge from "./../utils/Gauge";
+import ZoomImage from "./../utils/ZoomImage";
 
 // Contexts
 import ThemeContext from "./../contexts/ThemeContext";
@@ -215,15 +216,32 @@ function Experience() {
                 </div>
             </div>
             <Carousel groupSize={1080} max={400} name="suan-siam">
-                <div className="Carousel__item">
-                    <img src="/images/suan-siam-page__front.png" alt="Suan Siam - Front Page" className="Carousel__item_image" />
-                </div>
-                <div className="Carousel__item">
-                    <img src="/images/suan-siam-page__1.png" alt="Suan Siam - Mosaic Display" className="Carousel__item_image" />
-                </div>
-                <div className="Carousel__item">
-                    <img src="/images/suan-siam-page__2.png" alt="Suan Siam - Some Pages" className="Carousel__item_image" />
-                </div>
+                <ZoomImage 
+                    carouselRef="suan-siam"
+                    items={[
+                        {
+                            name: "suan-siam__front",
+                            src: "/images/suan-siam-page__front.png",
+                            alt: "Suan Siam - Front Page",
+                            className: "Carousel__item_image zoom-image",
+                            scale: 2.5
+                        },
+                        {
+                            name: "suan-siam__1",
+                            src: "/images/suan-siam-page__1.png",
+                            alt: "Suan Siam - 1st Page",
+                            className: "Carousel__item_image zoom-image",
+                            scale: 2.5
+                        },
+                        {
+                            name: "suan-siam__2",
+                            src: "/images/suan-siam-page__2.png",
+                            alt: "Suan Siam - 2nd Page",
+                            className: "Carousel__item_image zoom-image",
+                            scale: 2.5
+                        }
+                    ]}
+                />
             </Carousel>
         </Fragment>
     );

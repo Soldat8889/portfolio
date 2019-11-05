@@ -7,22 +7,6 @@ function Carousel(props) {
     const [endX, setEndX] = useState(0);
     const [transform, setTransform] = useState(0);
 
-    useEffect(function componentDidMount() {
-        handleResize();
-    }, []);
-
-    function debugSlider() {
-        if(transform > 25) {
-            setTransform(25);
-            setEndX(0);
-        }
-
-        if(transform < -(props.max)) {
-            setTransform(-(props.max));
-            setEndX(-(props.max));
-        }
-    }
-    
     const handleResize = useCallback(() => {
         const group = document.querySelector(`.Carousel__group[data-name="${props.name}"]`);
 
@@ -39,51 +23,66 @@ function Carousel(props) {
         }
     }, [props.groupSize, props.name]);
 
+    useEffect(function componentDidMount() {
+        handleResize();
+    }, [handleResize]);
+
+    useEffect(function isDownObserver() {
+        const group = document.querySelector(`.Carousel__group[data-name="${props.name}"]`);
+        
+        if(isDown) {
+            group.style.cursor = "grabbing";
+        } else {
+            group.style.cursor = "grab";
+        }
+    }, [isDown, props.name]);
+
+    function debugSlider() {
+        if(transform > 25) {
+            setTransform(25);
+            setEndX(0);
+        }
+
+        if(transform < -(props.max)) {
+            setTransform(-(props.max));
+            setEndX(-(props.max));
+        }
+    }
+
     /**
      * Handle MouseDown Event
      * @param {Event} e Event
      */
     function handleMouseDown(e) {
         if(status !== "blocked") {
-            const target = e.currentTarget;
-
-            target.style.cursor = "grabbing";
-            setStartX(e.pageX);
             setIsDown(true);
+            setStartX(e.pageX);
         }
     }
 
     /**
      * Handle MouseLeave Event
-     * @param {Event} e Event
      */
-    function handleMouseLeave(e) {
+    function handleMouseLeave() {
         const group = document.querySelector(`.Carousel__group[data-name="${props.name}"]`);
 
         if(status !== "blocked") {
-            const target = e.currentTarget;
-
-            target.style.cursor = "grab";
             setIsDown(false);
-            setEndX(isNaN(parseInt(/(-?[0-9])\d+/g.exec(group.style.transform), 10)) ? 0 : Math.round(parseInt(/(-?[0-9])\d+/g.exec(group.style.transform), 10)));
+            setEndX(isNaN(parseInt(/(-?[0-9])\d+/g.exec(group.style.transform), 10)) ? 0 : parseInt(/(-?[0-9])\d+/g.exec(group.style.transform), 10));
         
-            debugSlider();            
+            debugSlider();
         }
     }
 
     /**
      * Handle MouseUp Event
-     * @param {Event} e Event
      */
-    function handleMouseUp(e) {
+    function handleMouseUp() {
         const group = document.querySelector(`.Carousel__group[data-name="${props.name}"]`);
 
         if(status !== "blocked") {
-            const target = e.currentTarget;
-
-            target.style.cursor = "grab";
             setIsDown(false);
-            setEndX(isNaN(parseInt(/(-?[0-9])\d+/g.exec(group.style.transform), 10)) ? 0 : Math.round(parseInt(/(-?[0-9])\d+/g.exec(group.style.transform), 10)));
+            setEndX(isNaN(parseInt(/(-?[0-9])\d+/g.exec(group.style.transform), 10)) ? 0 : parseInt(/(-?[0-9])\d+/g.exec(group.style.transform), 10));
         
             debugSlider();
         }
@@ -98,18 +97,19 @@ function Carousel(props) {
         
         const walk = e.pageX - startX;
 
-        setTransform(Math.round(walk + endX));
+        setTransform(walk + endX);
     }
 
     useEffect(function resizeEvent() {
         window.addEventListener("resize", handleResize);
+
         return () => { window.removeEventListener("resize", handleResize); };
     }, [handleResize]);
 
     return (
-        <div className="Carousel">
-            <div className="Carousel__inner">
-                <div className="Carousel__group" style={{transform: `translateX(${transform}px)`, width: props.groupSize}} data-status={status} onMouseDown={handleMouseDown} onMouseLeave={handleMouseLeave} onMouseUp={handleMouseUp} onMouseMove={handleMouseMove} data-name={props.name}>
+        <div className="Carousel" data-name={props.name}>
+            <div className="Carousel__inner" data-name={props.name}>
+                <div className="Carousel__group" style={{transform: `translateX(${transform}px)`, width: props.groupSize}} data-name={props.name} data-status={status} onMouseDown={handleMouseDown} onMouseLeave={handleMouseLeave} onMouseUp={handleMouseUp} onMouseMove={handleMouseMove}>
                     {props.children}
                 </div>
             </div>

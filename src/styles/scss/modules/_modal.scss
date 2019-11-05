@@ -1,0 +1,30 @@
+.out-modal {
+	&__effect {
+		position: fixed;
+	    top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		display: none;
+		
+		background-color: rgba(0,0,0,.4);
+
+		z-index: $help_index - 10;
+
+		&_active {
+			display: block;
+		}
+	}
+}
+
+.modal {
+    &_zoom-image {
+        position: absolute;
+        left: 50%;
+        height: 100vh;
+        width: auto;
+
+        transform: translateX(-50%);
+        z-index: $all-width_index;
+    }
+}
