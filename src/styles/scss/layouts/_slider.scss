@@ -71,15 +71,23 @@
         }
     }
 
-    &__btn {
-        margin-top: $basic_margin;
-        padding: 16px 28px;
+    &__subtitle {
+        &_text {
+            font-size: 1.75vw;
+            font-family: $title_font;
+        }
+    }
 
-        border-radius: 18px;
-        background-color: #f6e0b3de;
+    &__btn {
+        margin-top: $box_margin;
+        padding: 0.85vw 1.25vw;
+
+        border-radius: 1vw;
+        background-color: #{$--main-contrast-color}de;
+        background-color: var(--main-contrast-color);
 
         font: {
-            size: 1.3rem;
+            size: 1vw;
             weight: 600;
             family: $text_font;
         }
@@ -87,7 +95,7 @@
         color: var(--main-bg-color);
 
         &:hover {
-            background-color: #f6e0b3;
+            background-color: $--main-contrast-color;
         }
 
         transition: background-color $sm_tr;

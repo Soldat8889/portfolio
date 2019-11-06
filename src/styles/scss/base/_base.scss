@@ -15,13 +15,13 @@ body {
 *::before,
 *::after {
     box-sizing: border-box;
+
+    transition: background-color $sm_tr;
 }
 
-@each $prefix in (moz), (webkit) {
-    *::-#{$prefix}-selection {
-        background-color: rgba(225, 100, 40, .4);
-
-        color: #fff;
+@each $prefix in -moz-selection, -webkit-selection, selection {
+    *::#{$prefix} {
+        background-color: #ffde595c;
     }
 }
 
@@ -66,4 +66,9 @@ hr {
 
 .content-wrapper {
     padding: 10px;
+}
+
+.email {
+    color: var(--main-contrast-color);
+    color: $--main-contrast-color;
 }
