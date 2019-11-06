@@ -1,15 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Parallax from "./../../utils/Parallax";
 
 // Contexts
 import LanguageContext from "./../../contexts/LanguageContext";
 
-function AboutMe() {
+function AboutMe(props) {
     return (
         <LanguageContext.Consumer>
             {({ language, setLanguage, languageConfig }) => (
-                <section className="Slider__section Slider_wrapper container">
+                <section className="Slider__section Slider_wrapper container" data-slide={props.slide}>
                     <div className="Slider__background">
                         <img className="Slider__image" src="/images/victory-of-samothrace.png" alt="The Victory of Samothrace, recreates by me" />
                     </div>
@@ -18,6 +17,9 @@ function AboutMe() {
                             {languageConfig.Slider.About.Title}                   
                         </h1>
                         <hr />
+                        <h2 className="Slider__subtitle_text">
+                            {languageConfig.Slider.About.Subtitle}
+                        </h2>
                         <Link to="/aboutme" className="Slider__btn">
                             {languageConfig.Slider.About.Btn}               
                         </Link>

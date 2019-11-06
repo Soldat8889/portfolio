@@ -42,6 +42,7 @@
         "no-fallthrough": "error",
         "react/prop-types": "off",
         "no-control-regex": "off",
-        "no-useless-escape": "off"
+        "no-useless-escape": "off",
+        "react/no-unescaped-entities": "off"
     }
 }

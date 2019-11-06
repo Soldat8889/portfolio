@@ -16,17 +16,21 @@ $box_margin: 24px;
 // Variables of color
 $--main-icon-color: #2e2e2e;
 $--main-icon-color-contrast: #fefefe;
-$--main-txt-color: #555;
+$--main-txt-color: #000;
+$--main-txt-color-sub: #555;
 $--main-bg-color: #fff;
 $--main-bg-color-second: #dfdfdf;
+$--main-bg-color-deep: #dfdfdf;
 $--main-bg-color-box: #f0f0f0;
-$--main-shadow-color: #dfdfdf;
+$--main-shadow-color: #191919;
+$--main-contrast-color: #ffde59;
 
 // Variables of fonts
 $title_font: "QuickSand", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-$text_font: "QuickSand", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+$text_font: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 
 // Variables of sizes
+$max-width_size: 1130px;
 $big_desktop_size: 1281px; // High res laptops / desktop
 $desktop_size: 1025px; // Big landscape tablets, desktops and laptops
 $landscape_tablet_size: 801px; // Landscape tablet, low res desktops and laptops

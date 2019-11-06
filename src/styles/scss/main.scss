@@ -18,11 +18,20 @@
 /* Modules */
 @import "modules/_custom-select";
 @import "modules/_fontawesome";
+@import "modules/_gauge";
+@import "modules/_modal";
+@import "modules/_on-circle";
+@import "modules/_grid";
 @import "modules/_page";
 @import "modules/_set-language";
 @import "modules/_theme-switcher";
+@import "modules/_timeline";
+@import "modules/_zoom-image";
 
 /* Layout */
+@import "layouts/_article";
+@import "layouts/_carousel";
+@import "layouts/_form";
 @import "layouts/_home";
 @import "layouts/_slider";
 @import "layouts/_topbar";

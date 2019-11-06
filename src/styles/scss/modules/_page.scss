@@ -14,10 +14,14 @@
 	z-index: 1;
 }
 
+.page-fullscreen {
+	min-height: 100vh;
+}
+
 .container {
     display: flex;
     flex-direction: column;
-	max-width: 1130px;
+	max-width: $max-width_size;
 	margin: 0 auto;
 
 	z-index: 2;

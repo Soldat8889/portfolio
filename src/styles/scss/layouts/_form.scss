@@ -1,0 +1,37 @@
+.Form {
+    &__input {
+        min-width: 200px;
+        min-height: 45px;
+        padding: 12px;
+        margin-bottom: 8px;
+        display: block;
+        
+        border: none;
+        background-color: $--main-bg-color-box;
+        background-color: var(--main-bg-color-box);
+        outline: none;
+
+        font: {
+            size: 1.8rem;
+            family: "Open Sans";
+        }
+        color: $--main-txt-color;
+        color: var(--main-txt-color);
+    }
+
+    &__textarea {
+        padding: 12px;
+
+        background-color: $--main-bg-color-box;
+        background-color: var(--main-bg-color-box);
+
+        font: {
+            size: 1.8rem;
+            family: "Open Sans";
+        }
+        color: $--main-txt-color;
+        color: var(--main-txt-color);
+
+        resize: none;
+    }
+}

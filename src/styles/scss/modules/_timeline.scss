@@ -1,0 +1,38 @@
+.timeline {
+    position: relative;
+
+    &_bar {
+        &::before {
+            content: "";
+            display: block;
+            width: 2px;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            background-color: $--main-contrast-color;
+            background-color: var(--main-contrast-color);
+        }
+    }
+
+    &__mark {
+        position: relative;
+        margin-left: 30px;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: -25px;
+            width: 25px;
+            height: 25px;
+
+            border-radius: 100%;
+            background-color: $--main-contrast-color;
+            background-color: var(--main-contrast-color);
+
+            transform: translate(-50%, -50%);
+        }
+    }
+}

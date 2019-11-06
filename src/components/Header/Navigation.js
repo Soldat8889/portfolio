@@ -9,7 +9,7 @@ function Navigation() {
     return (
         <header className="Topbar">
             <Link to="/" className="Topbar__title-name Topbar_spacing_top Topbar__btn">
-                SYHANATH Lucas
+                Lucas SYHANATH
             </Link>
             <div className="Topbar__wrap">
                 <nav className="Topbar__navigation-bar Topbar_spacing_top">
