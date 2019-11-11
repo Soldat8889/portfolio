@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment } from "react";
 import Parallax from "./../../utils/Parallax";
 
 // Contexts
@@ -8,11 +8,11 @@ import ThemeContext from "../../contexts/ThemeContext";
 function Home(props) {
     return (
         <LanguageContext.Consumer>
-            {({ language, setLanguage, languageConfig }) => (
+            {({ languageConfig }) => (
                 <ThemeContext.Consumer>
                     {({theme}) => (
                         <section className="Slider__section Slider_wrapper container" data-slide={props.slide}>
-                            <div className={`Slider__background ${theme === "light" ? "Slider__background__scene_light" : "Slider__background__scene_dark"}`}>
+                            <div className={`Home__background ${theme === "light" ? "Home__background__scene_light" : "Home__background__scene_dark"}`}>
                                 {theme === "light" ?
                                     <DayMode />
                                     :
@@ -24,7 +24,7 @@ function Home(props) {
                                     <Parallax
                                         speedX={0.08}
                                         speedY={0.08}
-                                        name="Home__title"
+                                        name="Slider__title"
                                     >
                                         SYHANATH Lucas <br />
                                         {languageConfig.Slider.Home.Title}
@@ -42,45 +42,45 @@ function Home(props) {
 function DayMode() {
     return (
         <Fragment>
-            <div className="Slider__background-element Slider__background-element__sun">
+            <div className="Home__background-element Home__background-element__sun">
                 <Parallax
                     speedX={0.03}
                     speedY={0.03}
-                    name="Slider__background-element__sun"
+                    name="Home__background-element__sun"
                 >
                     <img className="sun" src="/images/home-illustrations/sun.svg" alt="Sun" />
                     <img className="sunbeams__1" src="/images/home-illustrations/sunbeams__1.svg" alt="Sunbeams Layer 1" />
                     <img className="sunbeams__2" src="/images/home-illustrations/sunbeams__2.svg" alt="Sunbeams Layer 2" />
                 </Parallax>
             </div>
-            <div className="Slider__background-element Slider__background-element__mountains">
+            <div className="Home__background-element Home__background-element__mountains">
                 <img src="/images/home-illustrations/mountains.svg" alt="Mountains" />
             </div>
-            <div className="Slider__background-element Slider__background-element__cloud__1">
+            <div className="Home__background-element Home__background-element__fog__day">
                 <Parallax
-                    speedX={0.055}
-                    speedY={0.055}
-                    name="Slider__background-element__cloud__1"
+                    speedX={0.08}
+                    speedY={0.02}
+                    name="Home__background-element__fog__day"
                 >
-                    <img src="/images/home-illustrations/cloud__1__day.svg" alt="Cloud 1" />
+                    <img src="/images/home-illustrations/fog__day.svg" alt="Fog" />
                 </Parallax>
             </div>
-            <div className="Slider__background-element Slider__background-element__cloud__2">
+            <div className="Home__background-element Home__background-element__cloud__2">
                 <Parallax
                     speedX={0.06}
                     speedY={0.06}
-                    name="Slider__background-element__cloud__2"
+                    name="Home__background-element__cloud__2"
                 >
-                    <img src="/images/home-illustrations/cloud__2__day.svg" alt="Cloud 2" />
+                    <img src="/images/home-illustrations/cloud__1__day.svg" alt="Cloud 1 day" />
                 </Parallax>
             </div>
-            <div className="Slider__background-element Slider__background-element__cloud__3">
+            <div className="Home__background-element Home__background-element__cloud__3">
                 <Parallax
                     speedX={0.045}
                     speedY={0.045}
-                    name="Slider__background-element__cloud__3"
+                    name="Home__background-element__cloud__3"
                 >
-                    <img src="/images/home-illustrations/cloud__3__day.svg" alt="Cloud 3" />
+                    <img src="/images/home-illustrations/cloud__2__day.svg" alt="Cloud 2 day" />
                 </Parallax>
             </div>
         </Fragment>
@@ -90,59 +90,59 @@ function DayMode() {
 function NightMode() {
     return (
         <Fragment>
-            <div className="Slider__background-element Slider__background-element__stars">
+            <div className="Home__background-element Home__background-element__stars">
                 <Parallax
                     speedX={0.01}
                     speedY={0.01}
-                    name="Slider__background-element__stars"
+                    name="Home__background-element__stars"
                 >
                     <img src="/images/home-illustrations/stars.svg" alt="Stars" />
                 </Parallax>
             </div>
-            <div className="Slider__background-element Slider__background-element__moon">
+            <div className="Home__background-element Home__background-element__moon">
                 <Parallax
                     speedX={0.03}
                     speedY={0.03}
-                    name="Slider__background-element__moon"
+                    name="Home__background-element__moon"
                 >
                     <img src="/images/home-illustrations/moon.svg" alt="Moon" style={{animation: "80s positive_rotate infinite linear"}}/>
-                    <img src="/images/home-illustrations/moon__shadow.svg" alt="Moon Shadow" className="Slider__background-element__moon__shadow" />
+                    <img src="/images/home-illustrations/moon__shadow.svg" alt="Moon Shadow" className="Home__background-element__moon__shadow" />
                 </Parallax>
             </div>
-            <div className="Slider__background-element Slider__background-element__fog">
+            <div className="Home__background-element Home__background-element__fog__night">
                 <Parallax
                     speedX={0.08}
                     speedY={0.08}
-                    name="Slider__background-element__fog"
+                    name="Home__background-element__fog__night"
                 >
-                    <img src="/images/home-illustrations/fog.svg" alt="Fog" />
+                    <img src="/images/home-illustrations/fog__night.svg" alt="Fog" />
                 </Parallax>
             </div>
-            <div className="Slider__background-element Slider__background-element__cloud__1">
+            <div className="Home__background-element Home__background-element__cloud__1">
                 <Parallax
                     speedX={0.055}
                     speedY={0.055}
-                    name="Slider__background-element__cloud__1"
+                    name="Home__background-element__cloud__1"
                 >
-                    <img src="/images/home-illustrations/cloud__1.svg" alt="Cloud 1" />
+                    <img src="/images/home-illustrations/cloud__1.svg" alt="Cloud 1 night" />
                 </Parallax>
             </div>
-            <div className="Slider__background-element Slider__background-element__cloud__2">
+            <div className="Home__background-element Home__background-element__cloud__2">
                 <Parallax
                     speedX={0.06}
                     speedY={0.06}
-                    name="Slider__background-element__cloud__2"
+                    name="Home__background-element__cloud__2"
                 >
-                    <img src="/images/home-illustrations/cloud__2.svg" alt="Cloud 2" />
+                    <img src="/images/home-illustrations/cloud__2.svg" alt="Cloud 2 night" />
                 </Parallax>
             </div>
-            <div className="Slider__background-element Slider__background-element__cloud__3">
+            <div className="Home__background-element Home__background-element__cloud__3">
                 <Parallax
                     speedX={0.045}
                     speedY={0.045}
-                    name="Slider__background-element__cloud__3"
+                    name="Home__background-element__cloud__3"
                 >
-                    <img src="/images/home-illustrations/cloud__3.svg" alt="Cloud 3" />
+                    <img src="/images/home-illustrations/cloud__3.svg" alt="Cloud 3 night" />
                 </Parallax>
             </div>
         </Fragment>
