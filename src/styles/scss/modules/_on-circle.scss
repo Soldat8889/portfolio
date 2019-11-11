@@ -41,4 +41,5 @@
     @include on-circle($item-count: 6, $circle-size: 300px, $item-size: 100px); 
     margin: 75px auto;
     border: solid 5px $--main-contrast-color;
+    border: solid 5px var(--main-contrast-color);
 }
