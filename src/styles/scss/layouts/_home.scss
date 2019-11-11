@@ -33,6 +33,38 @@
 }
 
 .Home {
+    &__alert {
+        position: fixed;
+        top: 0;
+        left: 50%;
+        padding: 20px;
+
+        background-color: $--main-bg-color-box;
+        background-color: var(--main-bg-color-box);
+
+        font: {
+            size: 1.8rem;
+            family: $text_font;
+        }
+
+        transform: translateX(-50%);
+
+        i {
+            font-size: 2rem;
+            margin-right: $basic_margin;
+        }
+
+        &_bold {
+            font: {
+                size: inherit;
+                family: inherit;
+                weight: 600;
+            }
+            color: $--main-contrast-color;
+            color: var(--main-contrast-color);
+        }
+    }
+
     &__background {
         position: relative;
         width: 100%;

@@ -135,6 +135,10 @@ function Slider() {
                 <SliderNavigationBar 
                     slide={slide}
                     createWaypoint = {() => createWaypoint()} />
+                <div className="Home__alert">
+                    <i className="fas fa-hammer"></i>
+                    This website is currently at <span className="Home__alert_bold">development stage</span>.
+                </div>
             </div>
         </Fragment>
     );
