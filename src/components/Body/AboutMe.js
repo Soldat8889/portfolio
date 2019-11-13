@@ -42,65 +42,65 @@ function Hero() {
             <div className="Home__hero Home__hero_aboutme">
                 <div className="Home__hero__banner"></div>
             </div>
-            <div className="Home__background-element Home__background-element__particles">
+            <div className="Home__background-element_mq Home__background-element_mq__particles">
                 <Parallax
                     speedX={0.04}
                     speedY={0.02}
-                    name="Home__background-element__particles"
+                    name="Home__background-element_mq__particles"
                 >
                     <img src="/images/aboutme-illustrations/particles.svg" alt="Particles" />
                 </Parallax>
             </div>
-            <div className="Home__background-element Home__background-element__switch">
+            <div className="Home__background-element_mq Home__background-element_mq__switch">
                 <Parallax
                     speedX={0.06}
                     speedY={0.03}
-                    name="Home__background-element__switch"
+                    name="Home__background-element_mq__switch"
                 >
                     <img src="/images/aboutme-illustrations/switch.svg" alt="Switch" />
                 </Parallax>
             </div>
-            <div className="Home__background-element Home__background-element__samothrace">
+            <div className="Home__background-element_mq Home__background-element_mq__samothrace">
                 <Parallax
                     speedX={0.03}
                     speedY={0.03}
-                    name="Home__background-element__samothrace"
+                    name="Home__background-element_mq__samothrace"
                 >
                     <img src="/images/aboutme-illustrations/victory-of-samothrace.png" alt="The Victory of Samothrace" />
                 </Parallax>
             </div>
-            <div className="Home__background-element Home__background-element__skull">
+            <div className="Home__background-element_mq Home__background-element_mq__skull">
                 <Parallax
                     speedX={0.03}
                     speedY={0.02}
-                    name="Home__background-element__skull"
+                    name="Home__background-element_mq__skull"
                 >
                     <img src="/images/aboutme-illustrations/skull.png" alt="Skull" />
                 </Parallax>
             </div>
-            <div className="Home__background-element Home__background-element__circle__2">
+            <div className="Home__background-element_mq Home__background-element_mq__circle__2">
                 <Parallax
                     speedX={0.06}
                     speedY={0.05}
-                    name="Home__background-element__circle__2"
+                    name="Home__background-element_mq__circle__2"
                 >
                     <Circle />
                 </Parallax>
             </div>
-            <div className="Home__background-element Home__background-element__meal">
+            <div className="Home__background-element_mq Home__background-element_mq__meal">
                 <Parallax
                     speedX={0.06}
                     speedY={0.05}
-                    name="Home__background-element__meal"
+                    name="Home__background-element_mq__meal"
                 >
                     <img src="/images/aboutme-illustrations/meal.png" alt="Meal" />
                 </Parallax>
             </div>
-            <div className="Home__background-element Home__background-element__circle__1">
+            <div className="Home__background-element_mq Home__background-element_mq__circle__1">
                 <Parallax
                     speedX={0.03}
                     speedY={0.05}
-                    name="Home__background-element__circle__1"
+                    name="Home__background-element_mq__circle__1"
                 >
                     <Circle />
                 </Parallax>

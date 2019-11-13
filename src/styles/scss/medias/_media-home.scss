@@ -5,7 +5,7 @@
         }
 
         &__background {
-            &-element {
+            &-element_mq {
                 &__particles {
                     left: 5vw;
                 }
@@ -25,7 +25,26 @@
         }
     }
 
-    @media screen and (max-width: $desktop_size) {
-        
+    @media screen and (max-width: $landscape_tablet_size) {
+        &__hero {
+            display: block;
+            width: 100%;
+
+            &::before {
+                background-size: 100%;
+            }
+
+            &__banner {
+                left: 0;
+                right: unset;
+                width: 5%;
+            }
+        }
+
+        &__background {
+            &-element_mq {
+                display: none;
+            }
+        }
     }
 }

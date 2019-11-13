@@ -46,6 +46,8 @@
             size: 1.8rem;
             family: $text_font;
         }
+        text-align: center;
+        white-space: nowrap;
 
         transform: translateX(-50%);
 
@@ -85,7 +87,7 @@
             }
         }
         
-        &-element {
+        &-element, &-element_mq {
             position: absolute;
         }
     }
@@ -100,10 +102,20 @@
         z-index: 3;
 
         &_aboutme {
-            background: {
-                image: url("/images/aboutme-illustrations/notre-dame-de-paris.jpg");
-                size: 130%;
-                position: 0 20%;
+            &::before {
+                content: "";
+                position: absolute;
+                top: 0; left: 0;
+                width: 100%; 
+                height: 100%;
+
+                background: {
+                    image: url("/images/aboutme-illustrations/notre-dame-de-paris.jpg");
+                    size: 130%;
+                    position: 0 20%;
+                }
+                
+                filter: contrast(1.5);
             }
         }
 
@@ -133,7 +145,7 @@
                 -o-user-drag: none;
                 user-drag: none;
             }
-            
+
             &__sun {
                 width: 48vh;
                 height: 48vh;
@@ -268,6 +280,16 @@
                         height: 30vh;
                     }
                 }
+            }
+        }
+
+        &-element_mq {
+            img {
+                -webkit-user-drag: none;
+                -khtml-user-drag: none;
+                -moz-user-drag: none;
+                -o-user-drag: none;
+                user-drag: none;
             }
 
             &__particles {
