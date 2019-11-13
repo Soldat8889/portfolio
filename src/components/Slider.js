@@ -15,17 +15,7 @@ function Slider() {
     const [status, setStatus] = useState("static");
 
     useEffect(function componentDidMount() {
-        const pageContent = document.querySelector(".page-content");
-
-        pageContent.classList.add("page-fullscreen");
         setMaxSlide(-Math.abs(document.getElementById("Slider").children.length) + 1);
-
-        document.documentElement.style.overflow = "hidden";
-
-        return () => {
-            pageContent.classList.remove("page-fullscreen");
-            document.documentElement.style.overflow = "initial";
-        };
     }, []);
 
     useEffect(function hashToSlide() {
@@ -127,7 +117,7 @@ function Slider() {
     
     return (
         <Fragment>
-            <div className="page-content page-part-wrapper">
+            <div className="page-content page-part-wrapper page-fullscreen" style={{overflow: "hidden"}}>
                 <div className="Slider" id="Slider" style={{transform: `translateX(${translateX}px) translateY(-50%)`}} data-current-slide={slide} data-status={status}>
                     <Home slide={0} />
                     <AboutMe slide={-1} />

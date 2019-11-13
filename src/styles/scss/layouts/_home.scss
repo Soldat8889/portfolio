@@ -46,6 +46,8 @@
             size: 1.8rem;
             family: $text_font;
         }
+        text-align: center;
+        white-space: nowrap;
 
         transform: translateX(-50%);
 
@@ -81,11 +83,11 @@
             }
 
             &_aboutme {
-                background-color: #63b58266;
+                background-color: #CBE6D5;
             }
         }
         
-        &-element {
+        &-element, &-element_mq {
             position: absolute;
         }
     }
@@ -100,10 +102,20 @@
         z-index: 3;
 
         &_aboutme {
-            background: {
-                image: url("/images/aboutme-illustrations/notre-dame-de-paris.jpg");
-                size: 130%;
-                position: 0 20%;
+            &::before {
+                content: "";
+                position: absolute;
+                top: 0; left: 0;
+                width: 100%; 
+                height: 100%;
+
+                background: {
+                    image: url("/images/aboutme-illustrations/notre-dame-de-paris.jpg");
+                    size: 130%;
+                    position: 0 20%;
+                }
+                
+                filter: contrast(1.5);
             }
         }
 
@@ -118,6 +130,12 @@
         }
     }
 
+    &__color {
+        &_aboutme {
+            color: #D1AB4B!important;
+        }
+    }
+
     &__background {
         &-element {
             img {
@@ -127,7 +145,7 @@
                 -o-user-drag: none;
                 user-drag: none;
             }
-            
+
             &__sun {
                 width: 48vh;
                 height: 48vh;
@@ -263,6 +281,16 @@
                     }
                 }
             }
+        }
+
+        &-element_mq {
+            img {
+                -webkit-user-drag: none;
+                -khtml-user-drag: none;
+                -moz-user-drag: none;
+                -o-user-drag: none;
+                user-drag: none;
+            }
 
             &__particles {
                 left: 40vw;  
@@ -319,25 +347,33 @@
 
             &__circle {
                 &__2 {
-                    top: -12vh;
-                    right: -15vh;
+                    top: -15vh;
+                    right: -17vh;
 
                     z-index: 3;
                 
-                    img {
-                        height: 70vh;
+                    svg {
+                        height: 65vh;
+
+                        fill: $--main-contrast-color;
+                        fill: var(--main-contrast-color);
+
                         opacity: .75;
                     }
                 }
                 
                 &__1 {
-                    right: 8vw;
-                    bottom: -35vh;
+                    right: 5vw;
+                    bottom: -38vh;
 
                     z-index: 1;
                 
-                    img {
-                        height: 80vh;
+                    svg {
+                        height: 75vh;
+
+                        fill: $--main-contrast-color;
+                        fill: var(--main-contrast-color);
+
                         opacity: .5;
                     }
                 }
