@@ -4,28 +4,33 @@ import { Link } from "react-router-dom";
 
 // Contexts
 import LanguageContext from "./../../contexts/LanguageContext";
+import ThemeContext from "./../../contexts/ThemeContext";
 
 function AboutMe(props) {
     return (
         <LanguageContext.Consumer>
             {({ languageConfig }) => (
-                <section className="Slider__section Slider_wrapper container" data-slide={props.slide}>
-                    <div className="Home__background Home__background__scene_aboutme">
-                        <Hero />
-                    </div>
-                    <div className="Slider__title Slider__box">
-                        <h1 className="Slider__title_text" style={{fontFamily: "Merriweather, serif"}}>
-                            {languageConfig.Slider.About.Title}                   
-                        </h1>
-                        <hr />
-                        <h2 className="Slider__subtitle_text">
-                            {languageConfig.Slider.About.Subtitle}
-                        </h2>
-                        <Link to="/aboutme" className="Slider__btn">
-                            {languageConfig.Slider.About.Btn}               
-                        </Link>
-                    </div>
-                </section>
+                <ThemeContext.Consumer>
+                    {({theme}) => (
+                        <section className="Slider__section Slider_wrapper container" data-slide={props.slide}>
+                            <div className="Home__background Home__background__scene_aboutme" style={theme === "dark" ? {backgroundColor: "#224f31"} : null}>
+                                <Hero />
+                            </div>
+                            <div className="Slider__title Slider__box">
+                                <h1 className="Slider__title_text Home__color_aboutme" style={{fontFamily: "Merriweather, serif"}}>
+                                    {languageConfig.Slider.About.Title}                   
+                                </h1>
+                                <hr style={{borderTop: "1px solid #fff"}} />
+                                <h2 className="Slider__subtitle_text">
+                                    {languageConfig.Slider.About.Subtitle}
+                                </h2>
+                                <Link to="/aboutme" className="Slider__btn">
+                                    {languageConfig.Slider.About.Btn}               
+                                </Link>
+                            </div>
+                        </section>
+                    )}
+                </ThemeContext.Consumer>
             )}
         </LanguageContext.Consumer>
     );
@@ -79,7 +84,7 @@ function Hero() {
                     speedY={0.05}
                     name="Home__background-element__circle__2"
                 >
-                    <img src="/images/aboutme-illustrations/circle.svg" alt="Circle 2" />
+                    <Circle />
                 </Parallax>
             </div>
             <div className="Home__background-element Home__background-element__meal">
@@ -97,10 +102,25 @@ function Hero() {
                     speedY={0.05}
                     name="Home__background-element__circle__1"
                 >
-                    <img src="/images/aboutme-illustrations/circle.svg" alt="Circle 1" />
+                    <Circle />
                 </Parallax>
             </div>
         </Fragment>
+    );
+}
+
+function Circle() {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+            <defs>
+                <clip-path id="_clipPath_GYfQiVUmkTBiU9XwoaJSH0E2EVYB9pLU">
+                    <rect width="256" height="256" />
+                </clip-path>
+            </defs>
+            <g clipPath="url(#_clipPath_GYfQiVUmkTBiU9XwoaJSH0E2EVYB9pLU)">
+                <circle vectorEffect="non-scaling-stroke" cx="128" cy="128" r="128" />
+            </g>
+        </svg>
     );
 }
 

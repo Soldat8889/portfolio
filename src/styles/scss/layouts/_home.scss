@@ -81,7 +81,7 @@
             }
 
             &_aboutme {
-                background-color: #63b58266;
+                background-color: #CBE6D5;
             }
         }
         
@@ -115,6 +115,12 @@
 
             background-color: $--main-contrast-color;
             background-color: var(--main-contrast-color);
+        }
+    }
+
+    &__color {
+        &_aboutme {
+            color: #D1AB4B!important;
         }
     }
 
@@ -319,25 +325,33 @@
 
             &__circle {
                 &__2 {
-                    top: -12vh;
-                    right: -15vh;
+                    top: -15vh;
+                    right: -17vh;
 
                     z-index: 3;
                 
-                    img {
-                        height: 70vh;
+                    svg {
+                        height: 65vh;
+
+                        fill: $--main-contrast-color;
+                        fill: var(--main-contrast-color);
+
                         opacity: .75;
                     }
                 }
                 
                 &__1 {
-                    right: 8vw;
-                    bottom: -35vh;
+                    right: 5vw;
+                    bottom: -38vh;
 
                     z-index: 1;
                 
-                    img {
-                        height: 80vh;
+                    svg {
+                        height: 75vh;
+
+                        fill: $--main-contrast-color;
+                        fill: var(--main-contrast-color);
+
                         opacity: .5;
                     }
                 }
