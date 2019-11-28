@@ -1,5 +1,5 @@
 %Article__title {
-    margin-bottom: $inline_margin;
+    margin-bottom: $basic_margin;
 
     color: $--main-txt-color;
     color: var(--main-txt-color);
@@ -203,6 +203,18 @@ $Article__text: 1.8rem;
             background-color: var(--main-contrast-color);
         }
     }
+    
+    &__header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: $separate_margin;
+
+        &__cubic {
+            fill: $--main-gold-color;
+        }
+    }
 
     &__title {
         &_wrapper {
@@ -226,8 +238,11 @@ $Article__text: 1.8rem;
             }
 
             &-2 {
-                text-decoration: underline;
                 font-size: $Article__title_lvl2;
+                color: $--main-gold-color;
+                text-transform: uppercase;
+                text-align: center;
+
                 @extend %Article__title;
             }
 

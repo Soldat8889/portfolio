@@ -13,7 +13,7 @@ function AboutMe(props) {
                 <ThemeContext.Consumer>
                     {({theme}) => (
                         <section className="Slider__section Slider_wrapper container" data-slide={props.slide}>
-                            <div className="Home__background Home__background__scene_aboutme" style={theme === "dark" ? {backgroundColor: "#224f31"} : null}>
+                            <div className="Home__background Home__background__scene_aboutme" style={theme === "dark" ? {backgroundColor: "unset"} : null}>
                                 <Hero />
                             </div>
                             <div className="Slider__title Slider__box">
