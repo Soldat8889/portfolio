@@ -1,3 +1,4 @@
+/* eslint-disable no-irregular-whitespace */
 import React, { useEffect, Fragment, useContext, useState } from "react";
 
 import AboutMeComponent from "./Body/AboutMe";
@@ -14,6 +15,7 @@ import Carousel from "../utils/Carousel";
 function AboutMe() {
     const theme = useContext(ThemeContext);
     const [currentCheckpoint, setCurrentCheckpoint] = useState(0);
+    const [nextCheckpoint, setNextCheckpoint] = useState(0);
 
     useEffect(function componentDidMount() {
         const pageContent = document.querySelector(".page-content");
@@ -31,11 +33,19 @@ function AboutMe() {
     function observerHandler() {
         // Collected with [data-observer] attr
         const checkpoints = [];
+        const progression = [];
 
         const items = document.querySelectorAll("[data-observer]");
         items.forEach((item) => {
-            checkpoints.push(window.scrollY + item.getBoundingClientRect().top - window.innerHeight + item.getBoundingClientRect().height);
+            checkpoints.push(window.scrollY + item.getBoundingClientRect().top + item.parentElement.getBoundingClientRect().height - (window.innerHeight * 0.65));
+            progression.push(item.getBoundingClientRect().top + item.parentElement.getBoundingClientRect().height - (window.innerHeight * 0.65));
         });
+
+        if(checkpoints[currentCheckpoint] - checkpoints[currentCheckpoint - 1]) {
+            setNextCheckpoint(parseInt(progression[currentCheckpoint] * 100 / (checkpoints[currentCheckpoint] - checkpoints[currentCheckpoint - 1]), 10));
+        } else {
+            setNextCheckpoint(parseInt(progression[currentCheckpoint] * 100 / (checkpoints[currentCheckpoint]), 10));
+        }
 
         // Scroll Up Behavior
         // e.g.
@@ -74,13 +84,16 @@ function AboutMe() {
             </div>
             <div className={`page-content page-part-wrapper Article_background Article_background_first ${theme.theme === "light" ? "Article_background_minds" : "Article_background_minds_dark"}`}>
                 <div className="Article">
+                    <div className="Article__checkpoints">
+                        <h1 style={{color: "black", fontSize: "3rem"}}>{nextCheckpoint}</h1>
+                    </div>
                     <div className="Article__title_wrapper">
                         <h1 className="Article__title_level-1">Qui suis-je ?</h1>
                     </div>
                     <FirstPart />
                 </div>
             </div>
-            <div className={`page-content page-part-wrapper Article_background ${theme.theme === "light" ? "Article_background_minds" : "Article_background_minds_dark"}`}>
+            <div className={`page-content page-part-wrapper Article_background ${theme.theme === "light" ? "Article_background_minds" : "Article_background_minds_dark"}`}>
                 <div className="Article">
                     <div className="Article__title_wrapper">
                         <h1 className="Article__title_level-1">En savoir plus sur moi</h1>

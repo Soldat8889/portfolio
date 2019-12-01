@@ -216,6 +216,15 @@ $Article__text: 1.8rem;
         }
     }
 
+    &__checkpoints {
+        width: 200px;
+        height: 300px;
+        position: fixed;
+        bottom: 20%;
+
+        background-color: #fff;
+    }
+
     &__title {
         &_wrapper {
             position: absolute;
