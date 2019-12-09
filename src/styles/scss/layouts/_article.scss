@@ -4,12 +4,12 @@
     color: $--main-txt-color;
     color: var(--main-txt-color);
     font: {
-        family: "Merriweather", $title_font;
+        family: "Lora", $title_font;
         weight: 500;
     }
 }
 
-$Article__title_lvl1: 3.8vw;
+$Article__title_lvl1: 3.6vw;
 $Article__title_lvl2: 3.3rem;
 $Article__title_lvl3: 2.7rem;
 $Article__text: 1.8rem;
@@ -217,12 +217,91 @@ $Article__text: 1.8rem;
     }
 
     &__checkpoints {
-        width: 200px;
-        height: 300px;
         position: fixed;
-        bottom: 20%;
+        top: 30%;
+        margin-left: $box_margin;
+        width: 300px;
 
-        background-color: #fff;
+        font-size: 3rem;
+        color: $--main-txt-color;
+        color: var(--main-txt-color);
+
+        transition: ease-in-out transform $sm_tr;
+        z-index: $sidebar_index;
+
+        &_outside {
+            transform: translateX(-150%);
+        }
+
+        &__title {
+            &_1 {
+                margin-bottom: $basic_margin;
+
+                font: {
+                    family: "Lora", sans-serif;
+                    size: 2.6rem;
+                }
+                text-transform: uppercase;
+            }
+
+            &_2 {
+                margin-bottom: $basic_margin;
+
+                font: {
+                    family: "Lora", sans-serif;
+                    size: 1.9rem;
+                }
+                text-transform: uppercase;
+            }
+        }
+
+        &__bar {
+            height: 2px;
+            width: 100%;
+            margin-bottom: $inline_margin;
+
+            background-color: $--main-light-gray;
+
+            &_filled {
+                height: 100%;
+
+                background-color: $--main-gold-color;
+            }
+        }
+
+        &__menu {
+            &__item {
+                height: 25px;
+
+                font: {
+                    size: 1.9rem;
+                    family: "Lora", sans-serif;
+                }
+                text-transform: uppercase;
+                color: $--main-txt-color-sub;
+                color: var(--main-txt-color-sub);
+
+                opacity: 0;
+
+                &_active {
+                    &::before {
+                        content: "";
+                        display: inline-block;
+                        width: 16px;
+                        height: 16px;
+                        margin-right: $basic_margin;
+
+                        background: {
+                            image: url("/images/utils/bullet.svg");
+                            size: contain;
+                        }
+                    }
+                    color: $--main-gold-color;
+                    
+                    opacity: 1;
+                }
+            }
+        }
     }
 
     &__title {
@@ -239,9 +318,13 @@ $Article__text: 1.8rem;
 
         &_level {
             &-1 {
-                font-size: $Article__title_lvl1;
+                font: {
+                    size: $Article__title_lvl1;
+                    weight: 700;
+                }
                 color: $--main-icon-color-contrast;
                 color: var(--main-icon-color-contrast);
+                text-transform: uppercase;
 
                 @extend %Article__title;
             }
@@ -344,7 +427,7 @@ $Article__text: 1.8rem;
 
             font: {
                 size: 3.5rem;
-                family: "Merriweather", "sans-serif";
+                family: "Lora", "sans-serif";
             }
         }
     }

@@ -17,7 +17,7 @@ function AboutMe(props) {
                                 <Hero />
                             </div>
                             <div className="Slider__title Slider__box">
-                                <h1 className="Slider__title_text Home__color_aboutme" style={{fontFamily: "Merriweather, serif"}}>
+                                <h1 className="Slider__title_text Home__color_aboutme" style={{fontFamily: "Lora, serif"}}>
                                     {languageConfig.Slider.About.Title}                   
                                 </h1>
                                 <hr style={{borderTop: "1px solid #fff"}} />
