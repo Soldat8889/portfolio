@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useCallback} from "react";
+import { HashLink as Link } from "react-router-hash-link";
 import PropTypes from "prop-types";
 
 function ArticleCheckpoints({title = "-"}) {
@@ -6,6 +7,7 @@ function ArticleCheckpoints({title = "-"}) {
     const [currentCheckpoint, setCurrentCheckpoint] = useState(0);
     const [nextProgression, setNextProgression] = useState(0);
     const [currentSection, setCurrentSection] = useState("");
+    const [isFolded, setIsFolded] = useState(false);
 
     function displayHandler(checkpointsLength) {
         // Checkpoint elements
@@ -117,12 +119,30 @@ function ArticleCheckpoints({title = "-"}) {
 
         titles.forEach((title, i) => {
             items.push(
-                <li className="Article__checkpoints__menu__item" key={i + 1} data-key={i + 1}>{title.getAttribute("data-short-title")}</li>
+                <li className="Article__checkpoints__menu__item" key={i + 1} data-key={i + 1}>
+                    <Link to={`#${title.id}`}>{title.getAttribute("data-short-title")}</Link>
+                </li>
             );
         });
 
         return items;
     }
+
+    useEffect(function foldHandler() {
+        const listItems = document.querySelectorAll(".Article__checkpoints__menu__item");
+       
+        if(isFolded) {
+            // Return all items to visible
+            listItems.forEach((item) => {
+                item.classList.add("Article__checkpoints__menu__item_unfold");
+            });
+        } else {
+            // Return all items to invisible
+            listItems.forEach((item) => {
+                item.classList.remove("Article__checkpoints__menu__item_unfold");
+            });
+        }
+    }, [isFolded]);
 
     useEffect(function bindingEvents() {
         window.addEventListener("scroll", observerHandler);
@@ -134,10 +154,10 @@ function ArticleCheckpoints({title = "-"}) {
         };
     }, [observerHandler]);
 
-    useEffect(function componentDidMount() {
-        // Call it!
+    useEffect(function () {
+        // Call it! (permanently)
         observerHandler();
-    }, [observerHandler]);
+    });
 
     return (
         <div className="Article__checkpoints">
@@ -147,10 +167,19 @@ function ArticleCheckpoints({title = "-"}) {
                 <div className="Article__checkpoints__bar">
                     <div className="Article__checkpoints__bar_filled" style={{width: `${100 - nextProgression}%`}}></div>
                 </div>
-                <ul className="Article__checkpoints__menu" style={{transform: `translateY(-${(currentCheckpoint - 1) * 25}px)`}}>
+                <ul className="Article__checkpoints__menu" style={isFolded ? {transform: `translateY(0)`} : {transform: `translateY(-${(currentCheckpoint - 1) * 29}px)`}}>
                     {createTitlesHandler()}
                 </ul>
+                <FoldButton isFolded={isFolded} onClick={() => isFolded ? setIsFolded(false) : setIsFolded(true)} />
             </div>
+        </div>
+    );
+}
+
+function FoldButton(props) {
+    return (
+        <div className="Article__checkpoints__btn_fold" onClick={props.onClick}>
+            {props.isFolded ? <i className="fas fa-chevron-down"></i> : <i className="fas fa-chevron-up"></i>}
         </div>
     );
 }

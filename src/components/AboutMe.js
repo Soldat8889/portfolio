@@ -61,7 +61,7 @@ function AboutMe() {
 function CubicHeader(props) {
     return (
         <div className="Article__header">
-            <h2 className="Article__title_level-2" data-article-checkpoint data-short-title={props.short}>{props.title}</h2>
+            <h2 id={props.id} className="Article__title_level-2" data-article-checkpoint data-short-title={props.short}>{props.title}</h2>
             <img src="/images/utils/delimiter.svg" alt="Delimiter" />
         </div>
     );
@@ -76,11 +76,11 @@ function Link(props) {
 function Profile() {
     return (
         <Fragment>
-            <div className="Article__section_theme Article__container" data-index="first" data-bookmark id="profile">
+            <div className="Article__section_theme Article__container" data-index="first">
                 <ArticleCheckpoints 
                     title="À propos de moi"
                 />
-                <CubicHeader short="Profil" title="Profil" />
+                <CubicHeader short="Profil" title="Profil" id="profile" />
                 <div className="Article_indent">
                     <p className="Article__text Article__text_indent">
                         Collégien en classe de troisième vivant actuellement dans un petit village de <Link href="https://www.google.com/maps/place/Seine-et-Marne/@48.6185381,2.4152656,9z">Seine-et-Marne</Link> (département 77), à côté du célèbre parc d’attractions <Link href="https://www.google.com/maps/place/Disneyland+Paris/@48.8690416,2.7905893,16z">Disneyland Paris</Link>, je m'épanouis en ce moment, depuis près maintenant de 3 ans (depuis juillet 2017), en m'étant lancé dans le monde du développement côté web (<Link href="https://github.com/Soldat8889">GitHub</Link>).
@@ -111,8 +111,8 @@ function Interest() {
     }, [interestIndex]);
 
     return (
-        <div className="Article__section_theme Article__container" data-bookmark id="interest">
-            <CubicHeader short="Centres d'intérêt" title="Centres d'intérêt" />
+        <div className="Article__section_theme Article__container">
+            <CubicHeader short="Centres d'intérêt" title="Centres d'intérêt" id="interest" />
             <div className="Article_indent">
                 <div className="Article__section">
                     <div className="col-m-6">
@@ -183,8 +183,8 @@ function Interest() {
 function Experience() {
     return (
         <Fragment>
-            <div className="Article__section_theme Article__container" data-index="last" data-bookmark id="experience">
-                <CubicHeader short="Expérience pro." title="Expérience professionnelle" />
+            <div className="Article__section_theme Article__container" data-index="last">
+                <CubicHeader short="Expérience pro." title="Expérience professionnelle" id="experience" />
                 <div className="Article_indent">
                     <div className="Article__section">
                         <h3 className="Article__title_level-3">Qu’est-ce que je voudrais faire plus tard dans ma vie ?</h3>
@@ -269,8 +269,8 @@ function Experience() {
 function Project() {
     return (
         <Fragment>
-            <div className="Article__section_theme Article__container" data-index="first" data-bookmark id="project">
-                <CubicHeader short="Projets" title="Projets" />
+            <div className="Article__section_theme Article__container" data-index="first">
+                <CubicHeader short="Projets" title="Projets" id="project" />
                 <div className="Article_indent">
                     <div className="Article__section">
                         <h3 className="Article__title_level-3">Mes quelques dessins !</h3>
@@ -290,7 +290,7 @@ function Project() {
                     </div>
                 </div>
             </Carousel> */}
-            <div className="Article__section_theme Article__container" data-index="first" data-bookmark id="project-2">
+            <div className="Article__section_theme Article__container" data-index="first">
                 <div className="timeline">
                     <Link href="https://lucassyhan.netlify.com" className="Article__section_theme Article__box timeline__mark">
                         <h3 className="Article__title_level-3 Article__box__title">Lucas SYHANATH : Portfolio</h3>
@@ -323,8 +323,8 @@ function Project() {
 
 function Contact() {
     return (
-        <div className="Article__section_theme Article__container" data-index="last" data-bookmark id="contact">
-            <CubicHeader short="Me contacter" title="Me contacter" />
+        <div className="Article__section_theme Article__container" data-index="last">
+            <CubicHeader short="Me contacter" title="Me contacter" id="contact" />
             <div className="Article_indent">
                 <div className="Article__section">
                     <p className="Article__text">
@@ -351,22 +351,22 @@ function FirstPart() {
     return (
         <div className="Article__section">
             <Profile />
-            {/* <div className="Article__section_theme Article_indent" data-bookmark id="traits-skills">
+            {/* <div className="Article__section_theme Article_indent" id="traits-skills">
                 <h2 className="Article__title_level-2">Traits de caractère & Compétences</h2>
-                <div className="Article__section" data-bookmark id="traits">
+                <div className="Article__section" id="traits">
                     <h3 className="Article__title_level-3">Je suis :</h3>
                     <p className="Article__text">
                         CRÉATIF, DÉTERMINÉ, SOIGNÉ, TRAVAILLEUR, PROCHE DE MA FAMILLE
                     </p>
                 </div>
-                <div className="Article__section" data-bookmark id="skills">
+                <div className="Article__section" id="skills">
                     <h3 className="Article__title_level-3">Programmation :</h3>
                     <p className="Article__text">
                         JS          HTML / CSS  |   NodeJS<br />
                         React JS    Pug / SASS  |   ExpressJS
                     </p>
                 </div>
-                <div className="Article__section" data-bookmark id="languages">
+                <div className="Article__section" id="languages">
                     <h3 className="Article__title_level-3">Langues littérales, l’écrit et le parler :</h3>
                     <p className="Article__text">
                         FRANCAIS <meter value="85" min="0" max="100"></meter><br />
@@ -384,11 +384,11 @@ function FirstPart() {
 
 function SecondPart() {
     return (
-        <div className="Article__section" data-bookmark id="show-me-more">
-            <div className="Article__section_theme Article__container" data-bookmark id="why-and-how" data-index="first">
-                <CubicHeader short="Pourquoi coder ?" title="Pourquoi coder ?" />
+        <div className="Article__section" id="show-me-more">
+            <div className="Article__section_theme Article__container" data-index="first">
+                <CubicHeader short="Pourquoi coder ?" title="Pourquoi coder ?" id="why" />
                 <div className="Article_indent">
-                    <div className="Article__section_theme Article_indent" data-bookmark id="why">
+                    <div className="Article__section_theme Article_indent">
                         <h3 className="Article__title_level-3">Pourquoi ai-je commencé à m'intéresser à écrire des lignes de code ?</h3>
                         <p className="Article__text Article__text_indent">
                             Étant une personne curieuse, j’ai débuté à coder dans ma chambre parce que je voulais savoir comment tous ces sites web étaient construits.
@@ -399,7 +399,7 @@ function SecondPart() {
                             Mais tout m'était inconnu… autant de notions à découvrir, comme des concepts abstraits (tels que les class, object, les paradigmes de programmation), ou comment fonctionne ceci ou cela. 
                         </p>
                     </div>
-                    <div className="Article__section_theme Article_indent Article__container" data-bookmark id="how">
+                    <div className="Article__section_theme Article_indent Article__container">
                         <h3 className="Article__title_level-3">Comment est-ce que j’ai commencé à apprécié la programmation ?</h3>
                         <p className="Article__text Article__text_indent">
                             Quand on y pense, la programmation n’est pas seulement du code avec des suites d’instructions que nous pouvons pas comprendre. 
@@ -420,8 +420,8 @@ function SecondPart() {
                     </div>
                 </div>
             </div>
-            <div className="Article__section_theme Article__container" data-bookmark id="what" data-index="last">
-                <CubicHeader short="Un apprentissage ?" title="Un apprentissage ?" />
+            <div className="Article__section_theme Article__container" data-index="last">
+                <CubicHeader short="Un apprentissage ?" title="Un apprentissage ?" id="what" />
                 <div className="Article_indent">
                     <div className="Article__section">
                         <p className="Article__text">
