@@ -34,9 +34,6 @@ function AboutMe() {
                 </div>
             </div>
             <div className="Article_wrapper">
-                <ArticleCheckpoints 
-                    title="À propos de moi"
-                />
                 <div className={`page-content page-part-wrapper Article_background Article_background_first ${theme.theme === "light" ? "Article_background_minds" : "Article_background_minds_dark"}`}>
                     <div className="Article">
                         <div className="Article__title_wrapper">
@@ -80,6 +77,9 @@ function Profile() {
     return (
         <Fragment>
             <div className="Article__section_theme Article__container" data-index="first" data-bookmark id="profile">
+                <ArticleCheckpoints 
+                    title="À propos de moi"
+                />
                 <CubicHeader short="Profil" title="Profil" />
                 <div className="Article_indent">
                     <p className="Article__text Article__text_indent">

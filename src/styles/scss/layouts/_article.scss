@@ -9,13 +9,14 @@
     }
 }
 
+$Article__space: 45px;
 $Article__title_lvl1: 3.6vw;
 $Article__title_lvl2: 3.3rem;
 $Article__title_lvl3: 2.7rem;
 $Article__text: 1.8rem;
 
 .Article {
-    margin-top: 2.5%;
+    margin-top: $Article__space;
 
     &_background {
         margin-top: 50vh;
@@ -82,11 +83,11 @@ $Article__text: 1.8rem;
         }
 
         & > [data-index="first"] {
-            padding-top: 2.5%;
+            padding-top: $Article__space;
         }
 
         & > [data-index="last"] {
-            padding-bottom: 2.5%;
+            padding-bottom: $Article__space;
         }
     }
 
@@ -111,7 +112,7 @@ $Article__text: 1.8rem;
         flex-direction: column;
         max-width: $max-width_size;
         margin: 0 auto;
-        padding: 0 2.5%;
+        padding: 0 $Article__space;
 
         background-color: $--main-bg-color;
         background-color: var(--main-bg-color);
@@ -126,7 +127,7 @@ $Article__text: 1.8rem;
     &__division {
         position: relative;
         width: 100%;
-        height: 50px;
+        height: $Article__space;
 
         border-top: none;
 
@@ -187,7 +188,7 @@ $Article__text: 1.8rem;
 
     &_indent {
         position: relative;
-        padding: 0 2.5%;
+        padding: 0 $Article__space;
         margin-bottom: 35px;
 
         &::before {
@@ -217,20 +218,29 @@ $Article__text: 1.8rem;
     }
 
     &__checkpoints {
-        position: fixed;
-        top: 30%;
-        margin-left: $box_margin;
+        position: absolute;
         width: 300px;
 
         font-size: 3rem;
         color: $--main-txt-color;
         color: var(--main-txt-color);
 
-        transition: ease-in-out transform $sm_tr;
+        transform: translateX(-100%) translateX(-$Article__space) translateX(-30px);
+        transition: 
+            ease-in-out transform 330ms,
+            ease-out opacity $sm_tr;
         z-index: $sidebar_index;
+
+        &__container {
+            padding: $box_margin;
+
+            background-color: $--main-bg-color;
+            background-color: var(--main-bg-color-box);
+        }
 
         &_outside {
             transform: translateX(-150%);
+            opacity: 0;
         }
 
         &__title {
@@ -270,6 +280,8 @@ $Article__text: 1.8rem;
         }
 
         &__menu {
+            transition: transform 0.2s;
+            
             &__item {
                 height: 25px;
 
@@ -282,6 +294,7 @@ $Article__text: 1.8rem;
                 color: var(--main-txt-color-sub);
 
                 opacity: 0;
+                visibility: hidden;
 
                 &_active {
                     &::before {
@@ -299,6 +312,9 @@ $Article__text: 1.8rem;
                     color: $--main-gold-color;
                     
                     opacity: 1;
+                    visibility: visible;
+
+                    transition: opacity ease-out $sm_tr;
                 }
             }
         }
