@@ -1,21 +1,22 @@
 %Article__title {
-    margin-bottom: $inline_margin;
+    margin-bottom: $basic_margin;
 
     color: $--main-txt-color;
     color: var(--main-txt-color);
     font: {
-        family: "Merriweather", $title_font;
+        family: "Lora", $title_font;
         weight: 500;
     }
 }
 
-$Article__title_lvl1: 3.8vw;
+$Article__space: 45px;
+$Article__title_lvl1: 3.6vw;
 $Article__title_lvl2: 3.3rem;
 $Article__title_lvl3: 2.7rem;
 $Article__text: 1.8rem;
 
 .Article {
-    margin-top: 2.5%;
+    margin-top: $Article__space;
 
     &_background {
         margin-top: 50vh;
@@ -82,11 +83,11 @@ $Article__text: 1.8rem;
         }
 
         & > [data-index="first"] {
-            padding-top: 2.5%;
+            padding-top: $Article__space;
         }
 
         & > [data-index="last"] {
-            padding-bottom: 2.5%;
+            padding-bottom: $Article__space;
         }
     }
 
@@ -111,7 +112,7 @@ $Article__text: 1.8rem;
         flex-direction: column;
         max-width: $max-width_size;
         margin: 0 auto;
-        padding: 0 2.5%;
+        padding: 0 $Article__space;
 
         background-color: $--main-bg-color;
         background-color: var(--main-bg-color);
@@ -126,7 +127,7 @@ $Article__text: 1.8rem;
     &__division {
         position: relative;
         width: 100%;
-        height: 50px;
+        height: $Article__space;
 
         border-top: none;
 
@@ -187,7 +188,7 @@ $Article__text: 1.8rem;
 
     &_indent {
         position: relative;
-        padding: 0 2.5%;
+        padding: 0 $Article__space;
         margin-bottom: 35px;
 
         &::before {
@@ -201,6 +202,161 @@ $Article__text: 1.8rem;
 
             background-color: $--main-contrast-color;
             background-color: var(--main-contrast-color);
+        }
+    }
+    
+    &__header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: $separate_margin;
+
+        &__cubic {
+            fill: $--main-gold-color;
+        }
+    }
+
+    &__checkpoints {
+        position: absolute;
+        width: 300px;
+
+        font-size: 3rem;
+        color: $--main-txt-color;
+        color: var(--main-txt-color);
+
+        transform: translateX(-100%) translateX(-$Article__space) translateX(-30px);
+        transition: 
+            ease-in-out transform 330ms,
+            ease-out opacity $sm_tr;
+        z-index: $sidebar_index;
+
+        &__container {
+            padding: $box_margin;
+
+            background-color: $--main-bg-color;
+            background-color: var(--main-bg-color-box);
+        }
+
+        &_outside {
+            transform: translateX(-150%);
+            opacity: 0;
+        }
+
+        &__title {
+            &_1 {
+                margin-bottom: $basic_margin;
+
+                font: {
+                    family: "Lora", sans-serif;
+                    size: 2.6rem;
+                }
+                text-transform: uppercase;
+            }
+
+            &_2 {
+                margin-bottom: $basic_margin;
+
+                font: {
+                    family: "Lora", sans-serif;
+                    size: 1.9rem;
+                }
+                text-transform: uppercase;
+            }
+        }
+
+        &__bar {
+            height: 2px;
+            width: 100%;
+            margin-bottom: $inline_margin;
+
+            background-color: $--main-light-gray;
+
+            &_filled {
+                height: 100%;
+                min-width: 0.1%;
+                max-width: 100%;
+
+                background-color: $--main-gold-color;
+            }
+        }
+
+        &__menu {
+            display: inline-flex;
+            flex-direction: column;
+            margin-right: $basic_margin;
+
+            transition: transform 0.2s;
+            
+            &__item {
+                &:hover {
+                    color: $--main-gold-color;
+
+                    transition: color 0.1s;
+                }
+
+                &::before {
+                    content: "";
+                    display: inline-block;
+                    width: 16px;
+                    height: 16px;
+                    margin-right: $basic_margin;
+                }
+                height: 25px;
+                margin-bottom: 4px;
+
+                font: {
+                    size: 1.9rem;
+                    family: "Lora", sans-serif;
+                }
+                text-transform: uppercase;
+                color: $--main-txt-color-sub;
+                color: var(--main-txt-color-sub);
+
+                opacity: 0;
+                visibility: hidden;
+
+                &_active {
+                    &::before {
+                        content: "";
+                        display: inline-block;
+                        width: 16px;
+                        height: 16px;
+                        margin-right: $basic_margin;
+
+                        background: {
+                            image: url("/images/utils/bullet.svg");
+                            size: contain;
+                        }
+                    }
+
+                    color: $--main-gold-color;
+                    
+                    opacity: 1;
+                    visibility: visible;
+
+                    transition: opacity ease-out $sm_tr;
+                }
+
+                &_unfold {
+                    opacity: 1;
+                    visibility: visible;
+
+                    transition: opacity ease-out $sm_tr;
+                }
+            }
+        }
+
+        &__btn_fold {
+            display: inline-flex;
+            
+            cursor: pointer;
+
+            i {
+                color: $--main-gold-color;
+
+                font-size: 1.8rem;
+            }
         }
     }
 
@@ -218,16 +374,23 @@ $Article__text: 1.8rem;
 
         &_level {
             &-1 {
-                font-size: $Article__title_lvl1;
+                font: {
+                    size: $Article__title_lvl1;
+                    weight: 700;
+                }
                 color: $--main-icon-color-contrast;
                 color: var(--main-icon-color-contrast);
+                text-transform: uppercase;
 
                 @extend %Article__title;
             }
 
             &-2 {
-                text-decoration: underline;
                 font-size: $Article__title_lvl2;
+                color: $--main-gold-color;
+                text-transform: uppercase;
+                text-align: center;
+
                 @extend %Article__title;
             }
 
@@ -320,7 +483,7 @@ $Article__text: 1.8rem;
 
             font: {
                 size: 3.5rem;
-                family: "Merriweather", "sans-serif";
+                family: "Lora", "sans-serif";
             }
         }
     }

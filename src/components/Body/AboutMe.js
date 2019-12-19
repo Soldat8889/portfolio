@@ -13,11 +13,11 @@ function AboutMe(props) {
                 <ThemeContext.Consumer>
                     {({theme}) => (
                         <section className="Slider__section Slider_wrapper container" data-slide={props.slide}>
-                            <div className="Home__background Home__background__scene_aboutme" style={theme === "dark" ? {backgroundColor: "#224f31"} : null}>
+                            <div className="Home__background Home__background__scene_aboutme" style={theme === "dark" ? {backgroundColor: "unset"} : null}>
                                 <Hero />
                             </div>
                             <div className="Slider__title Slider__box">
-                                <h1 className="Slider__title_text Home__color_aboutme" style={{fontFamily: "Merriweather, serif"}}>
+                                <h1 className="Slider__title_text Home__color_aboutme" style={{fontFamily: "Lora, serif"}}>
                                     {languageConfig.Slider.About.Title}                   
                                 </h1>
                                 <hr style={{borderTop: "1px solid #fff"}} />
