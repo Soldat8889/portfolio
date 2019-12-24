@@ -48,7 +48,7 @@
 
         &_text {
             font-size: 4vw;
-            font-family: $title_font;
+            font-family: "Quicksand", $title_font;
             text-transform: uppercase;
             color: $--main-icon-color-contrast;
             color: var(--main-icon-color-contrast);
@@ -58,7 +58,7 @@
     &__subtitle {
         &_text {
             font-size: 1.75vw;
-            font-family: $title_font;
+            font-family: "Quicksand", $title_font;
         }
     }
 

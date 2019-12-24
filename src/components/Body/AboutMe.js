@@ -24,7 +24,7 @@ function AboutMe(props) {
                                 <h2 className="Slider__subtitle_text">
                                     {languageConfig.Slider.About.Subtitle}
                                 </h2>
-                                <Link to="/aboutme" className="Slider__btn">
+                                <Link to="/aboutme/" className="Slider__btn">
                                     {languageConfig.Slider.About.Btn}               
                                 </Link>
                             </div>
