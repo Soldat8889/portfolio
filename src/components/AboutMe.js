@@ -6,6 +6,7 @@ import AboutMeComponent from "./Body/AboutMe";
 // Utils
 import Gauge from "./../utils/Gauge";
 import Breadcrumb from "./../utils/Breadcrumb";
+import ScrollToTop from "./../utils/ScrollToTop";
 import ZoomImage from "./../utils/ZoomImage";
 
 // Contexts
@@ -52,6 +53,7 @@ function AboutMe() {
                     </div>
                 </div>
             </div>
+            <ScrollToTop />
             <div id="ok" style={{height: "2000px"}}>
                 
             </div>
