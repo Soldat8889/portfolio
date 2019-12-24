@@ -5,6 +5,7 @@ import AboutMeComponent from "./Body/AboutMe";
 
 // Utils
 import Gauge from "./../utils/Gauge";
+import Breadcrumb from "./../utils/Breadcrumb";
 import ZoomImage from "./../utils/ZoomImage";
 
 // Contexts
@@ -76,10 +77,14 @@ function Link(props) {
 function Profile() {
     return (
         <Fragment>
-            <div className="Article__section_theme Article__container" data-index="first">
+            <div className="Article__section_theme Article__container Article__section_top-space">
                 <ArticleCheckpoints 
                     title="À propos de moi"
                 />
+                <Breadcrumb path={{
+                    "Home": "/#-1",
+                    "About Me": "/aboutme/"
+                }} />
                 <CubicHeader short="Profil" title="Profil" id="profile" />
                 <div className="Article_indent">
                     <p className="Article__text Article__text_indent">
@@ -90,7 +95,12 @@ function Profile() {
                     </p>
                 </div>
             </div>
-            <Interest />
+            <div className="Article__attachment">
+                <div className="Article__attachment__wrapper">
+                    <img className="Article__attachment_image" src="/images/desk.jpg" alt="Desk" title="Desk" />
+                    <p className="Article__attachment_image__caption-text">Mon coin</p>
+                </div>
+            </div>
         </Fragment>
     );
 }
@@ -183,7 +193,7 @@ function Interest() {
 function Experience() {
     return (
         <Fragment>
-            <div className="Article__section_theme Article__container" data-index="last">
+            <div className="Article__section_theme Article__container Article__section_bottom-space">
                 <CubicHeader short="Expérience pro." title="Expérience professionnelle" id="experience" />
                 <div className="Article_indent">
                     <div className="Article__section">
@@ -269,7 +279,7 @@ function Experience() {
 function Project() {
     return (
         <Fragment>
-            <div className="Article__section_theme Article__container" data-index="first">
+            <div className="Article__section_theme Article__container Article__section_top-space">
                 <CubicHeader short="Projets" title="Projets" id="project" />
                 <div className="Article_indent">
                     <div className="Article__section">
@@ -277,20 +287,7 @@ function Project() {
                     </div>
                 </div>
             </div>
-            {/* <Carousel>
-                <div className="Carousel__group">
-                    <div className="Carousel__item">
-                        <img src="/images/suan-siam-page__front.png" alt="Suan Siam - Front Page" className="Carousel__item_image" />
-                    </div>
-                    <div className="Carousel__item">
-                        <img src="/images/suan-siam-page__1.png" alt="Suan Siam - Mosaic Display" className="Carousel__item_image" />
-                    </div>
-                    <div className="Carousel__item">
-                        <img src="/images/suan-siam-page__2.png" alt="Suan Siam - Some Pages" className="Carousel__item_image" />
-                    </div>
-                </div>
-            </Carousel> */}
-            <div className="Article__section_theme Article__container" data-index="first">
+            <div className="Article__section_theme Article__container">
                 <div className="timeline">
                     <Link href="https://lucassyhan.netlify.com" className="Article__section_theme Article__box timeline__mark">
                         <h3 className="Article__title_level-3 Article__box__title">Lucas SYHANATH : Portfolio</h3>
@@ -323,7 +320,7 @@ function Project() {
 
 function Contact() {
     return (
-        <div className="Article__section_theme Article__container" data-index="last">
+        <div className="Article__section_theme Article__container Article__section_bottom-space">
             <CubicHeader short="Me contacter" title="Me contacter" id="contact" />
             <div className="Article_indent">
                 <div className="Article__section">
@@ -351,6 +348,7 @@ function FirstPart() {
     return (
         <div className="Article__section">
             <Profile />
+            <Interest />
             {/* <div className="Article__section_theme Article_indent" id="traits-skills">
                 <h2 className="Article__title_level-2">Traits de caractère & Compétences</h2>
                 <div className="Article__section" id="traits">
@@ -382,68 +380,80 @@ function FirstPart() {
     );
 }
 
+function WhyCode() {
+    return (
+        <div className="Article__section_theme Article__container Article__section_top-space">
+            <CubicHeader short="Pourquoi coder ?" title="Pourquoi coder ?" id="why" />
+            <div className="Article_indent">
+                <div className="Article__section_theme Article_indent">
+                    <h3 className="Article__title_level-3">Pourquoi ai-je commencé à m'intéresser à écrire des lignes de code ?</h3>
+                    <p className="Article__text Article__text_indent">
+                        Étant une personne curieuse, j’ai débuté à coder dans ma chambre parce que je voulais savoir comment tous ces sites web étaient construits.
+                        <br />
+                        Comment se faisait-il, alors que ce n’était que des instructions qui se suivent, créaient une chose qui était concrètement visible ?
+                    </p>
+                    <p className="Article__text">
+                        Mais tout m'était inconnu… autant de notions à découvrir, comme des concepts abstraits (tels que les class, object, les paradigmes de programmation), ou comment fonctionne ceci ou cela. 
+                    </p>
+                </div>
+                <div className="Article__section_theme Article_indent Article__container">
+                    <h3 className="Article__title_level-3">Comment est-ce que j’ai commencé à apprécié la programmation ?</h3>
+                    <p className="Article__text Article__text_indent">
+                        Quand on y pense, la programmation n’est pas seulement du code avec des suites d’instructions que nous pouvons pas comprendre. 
+                        <br />
+                        Il y a la partie front end que l’utilisateur peut voir : regroupant le design, l’Interface Utilisateur, l’Expérience Utilisateur. 
+                        Et la partie serveur, le back end, qui s’oppose au front end, là où l’utilisateur ne peut pas voir, par exemple la base de donnée, gestion des tables.
+                    </p>
+                    <p className="Article__text">
+                        <span className="Article__text_bold">
+                            Je m’étais trouvé un nouveau centre d’intérêt qui s’ajoutait à mes deux autres activités principales : le dessin et le jeu vidéo.
+                        </span>
+                    </p>
+                    <p className="Article__text">
+                        Ma passion pour le dessin a fait penché la balance pour le front end. 
+                        <br />
+                        Pour moi, cette partie là du web est la plus complète car il faut prévoir une multitude de coups d’avances entre la gestion des versions du navigateur de l’utilisateur, lequel de ces choix touchera le plus de personnes, et plein d’autres aspects à aborder.
+                    </p>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+function Learning() {
+    return (
+        <div className="Article__section_theme Article__container Article__section_bottom-space">
+            <CubicHeader short="Un apprentissage ?" title="Un apprentissage ?" id="what" />
+            <div className="Article_indent">
+                <div className="Article__section">
+                    <p className="Article__text">
+                        Le monde de la programmation évolue de façon constante.
+                        <br />
+                        <span className="Article__text_bold">
+                            Il faut en permanence rechercher, appliquer et apprendre.
+                        </span>
+                    </p>
+                    <p className="Article__text">
+                        Cette activité m’a permis d'affuter mes compétences tels que :
+                    </p>
+                    <ul className="Article__list">
+                        <li className="Article__list__item">Ma créativité</li>
+                        <li className="Article__list__item">Mon sens de la logique</li>
+                        <li className="Article__list__item">Mon niveau d’anglais (documentations, vidéos, écriture, etc.)</li>
+                        <li className="Article__list__item">La patience (situations qui paraissent insurmontables)</li>
+                        <li className="Article__list__item">Et surtout la flexibilité : la capacité de s’adapter à des situations et se rendre autonome</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    );
+}
+
 function SecondPart() {
     return (
         <div className="Article__section" id="show-me-more">
-            <div className="Article__section_theme Article__container" data-index="first">
-                <CubicHeader short="Pourquoi coder ?" title="Pourquoi coder ?" id="why" />
-                <div className="Article_indent">
-                    <div className="Article__section_theme Article_indent">
-                        <h3 className="Article__title_level-3">Pourquoi ai-je commencé à m'intéresser à écrire des lignes de code ?</h3>
-                        <p className="Article__text Article__text_indent">
-                            Étant une personne curieuse, j’ai débuté à coder dans ma chambre parce que je voulais savoir comment tous ces sites web étaient construits.
-                            <br />
-                            Comment se faisait-il, alors que ce n’était que des instructions qui se suivent, créaient une chose qui était concrètement visible ?
-                        </p>
-                        <p className="Article__text">
-                            Mais tout m'était inconnu… autant de notions à découvrir, comme des concepts abstraits (tels que les class, object, les paradigmes de programmation), ou comment fonctionne ceci ou cela. 
-                        </p>
-                    </div>
-                    <div className="Article__section_theme Article_indent Article__container">
-                        <h3 className="Article__title_level-3">Comment est-ce que j’ai commencé à apprécié la programmation ?</h3>
-                        <p className="Article__text Article__text_indent">
-                            Quand on y pense, la programmation n’est pas seulement du code avec des suites d’instructions que nous pouvons pas comprendre. 
-                            <br />
-                            Il y a la partie front end que l’utilisateur peut voir : regroupant le design, l’Interface Utilisateur, l’Expérience Utilisateur. 
-                            Et la partie serveur, le back end, qui s’oppose au front end, là où l’utilisateur ne peut pas voir, par exemple la base de donnée, gestion des tables.
-                        </p>
-                        <p className="Article__text">
-                            <span className="Article__text_bold">
-                                Je m’étais trouvé un nouveau centre d’intérêt qui s’ajoutait à mes deux autres activités principales : le dessin et le jeu vidéo.
-                            </span>
-                        </p>
-                        <p className="Article__text">
-                            Ma passion pour le dessin a fait penché la balance pour le front end. 
-                            <br />
-                            Pour moi, cette partie là du web est la plus complète car il faut prévoir une multitude de coups d’avances entre la gestion des versions du navigateur de l’utilisateur, lequel de ces choix touchera le plus de personnes, et plein d’autres aspects à aborder.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div className="Article__section_theme Article__container" data-index="last">
-                <CubicHeader short="Un apprentissage ?" title="Un apprentissage ?" id="what" />
-                <div className="Article_indent">
-                    <div className="Article__section">
-                        <p className="Article__text">
-                            Le monde de la programmation évolue de façon constante.
-                            <br />
-                            <span className="Article__text_bold">
-                                Il faut en permanence rechercher, appliquer et apprendre.
-                            </span>
-                        </p>
-                        <p className="Article__text">
-                            Cette activité m’a permis d'affuter mes compétences tels que :
-                        </p>
-                        <ul className="Article__list">
-                            <li className="Article__list__item">Ma créativité</li>
-                            <li className="Article__list__item">Mon sens de la logique</li>
-                            <li className="Article__list__item">Mon niveau d’anglais (documentations, vidéos, écriture, etc.)</li>
-                            <li className="Article__list__item">La patience (situations qui paraissent insurmontables)</li>
-                            <li className="Article__list__item">Et surtout la flexibilité : la capacité de s’adapter à des situations et se rendre autonome</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            <WhyCode />
+            <Learning />
         </div>
     );
 }

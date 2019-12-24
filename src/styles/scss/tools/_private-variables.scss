@@ -29,11 +29,12 @@ $--main-gold-color: #dfac2e;
 $--main-light-gray: #d3d3d3;
 
 // Variables of fonts
-$title_font: "QuickSand", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+$title_font: "Lora", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 $text_font: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 
 // Variables of sizes
-$max-width_size: 1130px;
+$max-width_size: 1050px;
+$max-width-text_size: 750px;
 $big_desktop_size: 1281px; // High res laptops / desktop
 $desktop_size: 1025px; // Big landscape tablets, desktops and laptops
 $landscape_tablet_size: 801px; // Landscape tablet, low res desktops and laptops

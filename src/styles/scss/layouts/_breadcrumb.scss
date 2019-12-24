@@ -1,0 +1,47 @@
+.Breadcrumb {
+    padding: 25px 0;
+
+    &__item {
+        &::after {
+            content: "\f054";
+            display: inline-block;
+            margin: 0 $basic_margin;
+
+            font: {
+                family: "Font Awesome 5 Free";
+                size: 1.2rem;
+                weight: 900;
+            }
+        }
+
+        display: inline-block;
+
+        &_current {
+            &::after {
+                content: none;
+            }
+        }
+    }
+
+    &__link {
+        position: relative;
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+
+            background-color: #000;
+        }
+    }
+
+    &__label {
+        font: {
+            size: 1.5rem;
+            family: $title_font;
+        }
+    }
+}
