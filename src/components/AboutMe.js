@@ -9,6 +9,7 @@ import Gauge from "./../utils/Gauge";
 import Breadcrumb from "./../utils/Breadcrumb";
 import ScrollToTop from "./../utils/ScrollToTop";
 import ZoomImage from "./../utils/ZoomImage";
+import { ScrollParallax } from "./../utils/Parallax";
 
 // Contexts
 import ThemeContext from "./../contexts/ThemeContext";
@@ -37,7 +38,15 @@ function AboutMe() {
                 </div>
             </div>
             <div className="Article_wrapper">
-                <div className={`page-content page-part-wrapper Article_background Article_background_first ${theme.theme === "light" ? "Article_background_minds" : "Article_background_minds_dark"}`}>
+                <div className="page-content page-part-wrapper Article_background_top-space_first">
+                    <div className="Article_background">
+                        <ScrollParallax
+                            name="AboutMe__first-part"
+                            speedY={0.5}
+                        >
+                            <img src="/images/minds.jpg" alt="Minds - Painting © SYHANATH Lucas" title="Minds - Painting © SYHANATH Lucas" className={`${theme.theme === "light" ? "Article_background_minds" : "Article_background_minds_dark"}`} />
+                        </ScrollParallax>
+                    </div>
                     <div className="Article">
                         <div className="Article__title_wrapper">
                             <h1 className="Article__title_level-1" data-article-section>Qui suis-je ?</h1>
@@ -45,7 +54,15 @@ function AboutMe() {
                         <FirstPart />
                     </div>
                 </div>
-                <div className={`page-content page-part-wrapper Article_background ${theme.theme === "light" ? "Article_background_minds" : "Article_background_minds_dark"}`}>
+                <div className="page-content page-part-wrapper Article_background_top-space">
+                    <div className={`Article_background ${theme.theme === "light" ? "Article_background_minds" : "Article_background_minds_dark"}`}>
+                        <ScrollParallax
+                            name="AboutMe__second-part"
+                            speedY={0.5}
+                        >
+                            <img src="/images/minds.jpg" alt="Minds - Painting © SYHANATH Lucas" title="Minds - Painting © SYHANATH Lucas" className={`${theme.theme === "light" ? "Article_background_minds" : "Article_background_minds_dark"}`} />
+                        </ScrollParallax>
+                    </div>
                     <div className="Article">
                         <div className="Article__title_wrapper">
                             <h1 className="Article__title_level-1" data-article-section>En savoir plus sur moi</h1>
