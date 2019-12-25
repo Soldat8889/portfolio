@@ -42,7 +42,7 @@ const modes = {
         "--main-bg-color-deep": "#111111",
         "--main-bg-color-box": "#1d1d1d",
         "--main-shadow-color": "#121212",
-        "--main-contrast-color": "#63B582"
+        "--main-contrast-color": "#184f2d"
     }
 };
 

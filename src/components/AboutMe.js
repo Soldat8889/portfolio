@@ -2,6 +2,7 @@
 import React, { useEffect, Fragment, useContext, useState } from "react";
 
 import AboutMeComponent from "./Body/AboutMe";
+import Footer from "./Body/Footer";
 
 // Utils
 import Gauge from "./../utils/Gauge";
@@ -53,10 +54,8 @@ function AboutMe() {
                     </div>
                 </div>
             </div>
+            <Footer />
             <ScrollToTop />
-            <div id="ok" style={{height: "2000px"}}>
-                
-            </div>
         </Fragment>
     );
 }
@@ -348,7 +347,7 @@ function Contact() {
 
 function FirstPart() {
     return (
-        <div className="Article__section">
+        <div>
             <Profile />
             <Interest />
             {/* <div className="Article__section_theme Article_indent" id="traits-skills">
@@ -387,7 +386,7 @@ function WhyCode() {
         <div className="Article__section_theme Article__container Article__section_top-space">
             <CubicHeader short="Pourquoi coder ?" title="Pourquoi coder ?" id="why" />
             <div className="Article_indent">
-                <div className="Article__section_theme Article_indent">
+                <div className="Article__section_theme Article_indent Article__container">
                     <h3 className="Article__title_level-3">Pourquoi ai-je commencé à m'intéresser à écrire des lignes de code ?</h3>
                     <p className="Article__text Article__text_indent">
                         Étant une personne curieuse, j’ai débuté à coder dans ma chambre parce que je voulais savoir comment tous ces sites web étaient construits.
@@ -453,7 +452,7 @@ function Learning() {
 
 function SecondPart() {
     return (
-        <div className="Article__section" id="show-me-more">
+        <div id="show-me-more">
             <WhyCode />
             <Learning />
         </div>
