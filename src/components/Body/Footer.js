@@ -49,7 +49,7 @@ function Footer() {
                     </div>
                     <div className="Footer__section col-m-6">
                         <div className="Footer__grid">
-                            <div className="col-m-6">
+                            <div className="col-s-6">
                                 <h3 className="Footer__title_3">Explore 🌍</h3>
                                 <ul className="Footer__list">
                                     <li className="Footer__list__item">
@@ -60,7 +60,7 @@ function Footer() {
                                     </li>
                                 </ul>
                             </div>
-                            <div className="col-m-6">
+                            <div className="col-s-6">
                                 <h3 className="Footer__title_3">Legal ⚖</h3>
                                 <ul className="Footer__list">
                                     <li className="Footer__list__item">
@@ -73,7 +73,7 @@ function Footer() {
                             </div>
                         </div>
                         <div className="Footer__grid">
-                            <div className="col-m-6">
+                            <div className="col-s-6">
                                 <h3 className="Footer__title_3">Contact 📮</h3>
                                 <ul className="Footer__list">
                                     <li className="Footer__list__item">

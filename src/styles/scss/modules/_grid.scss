@@ -18,6 +18,17 @@
     }
 }
 
+%col {
+    position: relative;
+    min-height: 1px;
+    padding: {
+        left: 15px;
+        right: 15px;
+    }
+    display: inline-block;
+    vertical-align: middle;
+}
+
 @for $i from 1 through 12 {
     .col-s-#{$i} {
         @extend %col;
