@@ -63,8 +63,12 @@ function Footer() {
                             <div className="col-m-6">
                                 <h3 className="Footer__title_3">Legal ⚖</h3>
                                 <ul className="Footer__list">
-                                    <li className="Footer__list__item">Terms & Conditions</li>
-                                    <li className="Footer__list__item">Privacy</li>
+                                    <li className="Footer__list__item">
+                                        <Link to="/terms/">Terms & Conditions</Link>
+                                    </li>
+                                    <li className="Footer__list__item">
+                                        <Link to="/privacy/">Privacy</Link>
+                                    </li>
                                 </ul>
                             </div>
                         </div>

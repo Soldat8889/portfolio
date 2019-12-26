@@ -1,6 +1,9 @@
 $up-down-pad: 45px;
 $side-pad: 30px;
 
+$darker-color: #cdcdcd;
+$color: #f3f3f3;
+
 .Footer {
     &::before {
         content: "";
@@ -16,7 +19,7 @@ $side-pad: 30px;
 
     width: 100%;
 
-    color: #f3f3f3;
+    color: $color;
 
     overflow: hidden;
 
@@ -114,7 +117,11 @@ $side-pad: 30px;
                 size: 1.75rem;
                 family: $text_font;
             }
-            color: #cdcdcd;
+            color: $darker-color;
+
+            &:hover {
+                color: $color;
+            }
 
             &_inline {
                 display: inline-block;
