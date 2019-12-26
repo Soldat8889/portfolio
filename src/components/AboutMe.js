@@ -2,12 +2,14 @@
 import React, { useEffect, Fragment, useContext, useState } from "react";
 
 import AboutMeComponent from "./Body/AboutMe";
+import Footer from "./Body/Footer";
 
 // Utils
 import Gauge from "./../utils/Gauge";
 import Breadcrumb from "./../utils/Breadcrumb";
 import ScrollToTop from "./../utils/ScrollToTop";
 import ZoomImage from "./../utils/ZoomImage";
+import { ScrollParallax } from "./../utils/Parallax";
 
 // Contexts
 import ThemeContext from "./../contexts/ThemeContext";
@@ -36,7 +38,15 @@ function AboutMe() {
                 </div>
             </div>
             <div className="Article_wrapper">
-                <div className={`page-content page-part-wrapper Article_background Article_background_first ${theme.theme === "light" ? "Article_background_minds" : "Article_background_minds_dark"}`}>
+                <div className="page-content page-part-wrapper Article_background_top-space_first">
+                    <div className="Article_background">
+                        <ScrollParallax
+                            name="AboutMe__first-part"
+                            speedY={0.5}
+                        >
+                            <img src="/images/minds.jpg" alt="Minds - Painting © SYHANATH Lucas" title="Minds - Painting © SYHANATH Lucas" className={`${theme.theme === "light" ? "Article_background_minds" : "Article_background_minds_dark"}`} />
+                        </ScrollParallax>
+                    </div>
                     <div className="Article">
                         <div className="Article__title_wrapper">
                             <h1 className="Article__title_level-1" data-article-section>Qui suis-je ?</h1>
@@ -44,7 +54,15 @@ function AboutMe() {
                         <FirstPart />
                     </div>
                 </div>
-                <div className={`page-content page-part-wrapper Article_background ${theme.theme === "light" ? "Article_background_minds" : "Article_background_minds_dark"}`}>
+                <div className="page-content page-part-wrapper Article_background_top-space">
+                    <div className={`Article_background ${theme.theme === "light" ? "Article_background_minds" : "Article_background_minds_dark"}`}>
+                        <ScrollParallax
+                            name="AboutMe__second-part"
+                            speedY={0.5}
+                        >
+                            <img src="/images/minds.jpg" alt="Minds - Painting © SYHANATH Lucas" title="Minds - Painting © SYHANATH Lucas" className={`${theme.theme === "light" ? "Article_background_minds" : "Article_background_minds_dark"}`} />
+                        </ScrollParallax>
+                    </div>
                     <div className="Article">
                         <div className="Article__title_wrapper">
                             <h1 className="Article__title_level-1" data-article-section>En savoir plus sur moi</h1>
@@ -53,10 +71,8 @@ function AboutMe() {
                     </div>
                 </div>
             </div>
+            <Footer />
             <ScrollToTop />
-            <div id="ok" style={{height: "2000px"}}>
-                
-            </div>
         </Fragment>
     );
 }
@@ -348,7 +364,7 @@ function Contact() {
 
 function FirstPart() {
     return (
-        <div className="Article__section">
+        <div>
             <Profile />
             <Interest />
             {/* <div className="Article__section_theme Article_indent" id="traits-skills">
@@ -387,7 +403,7 @@ function WhyCode() {
         <div className="Article__section_theme Article__container Article__section_top-space">
             <CubicHeader short="Pourquoi coder ?" title="Pourquoi coder ?" id="why" />
             <div className="Article_indent">
-                <div className="Article__section_theme Article_indent">
+                <div className="Article__section_theme Article_indent Article__container">
                     <h3 className="Article__title_level-3">Pourquoi ai-je commencé à m'intéresser à écrire des lignes de code ?</h3>
                     <p className="Article__text Article__text_indent">
                         Étant une personne curieuse, j’ai débuté à coder dans ma chambre parce que je voulais savoir comment tous ces sites web étaient construits.
@@ -453,7 +469,7 @@ function Learning() {
 
 function SecondPart() {
     return (
-        <div className="Article__section" id="show-me-more">
+        <div id="show-me-more">
             <WhyCode />
             <Learning />
         </div>

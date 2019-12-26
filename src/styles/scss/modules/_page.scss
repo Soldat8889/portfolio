@@ -31,6 +31,12 @@
 	}
 }
 
+.center-hv {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 .scroll-top {
 	position: fixed;
 	bottom: 0;
@@ -40,6 +46,8 @@
 	opacity: 0;
 
 	transition: opacity $sm_tr cubic-bezier(0.39, 0.58, 0.57, 1);
+
+	z-index: $help_index;
 
 	&__icon {
 		padding: $separate_margin;

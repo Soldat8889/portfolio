@@ -1,17 +1,18 @@
 import React, { useEffect, useCallback } from "react";
+import PropTypes from "prop-types";
 
-function Parallax(props) {
+function Parallax({name = "undefined", speedX = 1, speedY = 1, children = <div></div>}) {
     const handleMove = useCallback(
         /**
          * @param {Event} e 
          */
 
         function (e) {
-            const item = document.querySelector(`.parallax__wrapper[data-name="${props.name}"]`);
+            const item = document.querySelector(`.parallax__wrapper[data-name="${name}"]`);
 
             // eslint-disable-next-line no-unused-vars
-            item.style.transform = `translate(${e.pageX * props.speedX}px, ${e.pageY * props.speedY}px)`;
-    }, [props.speedX, props.speedY, props.name]);
+            item.style.transform = `translate(${e.pageX * speedX}px, ${e.pageY * speedY}px)`;
+    }, [speedX, speedY, name]);
 
     const handleTouch = useCallback(
         /**
@@ -19,11 +20,11 @@ function Parallax(props) {
          */
 
         function (e) {
-            const item = document.querySelector(`.parallax__wrapper[data-name="${props.name}"]`);
+            const item = document.querySelector(`.parallax__wrapper[data-name="${name}"]`);
 
             // eslint-disable-next-line no-unused-vars
-            item.style.transform = `translate(${e.touches[0].clientX * props.speedX}px, ${e.touches[0].clientY * props.speedY}px)`;
-    }, [props.speedX, props.speedY, props.name]);
+            item.style.transform = `translate(${e.touches[0].clientX * speedX}px, ${e.touches[0].clientY * speedY}px)`;
+    }, [speedX, speedY, name]);
 
     useEffect(function bindEvents() {
         window.addEventListener("mousemove", handleMove);
@@ -36,10 +37,54 @@ function Parallax(props) {
     }, [handleMove, handleTouch]);
 
     return (
-        <div className="parallax__wrapper" data-name={props.name}>
-            {props.children}
+        <div className="parallax__wrapper" data-name={name} data-parallax-type="move">
+            {children}
         </div>
     );
 }
 
-export default Parallax;
+Parallax.propTypes = {
+    name: PropTypes.string.isRequired,
+    speedX: PropTypes.number,
+    speedY: PropTypes.number,
+    children: PropTypes.object.isRequired
+};
+
+function ScrollParallax({name = "undefined", speedX = 0, speedY = 0, children = <div></div>, top = 0, left = 0}) {
+    const handleScrollParallax = useCallback(
+        () => {
+            const item = document.querySelector(`.parallax__wrapper[data-name="${name}"]`);
+            const parent = item.parentElement;
+
+            item.style.transform = `translate(${-parent.getBoundingClientRect().left * speedX + left}px, ${-parent.getBoundingClientRect().top * speedY + top}px)`;
+    }, [speedX, speedY, name, left, top]);
+
+    useEffect(function bindEvents() {
+        window.addEventListener("scroll", handleScrollParallax);
+        window.addEventListener("resize", handleScrollParallax);
+
+        return () => { 
+            window.removeEventListener("scroll", handleScrollParallax);
+            window.removeEventListener("resize", handleScrollParallax);
+        };
+    }, [handleScrollParallax]);
+
+    return (
+        <div className="parallax__wrapper-initial-position">
+            <div className="parallax__wrapper" data-name={name} data-parallax-type="scroll">
+                {children}
+            </div>
+        </div>
+    );
+}
+
+ScrollParallax.propTypes = {
+    name: PropTypes.string.isRequired,
+    speedX: PropTypes.number,
+    speedY: PropTypes.number,
+    top: PropTypes.number,
+    left: PropTypes.number,
+    children: PropTypes.object.isRequired
+};
+
+export { Parallax as default, ScrollParallax };

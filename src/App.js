@@ -23,7 +23,7 @@ const modes = {
     "light": {
         "--main-icon-color": "#2e2e2e",
         "--main-icon-color-contrast": "#fefefe",
-        "--main-txt-color": "#000",
+        "--main-txt-color": "#282828",
         "--main-txt-color-sub": "#555",
         "--main-bg-color": "#fff",
         "--main-bg-color-second": "#dfdfdf",
@@ -42,7 +42,7 @@ const modes = {
         "--main-bg-color-deep": "#111111",
         "--main-bg-color-box": "#1d1d1d",
         "--main-shadow-color": "#121212",
-        "--main-contrast-color": "#63B582"
+        "--main-contrast-color": "#184f2d"
     }
 };
 

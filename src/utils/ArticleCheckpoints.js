@@ -79,7 +79,7 @@ function ArticleCheckpoints({title = "-"}) {
         // Article bottom
         const article = document.querySelector(".Article_wrapper");
 
-        checkpoints.push(window.scrollY + article.getBoundingClientRect().bottom - (window.innerHeight * 0.5));
+        checkpoints.push(window.scrollY + article.getBoundingClientRect().bottom - (window.innerHeight * 0.6));
 
         // Get the absolute position of the current checkpoint
         const checkpointAbsPosition = (checkpoints[currentCheckpoint] - window.scrollY);

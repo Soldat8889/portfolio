@@ -69,6 +69,11 @@ hr {
 }
 
 .email {
-    color: var(--main-contrast-color);
-    color: $--main-contrast-color;
+    padding: $basic_margin;
+    
+    outline: solid 3px var(--main-bg-color-box);
+    border: solid 1px #323232;
+    background-color: var(--main-bg-color-box);
+
+    color: $--main-gold-color;
 }
