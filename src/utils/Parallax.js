@@ -47,7 +47,10 @@ Parallax.propTypes = {
     name: PropTypes.string.isRequired,
     speedX: PropTypes.number,
     speedY: PropTypes.number,
-    children: PropTypes.object.isRequired
+    children: PropTypes.oneOfType([
+        PropTypes.object,
+        PropTypes.array,
+    ]).isRequired
 };
 
 function ScrollParallax({name = "undefined", speedX = 0, speedY = 0, children = <div></div>, top = 0, left = 0}) {
@@ -84,7 +87,10 @@ ScrollParallax.propTypes = {
     speedY: PropTypes.number,
     top: PropTypes.number,
     left: PropTypes.number,
-    children: PropTypes.object.isRequired
+    children: PropTypes.oneOfType([
+        PropTypes.object,
+        PropTypes.array,
+    ]).isRequired
 };
 
 export { Parallax as default, ScrollParallax };

@@ -81,6 +81,13 @@ $color: #f3f3f3;
                 family: $title_font;
             }
             text-transform: uppercase;
+
+            span {
+                font: {
+                    size: inherit;
+                    family: inherit;
+                }
+            }
         }
 
         &_labeled {
