@@ -31,6 +31,12 @@
 	}
 }
 
+.center-hv {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 .scroll-top {
 	position: fixed;
 	bottom: 0;

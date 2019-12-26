@@ -13,7 +13,7 @@
     @for $i from 1 through 12 {
         .col-m-#{$i} {
             @extend %col;
-            width: #{$i * (100% / 12)};
+            width: #{$i * (100% / 12)} !important;
         }
     }
 }
@@ -21,6 +21,6 @@
 @for $i from 1 through 12 {
     .col-s-#{$i} {
         @extend %col;
-        width: #{$i * (100% / 12)};
+        width: #{$i * (100% / 12)} !important;
     }
 }
