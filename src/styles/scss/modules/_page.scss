@@ -47,6 +47,8 @@
 
 	transition: opacity $sm_tr cubic-bezier(0.39, 0.58, 0.57, 1);
 
+	z-index: $help_index;
+
 	&__icon {
 		padding: $separate_margin;
 
