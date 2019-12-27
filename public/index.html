@@ -15,6 +15,18 @@
 	</head>
 	<body>
 		<noscript>You need to enable JavaScript to run this app.</noscript>
+		<div id="loader" class="Loader is-visible_transitional center-hv page-fullscreen">
+			<div class="Loader__content center-hv">
+				<img id="loader-icon" class="Loader__icon is-visible_transitional" src="/images/utils/icon.svg" alt="Icon" />
+				<div id="loader-percent-wrapper" class="Loader__percentage_wrapper is-visible_transitional">
+					<div id="loader-percent" class="Loader__percentage" data-percentage="0">0</div>
+					<span class="Loader__percentage"> %</span>
+				</div>
+				<div class="Loader__progress-bar">
+					<div id="loader-bar" class="Loader__progress-bar_filled"></div>
+				</div>
+			</div>
+		</div>
 		<div id="root"></div>
 		<div id="modalRoot">
 			<div id="outModal" class="out-modal__effect"></div>

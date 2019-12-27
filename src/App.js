@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Switch, Route, withRouter } from "react-router-dom";
-
 import "./styles/scss/main.scss";
 
 // Contexts
@@ -15,6 +14,7 @@ import AboutMe from "./components/AboutMe";
 import Cookie from "./utils/Cookie";
 import Navigation from "./components/Header/Navigation";
 import OutModal from "./utils/OutModal";
+import CounterAnimation from "./utils/CounterAnimation";
 
 const themeCookie = new Cookie("theme").getCookie();
 const languageCookie = new Cookie("lang").getCookie();
@@ -141,9 +141,63 @@ function App() {
     const [theme, setTheme] = useState(typeof themeCookie !== "object" ? themeCookie : "light");
     const [language, setLanguage] = useState(typeof languageCookie !== "object" ? languageCookie : "en-UK");
 
+    useEffect(function loadHandler() {
+        // https://codepen.io/ahsanrathore/post/accurate-page-progress-bar
+        const loader = document.getElementById("loader");
+        const loaderWrapper = document.getElementById("loader-percent-wrapper");
+        const loaderPercent = document.getElementById("loader-percent");
+        const loaderBar = document.getElementById("loader-bar");
+        const loaderBarInitTop = loaderBar.parentElement.getBoundingClientRect().top;
+        const icon = document.getElementById("loader-icon");
+
+        const perfTimeData = window.performance.timing;
+        const time = -(perfTimeData.loadEventEnd - perfTimeData.navigationStart);
+        const timeMS = parseInt(time / 1000 % 60) * 100;
+
+        const loaderProgress = new CounterAnimation(0, 100, timeMS, loaderPercent, function () {
+            const meTr = 550;
+            const smTr = 300;
+
+            const html = document.documentElement;
+
+            icon.classList.remove("is-visible_transitional");
+            icon.classList.add("slide_top");
+
+            setTimeout(() => {
+                loaderWrapper.classList.remove("is-visible_transitional");
+                
+                setTimeout(() => {
+                    loaderBar.parentElement.style.transform = `translateY(-${loaderBarInitTop}px)`;
+
+                    setTimeout(() => {
+                        loaderBar.parentElement.style.width = "100vw";
+
+                        setTimeout(() => {
+                            html.classList.remove("on-load");
+                            loader.classList.remove("is-visible_transitional");
+                            
+                            setTimeout(() => {
+                                loader.classList.add("is-hidden");
+                            }, smTr);
+                        }, smTr + 400);
+                    }, smTr);
+                }, meTr);
+            }, smTr);
+        });
+        
+        loaderProgress.animate();
+
+        const timer = setInterval(function() {
+            loaderBar.style.width = `${loaderProgress.current}%`;
+
+            loaderProgress.current === 100 && clearInterval(timer);
+        }, loaderProgress.stepTime);
+
+    }, [isReady]);
+
     useEffect(function componentDidMount() {
         setIsReady(true);
-    }, [isReady]);
+    }, []);
     
     useEffect(function applyTheme() {
         const rootVariable = document.documentElement.style;
@@ -161,7 +215,7 @@ function App() {
     }, [language]);
 
     if(!isReady) {
-        return "Loading";
+        return null;
     } else {
         return (
             <ThemeContext.Provider value={{
@@ -198,7 +252,7 @@ function Routing() {
                 }
             />
             <Route 
-                path="/aboutme"
+                path="/aboutme/"
                 component={
                     props => (
                         <React.Fragment>
