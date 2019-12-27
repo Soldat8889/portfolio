@@ -155,8 +155,15 @@ function App() {
         const timeMS = parseInt(time / 1000 % 60) * 100;
 
         const loaderProgress = new CounterAnimation(0, 100, timeMS, loaderPercent, function () {
-            const meTr = 550;
-            const smTr = 300;
+            let smTr = 300,
+                meTr = 550,
+                loTr = smTr + 400;
+
+            if(process.env.NODE_ENV === "development") {
+                smTr = 0;
+                meTr = 0;
+                loTr = 0;
+            } 
 
             const html = document.documentElement;
 
@@ -179,7 +186,7 @@ function App() {
                             setTimeout(() => {
                                 loader.classList.add("is-hidden");
                             }, smTr);
-                        }, smTr + 400);
+                        }, loTr);
                     }, smTr);
                 }, meTr);
             }, smTr);
