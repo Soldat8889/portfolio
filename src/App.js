@@ -159,18 +159,16 @@ function App() {
                 meTr = 550,
                 loTr = smTr + 400;
 
-            if(process.env.NODE_ENV === "development") {
-                smTr = 0;
-                meTr = 0;
-                loTr = 0;
-            } 
+            // if(process.env.NODE_ENV === "development") {
+            //     smTr = 0;
+            //     meTr = 0;
+            //     loTr = 0;
+            // } 
 
             const html = document.documentElement;
 
-            icon.classList.remove("is-visible_transitional");
-            icon.classList.add("slide_top");
-
             setTimeout(() => {
+                icon.classList.add("slide_bottom");
                 loaderWrapper.classList.remove("is-visible_transitional");
                 
                 setTimeout(() => {
@@ -178,6 +176,7 @@ function App() {
 
                     setTimeout(() => {
                         loaderBar.parentElement.style.width = "100vw";
+                        icon.classList.remove("is-visible_transitional");
 
                         setTimeout(() => {
                             html.classList.remove("on-load");
