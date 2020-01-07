@@ -29,10 +29,10 @@ function AboutMe() {
             pageContent.classList.remove("page-fullscreen");
         };
     }, []);
-    
+
     return (
         <Fragment>
-            <main id="main-content">
+            <main id="main-content" className="spacing-top">
                 <div className="page-content page-part-wrapper">
                     <div className="Slider Slider_template" style={{transform: `translateY(-50%)`}}>
                         <AboutMeComponent />

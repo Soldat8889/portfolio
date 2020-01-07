@@ -59,6 +59,10 @@ function ScrollParallax({name = "undefined", speedX = 0, speedY = 0, children = 
             const item = document.querySelector(`.parallax__wrapper[data-name="${name}"]`);
             const parent = item.parentElement;
 
+            if(window.innerWidth < 1025) {
+                item.style.transform = "translate(0,0)";
+                return;
+            }
             item.style.transform = `translate(${-parent.getBoundingClientRect().left * speedX + left}px, ${-parent.getBoundingClientRect().top * speedY + top}px)`;
     }, [speedX, speedY, name, left, top]);
 
@@ -67,7 +71,7 @@ function ScrollParallax({name = "undefined", speedX = 0, speedY = 0, children = 
         window.addEventListener("resize", handleScrollParallax);
 
         return () => { 
-            window.removeEventListener("scroll", handleScrollParallax);
+            document.removeEventListener("scroll", handleScrollParallax);
             window.removeEventListener("resize", handleScrollParallax);
         };
     }, [handleScrollParallax]);
