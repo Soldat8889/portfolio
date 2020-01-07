@@ -21,7 +21,7 @@ function Footer() {
                     <h2 className="Footer__title_1">Lucas SYHANATH</h2>
                     <div className="Footer__section_top col-m-6">
                         <div className="center-hv">
-                            <h3 className="Footer__title_2 Footer__title_labeled">Where can you find me? 🐾</h3>
+                            <h3 className="Footer__title_2 Footer__title_labeled">Where can you find me? <span role="img" aria-label="Way of paws">🐾</span></h3>
                         </div>
                         <ul className="Footer__list_inline">
                             <li className="Footer__list__item_inline col-m-4">
@@ -50,7 +50,7 @@ function Footer() {
                     <div className="Footer__section col-m-6">
                         <div className="Footer__grid">
                             <div className="col-s-6">
-                                <h3 className="Footer__title_3">Explore 🌍</h3>
+                                <h3 className="Footer__title_3">Explore <span role="img" aria-label="Globe">🌍</span></h3>
                                 <ul className="Footer__list">
                                     <li className="Footer__list__item">
                                         <Link to="/">Homepage</Link>
@@ -61,7 +61,7 @@ function Footer() {
                                 </ul>
                             </div>
                             <div className="col-s-6">
-                                <h3 className="Footer__title_3">Legal ⚖</h3>
+                                <h3 className="Footer__title_3">Legal <span role="img" aria-label="Justice">⚖</span></h3>
                                 <ul className="Footer__list">
                                     <li className="Footer__list__item">
                                         <Link to="/terms/">Terms & Conditions</Link>
@@ -74,7 +74,7 @@ function Footer() {
                         </div>
                         <div className="Footer__grid">
                             <div className="col-s-6">
-                                <h3 className="Footer__title_3">Contact 📮</h3>
+                                <h3 className="Footer__title_3">Contact <span role="img" aria-label="Maibox">📮</span></h3>
                                 <ul className="Footer__list">
                                     <li className="Footer__list__item">
                                         <a href="mailto:lucas.syhanath@gmail.com" className="email">lucas.syhanath@gmail.com</a>

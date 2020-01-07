@@ -27,12 +27,12 @@ function Parallax({name = "undefined", speedX = 1, speedY = 1, children = <div><
     }, [speedX, speedY, name]);
 
     useEffect(function bindEvents() {
-        window.addEventListener("mousemove", handleMove);
-        window.addEventListener("touchmove", handleTouch);
+        document.addEventListener("mousemove", handleMove);
+        document.addEventListener("touchmove", handleTouch);
 
         return () => { 
-            window.removeEventListener("mousemove", handleMove);
-            window.removeEventListener("touchmove", handleTouch);
+            document.removeEventListener("mousemove", handleMove);
+            document.removeEventListener("touchmove", handleTouch);
         };
     }, [handleMove, handleTouch]);
 
@@ -47,7 +47,10 @@ Parallax.propTypes = {
     name: PropTypes.string.isRequired,
     speedX: PropTypes.number,
     speedY: PropTypes.number,
-    children: PropTypes.object.isRequired
+    children: PropTypes.oneOfType([
+        PropTypes.object,
+        PropTypes.array,
+    ]).isRequired
 };
 
 function ScrollParallax({name = "undefined", speedX = 0, speedY = 0, children = <div></div>, top = 0, left = 0}) {
@@ -56,15 +59,19 @@ function ScrollParallax({name = "undefined", speedX = 0, speedY = 0, children = 
             const item = document.querySelector(`.parallax__wrapper[data-name="${name}"]`);
             const parent = item.parentElement;
 
+            if(window.innerWidth < 1025) {
+                item.style.transform = "translate(0,0)";
+                return;
+            }
             item.style.transform = `translate(${-parent.getBoundingClientRect().left * speedX + left}px, ${-parent.getBoundingClientRect().top * speedY + top}px)`;
     }, [speedX, speedY, name, left, top]);
 
     useEffect(function bindEvents() {
-        window.addEventListener("scroll", handleScrollParallax);
+        document.addEventListener("scroll", handleScrollParallax);
         window.addEventListener("resize", handleScrollParallax);
 
         return () => { 
-            window.removeEventListener("scroll", handleScrollParallax);
+            document.removeEventListener("scroll", handleScrollParallax);
             window.removeEventListener("resize", handleScrollParallax);
         };
     }, [handleScrollParallax]);
@@ -84,7 +91,10 @@ ScrollParallax.propTypes = {
     speedY: PropTypes.number,
     top: PropTypes.number,
     left: PropTypes.number,
-    children: PropTypes.object.isRequired
+    children: PropTypes.oneOfType([
+        PropTypes.object,
+        PropTypes.array,
+    ]).isRequired
 };
 
 export { Parallax as default, ScrollParallax };

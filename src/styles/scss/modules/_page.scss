@@ -55,7 +55,8 @@
 		background: $--main-bg-color;
 		background: var(--main-bg-color);
 		border-radius: 50%;
-		box-shadow: 0px 0px 18px -10px #000;
+		box-shadow: 0px 0px 18px -10px $--main-shadow-color;
+		box-shadow: 0px 0px 18px -10px var(--main-shadow-color);
 		
 		font: {
 			size: 2.5rem;

@@ -1,4 +1,9 @@
 .Slider {
+    &_container {
+        background-color: $--main-bg-color-second;
+        background-color: var(--main-bg-color-second);
+    }
+
     position: absolute;
     top: 52%;
     height: 70vh;

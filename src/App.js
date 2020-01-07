@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Switch, Route, withRouter } from "react-router-dom";
-
 import "./styles/scss/main.scss";
 
 // Contexts
@@ -13,8 +12,9 @@ import AboutMe from "./components/AboutMe";
 
 // Utils
 import Cookie from "./utils/Cookie";
-import Navigation from "./components/Header/Navigation";
+import Topbar from "./components/Header/Topbar";
 import OutModal from "./utils/OutModal";
+import CounterAnimation from "./utils/CounterAnimation";
 
 const themeCookie = new Cookie("theme").getCookie();
 const languageCookie = new Cookie("lang").getCookie();
@@ -27,7 +27,7 @@ const modes = {
         "--main-txt-color-sub": "#555",
         "--main-bg-color": "#fff",
         "--main-bg-color-second": "#dfdfdf",
-        "--main-bg-color-deep": "#dfdfdf",
+        "--main-bg-color-deep": "#fff",
         "--main-bg-color-box": "#f0f0f0",
         "--main-shadow-color": "#191919",
         "--main-contrast-color": "#63B582"
@@ -141,9 +141,69 @@ function App() {
     const [theme, setTheme] = useState(typeof themeCookie !== "object" ? themeCookie : "light");
     const [language, setLanguage] = useState(typeof languageCookie !== "object" ? languageCookie : "en-UK");
 
+    useEffect(function loadHandler() {
+        // https://codepen.io/ahsanrathore/post/accurate-page-progress-bar
+        const html = document.documentElement;
+        const loader = document.getElementById("loader");
+        const loaderWrapper = document.getElementById("loader-percent-wrapper");
+        const loaderPercent = document.getElementById("loader-percent");
+        const loaderBar = document.getElementById("loader-bar");
+        const loaderBarInitTop = loaderBar.parentElement.getBoundingClientRect().top;
+        const icon = document.getElementById("loader-icon");
+
+        // Development Mode
+        if(process.env.NODE_ENV === "development") {
+            html.classList.remove("on-load");
+            loader.classList.add("is-hidden");
+
+            return;
+        }
+
+        const perfTimeData = window.performance.timing;
+        const time = -(perfTimeData.loadEventEnd - perfTimeData.navigationStart); // Calculate the page loading time
+
+        const loaderProgress = new CounterAnimation(0, 100, time, loaderPercent, function () {
+            let smTr = 300,
+                meTr = 550,
+                loTr = smTr + 400;
+
+            setTimeout(() => {
+                icon.classList.add("slide_bottom");
+                loaderWrapper.classList.remove("is-visible_transitional");
+                
+                setTimeout(() => {
+                    loaderBar.parentElement.style.transform = `translateY(-${loaderBarInitTop}px)`;
+
+                    setTimeout(() => {
+                        loaderBar.parentElement.style.width = "100vw";
+                        icon.classList.remove("is-visible_transitional");
+
+                        setTimeout(() => {
+                            html.classList.remove("on-load");
+                            loader.classList.remove("is-visible_transitional");
+                            
+                            setTimeout(() => {
+                                loader.classList.add("is-hidden");
+                            }, smTr);
+                        }, loTr);
+                    }, smTr);
+                }, meTr);
+            }, smTr);
+        });
+        
+        loaderProgress.animate();
+
+        const timer = setInterval(function() {
+            loaderBar.style.width = `${loaderProgress.current}%`;
+
+            loaderProgress.current === 100 && clearInterval(timer);
+        }, loaderProgress.stepTime);
+
+    }, [isReady]);
+
     useEffect(function componentDidMount() {
         setIsReady(true);
-    }, [isReady]);
+    }, []);
     
     useEffect(function applyTheme() {
         const rootVariable = document.documentElement.style;
@@ -161,7 +221,7 @@ function App() {
     }, [language]);
 
     if(!isReady) {
-        return "Loading";
+        return null;
     } else {
         return (
             <ThemeContext.Provider value={{
@@ -174,7 +234,7 @@ function App() {
                     languageConfig: languageConfig[language]
                 }}>
                     <OutModal>
-                        <Navigation />
+                        <Topbar />
                         <Routing />
                     </OutModal>
                 </LanguageContext.Provider>
@@ -198,7 +258,7 @@ function Routing() {
                 }
             />
             <Route 
-                path="/aboutme"
+                path="/aboutme/"
                 component={
                     props => (
                         <React.Fragment>

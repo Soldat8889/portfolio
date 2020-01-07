@@ -71,8 +71,10 @@ hr {
 .email {
     padding: $basic_margin;
     
+    outline: solid 3px $--main-bg-color-box;
     outline: solid 3px var(--main-bg-color-box);
-    border: solid 1px #323232;
+    border: solid 1.25px #323232;
+    background-color: $--main-bg-color-box;
     background-color: var(--main-bg-color-box);
 
     color: $--main-gold-color;

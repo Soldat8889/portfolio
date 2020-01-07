@@ -145,11 +145,11 @@ function ArticleCheckpoints({title = "-"}) {
     }, [isFolded]);
 
     useEffect(function bindingEvents() {
-        window.addEventListener("scroll", observerHandler);
+        document.addEventListener("scroll", observerHandler);
         window.addEventListener("resize", observerHandler);
 
         return () => { 
-            window.removeEventListener("scroll", observerHandler);
+            document.removeEventListener("scroll", observerHandler);
             window.removeEventListener("resize", observerHandler);
         };
     }, [observerHandler]);

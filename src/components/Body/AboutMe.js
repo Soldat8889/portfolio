@@ -112,14 +112,7 @@ function Hero() {
 function Circle() {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-            <defs>
-                <clip-path id="_clipPath_GYfQiVUmkTBiU9XwoaJSH0E2EVYB9pLU">
-                    <rect width="256" height="256" />
-                </clip-path>
-            </defs>
-            <g clipPath="url(#_clipPath_GYfQiVUmkTBiU9XwoaJSH0E2EVYB9pLU)">
-                <circle vectorEffect="non-scaling-stroke" cx="128" cy="128" r="128" />
-            </g>
+            <circle vectorEffect="non-scaling-stroke" cx="128" cy="128" r="128" />
         </svg>
     );
 }

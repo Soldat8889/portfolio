@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useState, Fragment } from "react";
+import React, { useEffect, useCallback, useState } from "react";
 
 // Components
 import Home from "./Body/Home";
@@ -90,15 +90,15 @@ function Slider() {
     const handleWheel = useCallback((e)  => {
         if(status === "animated") return;
 
-        switch (e.deltaY) {
-            case -100:
+        switch(true) {
+            case Math.sign(e.deltaY) === -1:
                 if(slide !==  0) {
                     setSlide(slide + 1);
 
                     setStatus("animated");
                 }
                 break;
-            case 100:
+            case Math.sign(e.deltaY) === 1:
                 if(slide !== maxSlide) {
                     setSlide(slide - 1);
 
@@ -111,13 +111,13 @@ function Slider() {
     }, [slide, status, maxSlide]);
 
     useEffect(function wheelEvent() {
-        window.addEventListener("wheel", handleWheel);
-        return () => { window.removeEventListener("wheel", handleWheel); };
+        document.addEventListener("wheel", handleWheel);
+        return () => { document.removeEventListener("wheel", handleWheel); };
     }, [handleWheel]);
     
     return (
-        <Fragment>
-            <div className="page-content page-part-wrapper page-fullscreen" style={{overflow: "hidden"}}>
+        <main id="main-content">
+            <div className="page-content page-part-wrapper page-fullscreen Slider_container" style={{overflow: "hidden"}}>
                 <div className="Slider" id="Slider" style={{transform: `translateX(${translateX}px) translateY(-50%)`}} data-current-slide={slide} data-status={status}>
                     <Home slide={0} />
                     <AboutMe slide={-1} />
@@ -130,7 +130,7 @@ function Slider() {
                     This website is currently at <span className="Home__alert_bold">development stage</span>.
                 </div>
             </div>
-        </Fragment>
+        </main>
     );
 }
 

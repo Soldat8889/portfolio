@@ -20,10 +20,10 @@ function ScrollToTop() {
     }, []);
 
     useEffect(function bindEvent() {
-        window.addEventListener("scroll", handleDisplay);
+        document.addEventListener("scroll", handleDisplay);
 
         return () => {
-            window.removeEventListener("scroll", handleDisplay);
+            document.removeEventListener("scroll", handleDisplay);
         };
     }, [handleDisplay]);
 
