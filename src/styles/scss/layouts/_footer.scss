@@ -22,6 +22,7 @@ $color: #f3f3f3;
     color: $color;
 
     overflow: hidden;
+    z-index: 1;
 
     &__parallax-background {
         position: absolute;

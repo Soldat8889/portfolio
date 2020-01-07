@@ -12,7 +12,7 @@ import AboutMe from "./components/AboutMe";
 
 // Utils
 import Cookie from "./utils/Cookie";
-import Navigation from "./components/Header/Navigation";
+import Topbar from "./components/Header/Topbar";
 import OutModal from "./utils/OutModal";
 import CounterAnimation from "./utils/CounterAnimation";
 
@@ -27,7 +27,7 @@ const modes = {
         "--main-txt-color-sub": "#555",
         "--main-bg-color": "#fff",
         "--main-bg-color-second": "#dfdfdf",
-        "--main-bg-color-deep": "#dfdfdf",
+        "--main-bg-color-deep": "#fff",
         "--main-bg-color-box": "#f0f0f0",
         "--main-shadow-color": "#191919",
         "--main-contrast-color": "#63B582"
@@ -143,6 +143,7 @@ function App() {
 
     useEffect(function loadHandler() {
         // https://codepen.io/ahsanrathore/post/accurate-page-progress-bar
+        const html = document.documentElement;
         const loader = document.getElementById("loader");
         const loaderWrapper = document.getElementById("loader-percent-wrapper");
         const loaderPercent = document.getElementById("loader-percent");
@@ -150,22 +151,21 @@ function App() {
         const loaderBarInitTop = loaderBar.parentElement.getBoundingClientRect().top;
         const icon = document.getElementById("loader-icon");
 
-        const perfTimeData = window.performance.timing;
-        const time = -(perfTimeData.loadEventEnd - perfTimeData.navigationStart);
-        const timeMS = parseInt(time / 1000 % 60) * 100;
+        // Development Mode
+        if(process.env.NODE_ENV === "development") {
+            html.classList.remove("on-load");
+            loader.classList.add("is-hidden");
 
-        const loaderProgress = new CounterAnimation(0, 100, timeMS, loaderPercent, function () {
+            return;
+        }
+
+        const perfTimeData = window.performance.timing;
+        const time = -(perfTimeData.loadEventEnd - perfTimeData.navigationStart); // Calculate the page loading time
+
+        const loaderProgress = new CounterAnimation(0, 100, time, loaderPercent, function () {
             let smTr = 300,
                 meTr = 550,
                 loTr = smTr + 400;
-
-            // if(process.env.NODE_ENV === "development") {
-            //     smTr = 0;
-            //     meTr = 0;
-            //     loTr = 0;
-            // } 
-
-            const html = document.documentElement;
 
             setTimeout(() => {
                 icon.classList.add("slide_bottom");
@@ -234,7 +234,7 @@ function App() {
                     languageConfig: languageConfig[language]
                 }}>
                     <OutModal>
-                        <Navigation />
+                        <Topbar />
                         <Routing />
                     </OutModal>
                 </LanguageContext.Provider>

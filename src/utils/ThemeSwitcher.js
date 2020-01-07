@@ -5,11 +5,11 @@ function ThemeSwitcher() {
     return (
         <ThemeContext.Consumer>
             {({ theme, setTheme }) => (
-                <div className="theme-switcher Topbar_spacing_top">
-                    <button className="theme-switcher__btn" onClick={() => theme === "light" ? setTheme("dark") : setTheme("light")}>
+                <div className="theme-switcher">
+                    <button className="theme-switcher__button" onClick={() => theme === "light" ? setTheme("dark") : setTheme("light")}>
                         {theme === "light" ? 
-                            <i className="fas fa-moon theme-switcher__icon Topbar__btn"></i> : 
-                            <i className="fas fa-sun theme-switcher__icon Topbar__btn"></i>
+                            <i className="fas fa-moon theme-switcher__icon Topbar__button"></i> : 
+                            <i className="fas fa-sun theme-switcher__icon Topbar__button"></i>
                         }
                     </button>
                 </div>

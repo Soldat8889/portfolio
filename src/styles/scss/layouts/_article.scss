@@ -28,7 +28,6 @@ $Article__caption: 1.45rem;
 
         overflow: hidden;
         z-index: -1;
-        filter: blur(2px);
         transition: filter $sm_tr;
 
         &_top-space {
@@ -41,27 +40,14 @@ $Article__caption: 1.45rem;
 
         &_minds {
             width: 100%;
+
+            filter: blur(2px);
             
             &_dark {
                 width: 100%;
 
                 filter: blur(2px) grayscale(1) brightness(0.75);
             }
-        }
-
-        &::after {
-            content: "";
-            display: block;
-            width: 100%;
-            height: calc(100% - 50vh);
-            position: absolute;
-            top: 50vh;
-            left: 0;
-
-            background-color: $--main-bg-color-deep;
-            background-color: var(--main-bg-color-deep);
-
-            z-index: -1;
         }
     }
 

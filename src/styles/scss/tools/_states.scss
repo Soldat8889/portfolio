@@ -18,4 +18,8 @@ html.on-load {
     &_bottom {
         transform: translateY(25px);
     }
+
+    &_right {
+        transform: translateX(25px);
+    }
 }

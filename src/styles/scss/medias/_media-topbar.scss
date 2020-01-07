@@ -1,0 +1,38 @@
+.Topbar {
+    @media screen and (min-width: 105rem) {
+        &__line {
+            display: block;
+            left: calc(50% - 85rem + 33px);
+        }
+        
+        &__header {
+            left: calc(50% - 85rem);
+            padding-left: 0;
+        }
+
+        &__right {
+            right: calc(50% - 85rem);
+            padding-left: 0;
+        }
+    }
+
+    @media screen and (max-width: $landscape_tablet_size) {
+        &__right {
+            display: none !important;
+        }
+    }
+}
+
+#main-content {
+    @for $i from 1 through 5 {
+        @if $i != 1 {
+            @media screen and (max-height: 670px - 85px * ($i - 1)) {
+                margin-top: 15px * $i;
+            }
+        } @else {
+            @media screen and (max-height: 670px) {
+                margin-top: 15px;
+            }
+        }
+    }
+}

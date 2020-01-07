@@ -27,12 +27,12 @@ function Parallax({name = "undefined", speedX = 1, speedY = 1, children = <div><
     }, [speedX, speedY, name]);
 
     useEffect(function bindEvents() {
-        window.addEventListener("mousemove", handleMove);
-        window.addEventListener("touchmove", handleTouch);
+        document.addEventListener("mousemove", handleMove);
+        document.addEventListener("touchmove", handleTouch);
 
         return () => { 
-            window.removeEventListener("mousemove", handleMove);
-            window.removeEventListener("touchmove", handleTouch);
+            document.removeEventListener("mousemove", handleMove);
+            document.removeEventListener("touchmove", handleTouch);
         };
     }, [handleMove, handleTouch]);
 
@@ -63,7 +63,7 @@ function ScrollParallax({name = "undefined", speedX = 0, speedY = 0, children = 
     }, [speedX, speedY, name, left, top]);
 
     useEffect(function bindEvents() {
-        window.addEventListener("scroll", handleScrollParallax);
+        document.addEventListener("scroll", handleScrollParallax);
         window.addEventListener("resize", handleScrollParallax);
 
         return () => { 
