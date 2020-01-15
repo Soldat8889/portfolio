@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useCallback } from "react";
 
 /**
  * Alert if clicked on outside of element
@@ -6,7 +6,7 @@ import React, { useRef, useEffect } from "react";
  * @param {React.Ref} ref OutModalContainer Reference
  */
 function useOutModal(ref) {
-    function removeOutModal(e) {
+    const removeOutModal = useCallback((e) => {
         const modalRoot = document.querySelector("#modalRoot");
         const outModal = document.querySelector("#outModal");
         const modal = modalRoot.querySelector("[data-modal]");
@@ -15,9 +15,9 @@ function useOutModal(ref) {
             modalRoot.removeChild(modal);
             outModal.classList.remove("out-modal__effect_active");
         }
-    }
+    }, [ref]);
 
-    useEffect(function bindingEvent() {
+    useEffect(function bindEvents() {
         document.addEventListener("mousedown", removeOutModal);
         document.addEventListener("scroll", removeOutModal);
 

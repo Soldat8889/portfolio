@@ -32,7 +32,9 @@ function Navigation() {
         const author = document.querySelector("#topbar-author");
         const right = document.querySelector("#topbar-right");
         const pinnedElements = Array.from(document.querySelectorAll("[data-topbar-pin]"));
+        /* eslint-disable no-unused-vars */
         let timeout;
+        /* eslint-enable no-unused-vars */
 
         pinnedElements.forEach(function (e) {
             if(isHidden) {

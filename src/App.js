@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Switch, Route, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import "./styles/scss/main.scss";
+
+// Template
+import Routing from "./template/Routing";
 
 // Contexts
 import ThemeContext from "./contexts/ThemeContext";
 import LanguageContext from "./contexts/LanguageContext";
-
-// Routes / Components
-import Slider from "./components/Slider";
-import AboutMe from "./components/AboutMe";
 
 // Utils
 import Cookie from "./utils/Cookie";
@@ -200,10 +199,6 @@ function App() {
         }, loaderProgress.stepTime);
 
     }, [isReady]);
-
-    useEffect(function componentDidMount() {
-        setIsReady(true);
-    }, []);
     
     useEffect(function applyTheme() {
         const rootVariable = document.documentElement.style;
@@ -219,6 +214,10 @@ function App() {
     useEffect(function applyLanguage() {
         document.cookie = new Cookie("lang", language, 365).setCookie();
     }, [language]);
+
+    useEffect(function componentDidMount() {
+        setIsReady(true);
+    }, []);
 
     if(!isReady) {
         return null;
@@ -241,34 +240,6 @@ function App() {
             </ThemeContext.Provider>
         );
     }
-}
-
-function Routing() {
-    return (
-        <Switch>
-            <Route 
-                exact
-                path="/"
-                component={
-                    props => (
-                        <React.Fragment>
-                            <Slider {...props} />
-                        </React.Fragment>
-                    )
-                }
-            />
-            <Route 
-                path="/aboutme/"
-                component={
-                    props => (
-                        <React.Fragment>
-                            <AboutMe {...props} />
-                        </React.Fragment>
-                    )
-                }
-            />
-        </Switch>
-    );
 }
 
 export default withRouter(App);

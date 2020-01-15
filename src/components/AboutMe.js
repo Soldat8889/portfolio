@@ -1,5 +1,5 @@
 /* eslint-disable no-irregular-whitespace */
-import React, { useEffect, Fragment, useContext, useState, useCallback } from "react";
+import React, { useEffect, Fragment, useContext, useState } from "react";
 
 import AboutMeComponent from "./Body/AboutMe";
 import Footer from "./Body/Footer";
@@ -10,6 +10,7 @@ import Breadcrumb from "./../utils/Breadcrumb";
 import ScrollToTop from "./../utils/ScrollToTop";
 import ZoomImage from "./../utils/ZoomImage";
 import { ScrollParallax } from "./../utils/Parallax";
+import ScrollHandler from "./../utils/ScrollHandler";
 
 // Contexts
 import ThemeContext from "./../contexts/ThemeContext";
@@ -19,16 +20,23 @@ import ArticleCheckpoints from "../utils/ArticleCheckpoints";
 
 function AboutMe() {
     const theme = useContext(ThemeContext);
+    const [isReady, setIsReady] = useState(false);
 
     useEffect(function componentDidMount() {
         const pageContent = document.querySelector(".page-content");
 
         pageContent.classList.add("page-fullscreen");
 
+        setIsReady(true);
+
         return () => {
             pageContent.classList.remove("page-fullscreen");
         };
     }, []);
+
+    useEffect(() => {
+        if(isReady) ScrollHandler();
+    }, [isReady]);
 
     return (
         <Fragment>

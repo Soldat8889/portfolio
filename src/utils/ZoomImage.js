@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 
 /**
  * Zoom Image with Transform, ONLY Carousel
@@ -6,16 +6,6 @@ import React, { useState, useEffect, useRef } from "react";
  * @param {React.Props} props Props
  */
 function ZoomImage(props) {
-    const [listItems, setListItems] = useState([]);
-    const _isFirstRun = useRef(true);
-
-    useEffect(function componentDidMount() {
-        if(_isFirstRun.current) {
-            _isFirstRun.current = false;
-            return;
-        }
-    }, []);
-
     function zoomIn(active) {
         const modalRoot = document.querySelector("#modalRoot");
         const outModal = document.querySelector("#outModal");
@@ -42,7 +32,7 @@ function ZoomImage(props) {
         zoomIn(target);
     }
 
-    useEffect(function handleCreateList() {
+    const handleCreateList = () => {
         const items = [];
 
         props.items.map((item, i) => {
@@ -53,10 +43,10 @@ function ZoomImage(props) {
             );
         });
 
-        setListItems(items);
-    }, []);
+        return items;
+    };
 
-    return listItems;
+    return handleCreateList();
 }
 
 export default ZoomImage;

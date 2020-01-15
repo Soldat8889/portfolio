@@ -9,58 +9,58 @@ function ArticleCheckpoints({title = "-"}) {
     const [currentSection, setCurrentSection] = useState("");
     const [isFolded, setIsFolded] = useState(false);
 
-    function displayHandler(checkpointsLength) {
-        // Checkpoint elements
-        const checkpointsBox = document.querySelector(".Article__checkpoints");
-        const checkpointsBoxContainer = document.querySelector(".Article__checkpoints__container");
-        const checkpointsBoxBar = document.querySelector(".Article__checkpoints__bar_filled");
-        const listItems = document.querySelectorAll(".Article__checkpoints__menu__item");
-        
-        const checkpointsBoxRelY = checkpointsBox.getBoundingClientRect().top;
-        
-        // Hide Checkpoint Box when currentCheckpoint is 0 or max
-        if(currentCheckpoint === 0 || (currentCheckpoint === checkpointsLength + 1)) {
-            checkpointsBox.classList.add("Article__checkpoints_outside");
-            checkpointsBoxBar.style.width = "100%";
-        } else {
-            checkpointsBox.classList.remove("Article__checkpoints_outside");
-        }
-
-        // Bookmarked Items Menu
-        listItems.forEach((item) => {
-            if(parseInt(item.getAttribute("data-key"), 10) === currentCheckpoint) {
-                item.classList.add("Article__checkpoints__menu__item_active");
-            } else {
-                item.classList.remove("Article__checkpoints__menu__item_active");
-            }
-        });
-
-        // Sticky statement
-        if(checkpointsBoxRelY <= 165) {
-            checkpointsBoxContainer.style.transform = `translateY(${-checkpointsBoxRelY + 165}px)`;
-        }
-    }
-
-    function sectionHandler() {
-        const sections = []; // Get relative position of sections
-
-        const sectionTitles = document.querySelectorAll("[data-article-section]");
-
-        sectionTitles.forEach((section) => {
-            sections.push(section.getBoundingClientRect().top + section.parentElement.getBoundingClientRect().height - (window.innerHeight * 0.5));
-        });
-
-        let i = -1;
-
-        sections.map((distance) => {
-            distance <= 0 && i++;
-            return distance <= 0;
-        });
-
-        i >= 0 && setCurrentSection(sectionTitles[i].textContent);
-    }
-
     const observerHandler = useCallback(() => {
+        function displayHandler(checkpointsLength) {
+            // Checkpoint elements
+            const checkpointsBox = document.querySelector(".Article__checkpoints");
+            const checkpointsBoxContainer = document.querySelector(".Article__checkpoints__container");
+            const checkpointsBoxBar = document.querySelector(".Article__checkpoints__bar_filled");
+            const listItems = document.querySelectorAll(".Article__checkpoints__menu__item");
+            
+            const checkpointsBoxRelY = checkpointsBox.getBoundingClientRect().top;
+            
+            // Hide Checkpoint Box when currentCheckpoint is 0 or max
+            if(currentCheckpoint === 0 || (currentCheckpoint === checkpointsLength + 1)) {
+                checkpointsBox.classList.add("Article__checkpoints_outside");
+                checkpointsBoxBar.style.width = "100%";
+            } else {
+                checkpointsBox.classList.remove("Article__checkpoints_outside");
+            }
+    
+            // Bookmarked Items Menu
+            listItems.forEach((item) => {
+                if(parseInt(item.getAttribute("data-key"), 10) === currentCheckpoint) {
+                    item.classList.add("Article__checkpoints__menu__item_active");
+                } else {
+                    item.classList.remove("Article__checkpoints__menu__item_active");
+                }
+            });
+    
+            // Sticky statement
+            if(checkpointsBoxRelY <= 165) {
+                checkpointsBoxContainer.style.transform = `translateY(${-checkpointsBoxRelY + 165}px)`;
+            }
+        }
+    
+        function sectionHandler() {
+            const sections = []; // Get relative position of sections
+    
+            const sectionTitles = document.querySelectorAll("[data-article-section]");
+    
+            sectionTitles.forEach((section) => {
+                sections.push(section.getBoundingClientRect().top + section.parentElement.getBoundingClientRect().height - (window.innerHeight * 0.5));
+            });
+    
+            let i = -1;
+    
+            sections.map((distance) => {
+                distance <= 0 && i++;
+                return distance <= 0;
+            });
+    
+            i >= 0 && setCurrentSection(sectionTitles[i].textContent);
+        }
+        
         // Collected with [data-article-checkpoint] attr
         const checkpoints = []; // Get relative position of checkpoints
 
@@ -144,7 +144,7 @@ function ArticleCheckpoints({title = "-"}) {
         }
     }, [isFolded]);
 
-    useEffect(function bindingEvents() {
+    useEffect(function bindEvents() {
         document.addEventListener("scroll", observerHandler);
         window.addEventListener("resize", observerHandler);
 
