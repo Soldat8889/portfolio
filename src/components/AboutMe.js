@@ -7,16 +7,32 @@ import Footer from "./Body/Footer";
 // Utils
 import Gauge from "./../utils/Gauge";
 import Breadcrumb from "./../utils/Breadcrumb";
-import ScrollToTop from "./../utils/ScrollToTop";
-import ZoomImage from "./../utils/ZoomImage";
+import ScrollToTop from "../utils/ScrollToTop";
+import ZoomImage from "../utils/ZoomImage";
 import { ScrollParallax } from "./../utils/Parallax";
 import ScrollHandler from "./../utils/ScrollHandler";
 
 // Contexts
 import ThemeContext from "./../contexts/ThemeContext";
 import LanguageContext from "./../contexts/LanguageContext";
-import Carousel from "../utils/Carousel";
 import ArticleCheckpoints from "../utils/ArticleCheckpoints";
+
+// Reusable Components
+
+function CubicHeader(props) {
+    return (
+        <div className="Article__header">
+            <h2 id={props.id} className="Article__title_level-2" data-article-checkpoint data-short-title={props.short}>{props.title}</h2>
+            <img src="/images/utils/delimiter.svg" alt="Delimiter" />
+        </div>
+    );
+}
+
+function Link(props) {
+    return (
+        <a href={props.href} className={`Article__link ${props.className}`} target="_blank" rel="noopener noreferrer">{props.children}</a>
+    );
+}
 
 function AboutMe() {
     const theme = useContext(ThemeContext);
@@ -87,25 +103,56 @@ function AboutMe() {
     );
 }
 
-function CubicHeader(props) {
+// Parts
+function FirstPart() {
     return (
-        <div className="Article__header">
-            <h2 id={props.id} className="Article__title_level-2" data-article-checkpoint data-short-title={props.short}>{props.title}</h2>
-            <img src="/images/utils/delimiter.svg" alt="Delimiter" />
+        <div>
+            <Profile />
+            <Interest />
+            {/* <div className="Article__section_theme Article_indent" id="traits-skills">
+                <h2 className="Article__title_level-2">Traits de caractère & Compétences</h2>
+                <div className="Article__section" id="traits">
+                    <h3 className="Article__title_level-3">Je suis :</h3>
+                    <p className="Article__text">
+                        CRÉATIF, DÉTERMINÉ, SOIGNÉ, TRAVAILLEUR, PROCHE DE MA FAMILLE
+                    </p>
+                </div>
+                <div className="Article__section" id="skills">
+                    <h3 className="Article__title_level-3">Programmation :</h3>
+                    <p className="Article__text">
+                        JS          HTML / CSS  |   NodeJS<br />
+                        React JS    Pug / SASS  |   ExpressJS
+                    </p>
+                </div>
+                <div className="Article__section" id="languages">
+                    <h3 className="Article__title_level-3">Langues littérales, l’écrit et le parler :</h3>
+                    <p className="Article__text">
+                        FRANCAIS <meter value="85" min="0" max="100"></meter><br />
+                        ANGLAIS <meter value="50" min="0" max="100"></meter><br />
+                        ALLEMAND <meter value="25" min="0" max="100"></meter>
+                    </p>
+                </div>
+            </div> */}
+            <Experience />
+            <Project />
+            <Contact />
         </div>
     );
 }
 
-function Link(props) {
+function SecondPart() {
     return (
-        <a href={props.href} className={`Article__link ${props.className}`} target="_blank" rel="noopener noreferrer">{props.children}</a>
+        <div id="show-me-more">
+            <WhyCode />
+            <Learning />
+        </div>
     );
 }
 
 function Profile() {
     return (
         <Fragment>
-            <div className="Article__section_theme Article__container Article__section_top-space">
+            <div className="Article__section_theme Article__container Article__section_both-space">
                 <ArticleCheckpoints 
                     title="À propos de moi"
                 />
@@ -125,7 +172,7 @@ function Profile() {
             </div>
             <div className="Article__attachment">
                 <div className="Article__attachment__wrapper">
-                    <img className="Article__attachment_image" src="/images/desk.jpg" alt="Desk" title="Desk" />
+                    <ZoomImage className="Article__attachment_image" src="/images/desk.jpg" alt="Desk" title="Desk" />
                     <p className="Article__attachment_image__caption-text">Mon coin</p>
                 </div>
             </div>
@@ -272,34 +319,19 @@ function Experience() {
                     </Link>
                 </div>
             </div>
-            <Carousel groupSize={1080} max={400} name="suan-siam">
-                <ZoomImage 
-                    carouselRef="suan-siam"
-                    items={[
-                        {
-                            name: "suan-siam__front",
-                            src: "/images/suan-siam-page__front.png",
-                            alt: "Suan Siam - Front Page",
-                            className: "Carousel__item_image zoom-image",
-                            scale: 2.5
-                        },
-                        {
-                            name: "suan-siam__1",
-                            src: "/images/suan-siam-page__1.png",
-                            alt: "Suan Siam - 1st Page",
-                            className: "Carousel__item_image zoom-image",
-                            scale: 2.5
-                        },
-                        {
-                            name: "suan-siam__2",
-                            src: "/images/suan-siam-page__2.png",
-                            alt: "Suan Siam - 2nd Page",
-                            className: "Carousel__item_image zoom-image",
-                            scale: 2.5
-                        }
-                    ]}
-                />
-            </Carousel>
+            <div className="Article__attachment">
+                <div className="Article__attachment__wrapper_inline">
+                    <div className="Article__attachment_image_wrapper col-m-3">
+                        <ZoomImage className="Article__attachment_image_inline" src="/images/suan-siam-page__front.png" alt="Desk" title="Desk" />
+                    </div>
+                    <div className="Article__attachment_image_wrapper col-m-3">
+                        <ZoomImage className="Article__attachment_image_inline" src="/images/suan-siam-page__1.png" alt="Desk" title="Desk" />
+                    </div>
+                    <div className="Article__attachment_image_wrapper col-m-6">
+                        <ZoomImage className="Article__attachment_image_inline" src="/images/suan-siam-page__2.png" alt="Desk" title="Desk" />
+                    </div>
+                </div>
+            </div>
         </Fragment>
     );
 }
@@ -372,42 +404,6 @@ function Contact() {
     );
 }
 
-function FirstPart() {
-    return (
-        <div>
-            <Profile />
-            <Interest />
-            {/* <div className="Article__section_theme Article_indent" id="traits-skills">
-                <h2 className="Article__title_level-2">Traits de caractère & Compétences</h2>
-                <div className="Article__section" id="traits">
-                    <h3 className="Article__title_level-3">Je suis :</h3>
-                    <p className="Article__text">
-                        CRÉATIF, DÉTERMINÉ, SOIGNÉ, TRAVAILLEUR, PROCHE DE MA FAMILLE
-                    </p>
-                </div>
-                <div className="Article__section" id="skills">
-                    <h3 className="Article__title_level-3">Programmation :</h3>
-                    <p className="Article__text">
-                        JS          HTML / CSS  |   NodeJS<br />
-                        React JS    Pug / SASS  |   ExpressJS
-                    </p>
-                </div>
-                <div className="Article__section" id="languages">
-                    <h3 className="Article__title_level-3">Langues littérales, l’écrit et le parler :</h3>
-                    <p className="Article__text">
-                        FRANCAIS <meter value="85" min="0" max="100"></meter><br />
-                        ANGLAIS <meter value="50" min="0" max="100"></meter><br />
-                        ALLEMAND <meter value="25" min="0" max="100"></meter>
-                    </p>
-                </div>
-            </div> */}
-            <Experience />
-            <Project />
-            <Contact />
-        </div>
-    );
-}
-
 function WhyCode() {
     return (
         <div className="Article__section_theme Article__container Article__section_top-space">
@@ -473,15 +469,6 @@ function Learning() {
                     </ul>
                 </div>
             </div>
-        </div>
-    );
-}
-
-function SecondPart() {
-    return (
-        <div id="show-me-more">
-            <WhyCode />
-            <Learning />
         </div>
     );
 }

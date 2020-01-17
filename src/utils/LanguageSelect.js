@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import LanguageContext from "../contexts/LanguageContext";
-import CustomFieldSelect from "../utils/CustomFieldSelect";
+import CustomFieldSelect from "./CustomFieldSelect";
 
 function LanguageSelect() {
     const childRef = useRef();

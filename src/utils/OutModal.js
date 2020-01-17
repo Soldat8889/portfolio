@@ -1,39 +1,63 @@
 import React, { useRef, useEffect, useCallback } from "react";
 
-/**
- * Alert if clicked on outside of element
- * 
- * @param {React.Ref} ref OutModalContainer Reference
- */
-function useOutModal(ref) {
-    const removeOutModal = useCallback((e) => {
-        const modalRoot = document.querySelector("#modalRoot");
-        const outModal = document.querySelector("#outModal");
-        const modal = modalRoot.querySelector("[data-modal]");
+// Utils
+import { smTr } from "./GlobalVariables";
 
-        if(ref.current && !ref.current.contains(e.target) && modal) { 
-            modalRoot.removeChild(modal);
-            outModal.classList.remove("out-modal__effect_active");
-        }
+function OutModal(props) {
+    const ref = useRef(null);
+    
+    const removeModal = useCallback(
+        /**
+         * @param {Event} e
+         */
+
+        (e) => {
+            const outModal = ref.current;
+            const modalDisplay = document.querySelector("#modalDisplay");
+            const modalSelects = document.querySelectorAll("[data-select-modal]");
+            const modals = [...document.querySelectorAll("[data-modal]")];
+
+            modals.forEach(
+                /**
+                 * @param {HTMLElement} modal
+                 */
+
+                (modal) => {
+                // !ref.current.contains(e.target), #modalDisplay is outside the outModal, so IF I click there, it cannot have the outModal in targetElement
+                if(outModal && !outModal.contains(e.target)) {
+                    modalDisplay.classList.remove("modal-display_overlay");
+
+                    setTimeout(() => {
+                        modalDisplay.classList.remove("modal-display_active");
+                        
+                        if(modal.getAttribute("data-zoom-image")) {
+                            modal.style.transform = null;
+                        }
+
+                        setTimeout(() => {
+                            try {
+                                modal.parentElement.removeChild(modal);
+                            } catch(e) {}
+    
+                            modalSelects.forEach(e => e.getAttribute("data-select-modal") === "hidden" && e.setAttribute("data-select-modal", true));
+                        }, smTr);
+                    }, smTr);
+                }
+        });
     }, [ref]);
 
     useEffect(function bindEvents() {
-        document.addEventListener("mousedown", removeOutModal);
-        document.addEventListener("scroll", removeOutModal);
+        document.addEventListener("mousedown", removeModal);
+        document.addEventListener("scroll", removeModal);
 
         return () => {
-            document.removeEventListener("mousedown", removeOutModal);
-            document.removeEventListener("scroll", removeOutModal);
+            document.removeEventListener("mousedown", removeModal);
+            document.removeEventListener("scroll", removeModal);
         };
     });
-}
-
-function OutModal(props) {
-    const outModalContainer = useRef(null);
-    useOutModal(outModalContainer);
 
     return (
-        <div className="out-modal__container" ref={outModalContainer}>{props.children}</div>
+        <div className="out-modal__container" ref={ref}>{props.children}</div>
     );
 }
 

@@ -9,7 +9,7 @@
     }
 }
 
-$Article__space: 45px;
+$Article__space: 30px;
 $Article__title_lvl1: 3.6vw;
 $Article__title_lvl2: 3.3rem;
 $Article__title_lvl3: 2.7rem;
@@ -65,6 +65,19 @@ $Article__caption: 1.45rem;
         }
     }
 
+    &__container {
+        display: flex;
+        flex-direction: column;
+        max-width: $max-width_size;
+        margin: 0 auto;
+        padding: 0 $Article__space;
+
+        background-color: $--main-bg-color;
+        background-color: var(--main-bg-color);
+
+        z-index: 2;
+    }
+
     &__section {
         position: relative;
         margin-bottom: $box_margin;
@@ -73,12 +86,16 @@ $Article__caption: 1.45rem;
             position: relative;
         }
 
-        &_top-space > .Article__header {
-            padding-top: $Article__space;
+        &_top-space {
+            padding: $Article__space $Article__space 0 $Article__space;
         }
 
-        &_bottom-space > .Article__header {
-            padding-bottom: $Article__space;
+        &_bottom-space {
+            padding: 0 $Article__space $Article__space;
+        }
+
+        &_both-space {
+            padding: $Article__space;
         }
     }
 
@@ -98,10 +115,29 @@ $Article__caption: 1.45rem;
             flex-direction: column;
             margin: auto;
             max-width: $max-width_size;
+            padding: 0 $Article__space;
+
+            &_inline {
+                @extend .Article__attachment__wrapper;
+                flex-direction: row;
+                padding: 0 $Article__space / 2;
+            }
         }
 
         &_image {
             max-width: 824px;
+            width: 100%;
+
+            &_wrapper {
+                display: inline-flex !important;
+                justify-content: center;
+                align-items: center;
+            }
+
+            &_inline {
+                max-width: 100%;
+                max-height: 340px;
+            }
 
             &__caption-text {
                 margin-top: $inline_margin;
@@ -130,19 +166,6 @@ $Article__caption: 1.45rem;
         display: inline-block;
         margin: 0 20px;
         height: 270px;
-    }
-
-    &__container {
-        display: flex;
-        flex-direction: column;
-        max-width: $max-width_size;
-        margin: 0 auto;
-        padding: 0 $Article__space;
-
-        background-color: $--main-bg-color;
-        background-color: var(--main-bg-color);
-
-        z-index: 2;
     }
 
     &__division {

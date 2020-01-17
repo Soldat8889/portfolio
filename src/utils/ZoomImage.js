@@ -1,52 +1,97 @@
 import React from "react";
+import PropTypes from "prop-types";
+
+// Utils
+import { smTr } from "./GlobalVariables";
 
 /**
- * Zoom Image with Transform, ONLY Carousel
+ * Zoom Image with Transform
  * 
  * @param {React.Props} props Props
  */
-function ZoomImage(props) {
-    function zoomIn(active) {
-        const modalRoot = document.querySelector("#modalRoot");
-        const outModal = document.querySelector("#outModal");
-        const modalZoomImage = document.createElement("img");
-
-        outModal.classList.add("out-modal__effect_active");
-
-        modalZoomImage.src = active.src;
-        modalZoomImage.alt = active.alt;
-        modalZoomImage.classList.add("modal_zoom-image");
-        modalZoomImage.setAttribute("data-modal", true);
-        modalZoomImage.style.top = `${window.pageYOffset}px`;
-        
-        modalRoot.appendChild(modalZoomImage);
-    }
-
+function ZoomImage({ id, className, src, alt, title }) {
     /**
-     * Handle Click
-     * @param {Event} e Event
+     * 
+     * @param {Event} e 
      */
-    function handleClick(e) {
-        const target = e.currentTarget;
+    function setModal(e) {
+        const target = e.target;
+        const modalDisplay = document.querySelector("#modalDisplay");
 
-        zoomIn(target);
+        modalDisplay.classList.add("modal-display_active");
+
+        setTimeout(() => {
+            modalDisplay.classList.add("modal-display_overlay");
+        }, smTr / 2);
+
+        const baseY = target.getBoundingClientRect().y;
+        const baseX = target.getBoundingClientRect().x;
+        const baseW = target.getBoundingClientRect().width;
+        const baseH = target.getBoundingClientRect().height;
+
+        const image = new Image();
+
+        image.alt = alt;
+        image.title = title;
+        image.setAttribute("data-modal", true);
+        image.setAttribute("data-zoom-image", true);
+        image.classList.add("zoom-image__modal");
+        image.style.top = `${baseY + window.scrollY}px`;
+        image.style.left = `${baseX}px`;
+        image.style.width = `${baseW}px`;
+        image.style.height = `${baseH}px`;
+
+        const clientWidth = document.body.clientWidth;
+        let scale;
+
+        const maxX = clientWidth - baseW;
+        const spaceCurrentMaxX = maxX - baseX;
+        const middleX = spaceCurrentMaxX - maxX / 2;
+
+        const maxY = window.innerHeight - baseH;
+        const spaceCurrentMaxY = maxY - baseY;
+        const middleY = spaceCurrentMaxY - maxY / 2;
+
+        const scaleW = clientWidth / baseW;
+        const scaleH = window.innerHeight / baseH;
+
+        const landscape = baseW > baseH;
+        const portrait = baseH > baseW;
+
+        // Base Width > Base Height (landscape image)
+        if(landscape) {
+            // IF scaling in width dimension is smaller than clientWidth, so you can continue to fit with height
+            (baseW * scaleH) < clientWidth ? scale = scaleH : scale = scaleW;
+        }
+
+        // Base Height > Base Width (portrait image)
+        if(portrait) {
+            // IF scaling in height dimension is smaller than innerHeight, so you can continue to fit with width
+            (baseH * scaleW) < window.innerHeight ? scale = scaleW : scale = scaleH;
+        }
+
+        image.src = src;
+
+        image.onload = () => {
+            document.body.appendChild(image);
+
+            setTimeout(() => {
+                target.setAttribute("data-select-modal", "hidden");
+                image.style.transform = `translateY(${middleY}px) translateX(${middleX}px) scale(${scale})`;
+            }, 100);
+        };
     }
 
-    const handleCreateList = () => {
-        const items = [];
-
-        props.items.map((item, i) => {
-            return items.push(
-                <div className="Carousel__item" key={i}>
-                    <img src={item.src} alt={item.alt} className={item.className} data-zoom-image data-scale={item.scale} onClick={handleClick} />
-                </div>
-            );
-        });
-
-        return items;
-    };
-
-    return handleCreateList();
+    return (
+        <img id={id} className={`${className} zoom-image__element`} src={src} alt={alt} title={title} data-select-modal data-zoom-image onClick={setModal} />
+    );
 }
+
+ZoomImage.propTypes = {
+    src: PropTypes.string.isRequired,
+    alt: PropTypes.string.isRequired,
+    title: PropTypes.string,
+    className: PropTypes.string,
+};
 
 export default ZoomImage;
