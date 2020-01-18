@@ -1,0 +1,142 @@
+.Hero {
+    &__display {
+        position: absolute;
+        width: 40vw;
+        height: 100%;
+
+        z-index: 3;
+
+        &_aboutme {
+            &::before {
+                content: "";
+                position: absolute;
+                top: 0; left: 0;
+                width: 100%; 
+                height: 100%;
+
+                background: {
+                    image: url("/images/aboutme-illustrations/notre-dame-de-paris.jpg");
+                    size: 130%;
+                    position: 0 20%;
+                }
+                
+                filter: contrast(1.5);
+            }
+        }
+
+        &__banner {
+            position: absolute;
+            right: 0;
+            width: 15vw;
+            height: 100%;
+
+            background-color: $--main-contrast-color;
+            background-color: var(--main-contrast-color);
+        }
+    }
+
+    &__color {
+        &_aboutme {
+            color: #D1AB4B!important;
+        }
+    }
+
+    &__background {
+        &-element_mq {
+            img {
+                -webkit-user-drag: none;
+                -khtml-user-drag: none;
+                -moz-user-drag: none;
+                -o-user-drag: none;
+                user-drag: none;
+            }
+
+            &__particles {
+                left: 40vw;  
+
+                z-index: 5;
+
+                img {
+                    height: 70vh;
+                }
+            }
+
+            &__switch {
+                left: 35vw;  
+
+                z-index: 2;
+
+                img {
+                    height: 70vh;
+                }
+            }
+
+            &__samothrace {
+                right: 5vw;
+
+                z-index: 5;
+
+                img {
+                    height: 70vh;
+                }
+            }
+
+            &__skull {
+                bottom: -8vh;
+                right: 25vw;
+
+                z-index: 5;
+                transform: rotate(-25deg);
+
+                img {
+                    height: 40vh;
+                }
+            }
+
+            &__meal {
+                top: 10vh;
+                right: 20vw;
+
+                z-index: 2;
+
+                img {
+                    height: 30vh;
+                }
+            }
+
+            &__circle {
+                &__2 {
+                    top: -15vh;
+                    right: -17vh;
+
+                    z-index: 3;
+                
+                    svg {
+                        height: 65vh;
+
+                        fill: $--main-contrast-color;
+                        fill: var(--main-contrast-color);
+
+                        opacity: .75;
+                    }
+                }
+                
+                &__1 {
+                    right: 5vw;
+                    bottom: -38vh;
+
+                    z-index: 1;
+                
+                    svg {
+                        height: 75vh;
+
+                        fill: $--main-contrast-color;
+                        fill: var(--main-contrast-color);
+
+                        opacity: .5;
+                    }
+                }
+            }
+        }
+    }
+}

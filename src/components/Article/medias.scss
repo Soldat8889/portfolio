@@ -1,0 +1,7 @@
+.Article {
+    @media screen and (max-width: $desktop_size) {
+        &__container {
+            max-width: 100%;
+        }
+    }
+}

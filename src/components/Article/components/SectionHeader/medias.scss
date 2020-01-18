@@ -1,0 +1,11 @@
+.Article {
+    @media screen and (max-width: $desktop_size) {
+        &_background {
+            display: flex;
+            align-items: center;
+            height: 50vh;
+        }
+    }
+}
+
+@import "medias";
