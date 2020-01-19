@@ -11,7 +11,9 @@ import { ScrollParallax } from "../../components/Animations/Parallax";
 // Article Components
 import Breadcrumb from "./../../components/Article/components/Breadcrumb";
 import ArticleCheckpoints from "../../components/Article/components/Checkpoints";
+import SectionHeader from "../../components/Article/components/SectionHeader";
 import PartHeader from "../../components/Article/components/PartHeader";
+import Attachment from "../../components/Article/components/Attachment";
 import ScrollToTop from "./../../components/Article/components/ScrollToTop";
 import HandleHash from "../../components/Article/services/handleHash";
 import Link from "../../components/Article/components/Link";
@@ -60,36 +62,32 @@ function Article() {
     return (
         <div className="Article_wrapper">
             <section className="page-content page-part-wrapper Article_background_top-space_first">
-                <div className="Article_background">
-                    <ScrollParallax
-                        name="AboutMe__first-part"
-                        speedY={0.5}
-                    >
-                        <img src="/images/minds.jpg" alt="Minds - Painting © SYHANATH Lucas" title="Minds - Painting © SYHANATH Lucas" className={`${theme.theme === "light" ? "Article_background_minds" : "Article_background_minds_dark"}`} />
-                    </ScrollParallax>
-                </div>
-                <div className="Article">
-                    <div className="Article__title_wrapper">
-                        <h1 className="Article__title_level-1" data-article-section>Qui suis-je ?</h1>
-                    </div>
-                    <FirstPart />
-                </div>
+                <SectionHeader 
+                    background={
+                        <ScrollParallax
+                            name="AboutMe__first-part"
+                            speedY={0.5}
+                        >
+                            <img src="/images/minds.jpg" alt="Minds - Painting © SYHANATH Lucas" title="Minds - Painting © SYHANATH Lucas" className={`${theme.theme === "light" ? "Article_background_minds" : "Article_background_minds_dark"}`} />
+                        </ScrollParallax>
+                    }
+                    title="Qui suis-je ?"
+                    content={<FirstPart />}
+                />
             </section>
             <section className="page-content page-part-wrapper Article_background_top-space">
-                <div className="Article_background">
-                    <ScrollParallax
-                        name="AboutMe__second-part"
-                        speedY={0.5}
-                    >
-                        <img src="/images/minds.jpg" alt="Minds - Painting © SYHANATH Lucas" title="Minds - Painting © SYHANATH Lucas" className={`${theme.theme === "light" ? "Article_background_minds" : "Article_background_minds_dark"}`} />
-                    </ScrollParallax>
-                </div>
-                <div className="Article">
-                    <div className="Article__title_wrapper">
-                        <h1 className="Article__title_level-1" data-article-section>En savoir plus sur moi</h1>
-                    </div>
-                    <SecondPart />
-                </div>
+                <SectionHeader 
+                    background={
+                        <ScrollParallax
+                            name="AboutMe__second-part"
+                            speedY={0.5}
+                        >
+                            <img src="/images/minds.jpg" alt="Minds - Painting © SYHANATH Lucas" title="Minds - Painting © SYHANATH Lucas" className={`${theme.theme === "light" ? "Article_background_minds" : "Article_background_minds_dark"}`} />
+                        </ScrollParallax>
+                    }
+                    title="En savoir plus sur moi"
+                    content={<SecondPart />}
+                />
             </section>
         </div>
     );
@@ -162,12 +160,10 @@ function Profile() {
                     </p>
                 </div>
             </div>
-            <div className="Article__attachment">
-                <div className="Article__attachment__wrapper">
-                    <ZoomImage className="Article__attachment_image" src="/images/desk.jpg" alt="Desk" title="Desk" />
-                    <p className="Article__attachment_image__caption-text">Mon coin</p>
-                </div>
-            </div>
+            <Attachment type="block">
+                <ZoomImage className="Article__attachment_image" src="/images/desk.jpg" alt="Desk" title="Desk" />
+                <p className="Article__attachment_image__caption-text">Mon coin</p>
+            </Attachment>
         </Fragment>
     );
 }
@@ -311,19 +307,17 @@ function Experience() {
                     </Link>
                 </div>
             </div>
-            <div className="Article__attachment">
-                <div className="Article__attachment__wrapper_inline">
-                    <div className="Article__attachment_image_wrapper col-m-3">
-                        <ZoomImage className="Article__attachment_image_inline" src="/images/suan-siam-page__front.png" alt="Desk" title="Desk" />
-                    </div>
-                    <div className="Article__attachment_image_wrapper col-m-3">
-                        <ZoomImage className="Article__attachment_image_inline" src="/images/suan-siam-page__1.png" alt="Desk" title="Desk" />
-                    </div>
-                    <div className="Article__attachment_image_wrapper col-m-6">
-                        <ZoomImage className="Article__attachment_image_inline" src="/images/suan-siam-page__2.png" alt="Desk" title="Desk" />
-                    </div>
+            <Attachment type="inline">
+                <div className="Article__attachment_image_wrapper col-s-3">
+                    <ZoomImage className="Article__attachment_image" src="/images/suan-siam-page__front.png" alt="Desk" title="Desk" />
                 </div>
-            </div>
+                <div className="Article__attachment_image_wrapper col-s-3">
+                    <ZoomImage className="Article__attachment_image" src="/images/suan-siam-page__1.png" alt="Desk" title="Desk" />
+                </div>
+                <div className="Article__attachment_image_wrapper col-s-6">
+                    <ZoomImage className="Article__attachment_image" src="/images/suan-siam-page__2.png" alt="Desk" title="Desk" />
+                </div>
+            </Attachment>
         </Fragment>
     );
 }

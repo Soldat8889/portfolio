@@ -4,9 +4,6 @@ $side-pad: 30px;
 $darker-color: #cdcdcd;
 $color: #f3f3f3;
 
-// Medias
-@import "./medias";
-
 .Footer {
     &::before {
         content: "";
@@ -168,3 +165,5 @@ $color: #f3f3f3;
         }
     }
 }
+
+@import "./medias";

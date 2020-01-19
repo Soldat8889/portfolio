@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 // Utils
@@ -10,11 +10,19 @@ import { smTr } from "../../../../services/tools/GlobalVariables";
  * @param {React.Props} props Props
  */
 function ZoomImage({ id, className, src, alt, title }) {
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    function handleLoadingImage() {
+        setIsLoaded(true);
+    }
+
     /**
      * 
      * @param {Event} e 
      */
     function setModal(e) {
+        if(!isLoaded) return;
+
         const target = e.target;
         const modalDisplay = document.querySelector("#modalDisplay");
 
@@ -83,7 +91,7 @@ function ZoomImage({ id, className, src, alt, title }) {
     }
 
     return (
-        <img id={id} className={`${className} zoom-image__element`} src={src} alt={alt} title={title} data-select-modal data-zoom-image onClick={setModal} />
+        <img id={id} className={`${className} zoom-image__element`} src={src} alt={alt} title={title} data-select-modal data-zoom-image={isLoaded} onClick={setModal} onLoad={handleLoadingImage} />
     );
 }
 

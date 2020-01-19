@@ -11,3 +11,7 @@
         cursor: zoom-out;
     }
 }
+
+[data-zoom-image="false"] {
+    cursor: default;
+}
