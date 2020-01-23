@@ -4,6 +4,7 @@ html.on-load {
 
 .is-visible_transitional {
     opacity: 1;
+    pointer-events: initial;
 }
 
 .is-hidden {

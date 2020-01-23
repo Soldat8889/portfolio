@@ -20,6 +20,7 @@ import Link from "../../components/Article/components/Link";
 
 // Contexts
 import { ThemeContext, LanguageContext } from "../../services/contexts";
+import Placeholder from "../../components/Placeholder";
 
 function AboutMe() {
     const [isReady, setIsReady] = useState(false);
@@ -161,7 +162,9 @@ function Profile() {
                 </div>
             </div>
             <Attachment type="block">
-                <ZoomImage className="Article__attachment_image" src="/images/desk.jpg" alt="Desk" title="Desk" />
+                <Placeholder type="image">
+                    <ZoomImage className="Article__attachment_image" src="/images/desk.jpg" alt="Desk" title="Desk" />
+                </Placeholder>
                 <p className="Article__attachment_image__caption-text">Mon coin</p>
             </Attachment>
         </Fragment>
@@ -309,13 +312,19 @@ function Experience() {
             </div>
             <Attachment type="inline">
                 <div className="Article__attachment_image_wrapper col-s-3">
-                    <ZoomImage className="Article__attachment_image" src="/images/suan-siam-page__front.png" alt="Desk" title="Desk" />
+                    <Placeholder type="image">
+                        <ZoomImage className="Article__attachment_image" src="/images/suan-siam-page__front.png" alt="Suan Siam - Front Page" title="Suan Siam - Front Page" />
+                    </Placeholder>
                 </div>
                 <div className="Article__attachment_image_wrapper col-s-3">
-                    <ZoomImage className="Article__attachment_image" src="/images/suan-siam-page__1.png" alt="Desk" title="Desk" />
+                    <Placeholder type="image">
+                        <ZoomImage className="Article__attachment_image" src="/images/suan-siam-page__1.png" alt="Suan Siam - Food Grid Photos" title="Suan Siam - Food Grid Photos" />
+                    </Placeholder>
                 </div>
                 <div className="Article__attachment_image_wrapper col-s-6">
-                    <ZoomImage className="Article__attachment_image" src="/images/suan-siam-page__2.png" alt="Desk" title="Desk" />
+                    <Placeholder type="image">
+                        <ZoomImage className="Article__attachment_image" src="/images/suan-siam-page__2.png" alt="Suan Siam - Example of menus & presentations" title="Suan Siam - Example of menus & presentations" />
+                    </Placeholder>
                 </div>
             </Attachment>
         </Fragment>

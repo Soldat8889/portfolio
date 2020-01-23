@@ -47,7 +47,7 @@ function AboutMeHero({ slide }) {
 }
 
 AboutMeHero.propTypes = {
-    slide: PropTypes.string
+    slide: PropTypes.number
 };
 
 function Hero() {

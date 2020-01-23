@@ -42,7 +42,7 @@ function HeroHome(props) {
 }
 
 HeroHome.propTypes = {
-    slide: PropTypes.string
+    slide: PropTypes.number
 };
 
 function DayMode() {
