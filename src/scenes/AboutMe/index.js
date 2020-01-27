@@ -6,7 +6,6 @@ import Hero from "../../components/Hero/components/AboutMe";
 import Footer from "../../components/Footer";
 // import Gauge from "../../components/Gauge";
 import ZoomImage from "../../components/Modal/components/ZoomImage";
-import { ScrollParallax } from "../../components/Animations/Parallax";
 
 // Article Components
 import Breadcrumb from "./../../components/Article/components/Breadcrumb";
@@ -21,6 +20,9 @@ import Link from "../../components/Article/components/Link";
 // Contexts
 import { ThemeContext } from "../../services/contexts";
 import Placeholder from "../../components/Placeholder";
+
+// Services
+import { ScrollParallax } from "../../services/animations/Parallax";
 
 function AboutMe() {
     const [isReady, setIsReady] = useState(false);
