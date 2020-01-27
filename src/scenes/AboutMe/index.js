@@ -1,6 +1,9 @@
 /* eslint-disable no-irregular-whitespace */
 import React, { useEffect, Fragment, useContext, useState } from "react";
 
+// Services
+import { smTr } from '../../services/tools/GlobalVariables';
+
 // Components
 import Hero from "../../components/Hero/components/AboutMe";
 import Footer from "../../components/Footer";
@@ -40,7 +43,7 @@ function AboutMe() {
     }, []);
 
     useEffect(() => {
-        if(isReady) HandleHash();
+        if(isReady) HandleHash("smooth", smTr);
     }, [isReady]);
 
     return (

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 
 // Components
-import Parallax from "../../../Animations/Parallax";
+import Parallax from "../../../../services/animations/Parallax";
 
 // Contexts
 import { LanguageContext, ThemeContext } from "../../../../services/contexts";

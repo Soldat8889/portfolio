@@ -1,6 +1,6 @@
 import React, { useEffect, useState, Fragment } from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, withRouter } from "react-router-dom";
+import { Router, withRouter } from "react-router-dom";
 
 import "./styles/main.scss";
 
@@ -13,6 +13,7 @@ import Topbar from './components/Topbar';
 import Routing from "./scenes/Routing";
 
 // Services
+import history from "./services/APIHistory";
 // Contexts
 import { ThemeContext, LanguageContext } from "./services/contexts";
 
@@ -189,9 +190,9 @@ const App = withRouter(() => {
 ReactDOM.render(
     <Fragment>
         <Loader />
-        <BrowserRouter >
+        <Router history={history} >
             <App />
-        </BrowserRouter>
+        </Router>
     </Fragment>, 
     document.getElementById("root")
 );
