@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 // Utils
-import { ScrollParallax } from "../Animations/Parallax";
+import { ScrollParallax } from "../../services/animations/Parallax";
 
 function Footer() {
     return (

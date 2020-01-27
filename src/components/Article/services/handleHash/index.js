@@ -1,15 +1,18 @@
-import { smTr } from '../../../../services/tools/GlobalVariables';
-
-function HandleHash() {
+/**
+ * Scrolling to Hash, with a scroll behavior option
+ * @param {ScrollBehavior} behavior 
+ * @param {Number} timeout
+ */
+function HandleHash(behavior, timeout) {
     try {
         const targetID = document.querySelector(window.location.hash);
 
         setTimeout(() => {
             if(!targetID) return;
             targetID.scrollIntoView({
-                behavior: "smooth"
+                behavior
             });
-        }, smTr);
+        }, timeout);
     } catch(e) {}
 }
 
