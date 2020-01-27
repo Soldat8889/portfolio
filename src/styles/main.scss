@@ -20,6 +20,10 @@
 
 @import "base/_page";
 
+// Pages
+@import "../scenes/AboutMe/styles";
+@import "../scenes/Home/styles";
+
 /* Layouts */
 @import "../components/Article/styles";
 @import "../components/Footer/styles";

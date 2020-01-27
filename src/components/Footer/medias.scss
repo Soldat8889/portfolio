@@ -1,4 +1,16 @@
 .Footer {
+    @media screen and (max-width: $desktop_size) {
+        &__background {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-image: url("/images/test.jpg");
+
+            & > * {
+                display: none;
+            }
+        }
+    }
     @media screen and (max-width: $landscape_tablet_size) {
         &__content {
             flex-direction: column;

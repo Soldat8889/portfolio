@@ -1,10 +1,10 @@
 import React, { Fragment } from "react";
 import PropTypes from 'prop-types';
 
-function SectionHeader({ background, title, content }) {
+function SectionHeader({ background, backgroundName, title, content }) {
     return (
         <Fragment>
-            <div className="Article_background">
+            <div className={`Article_background ${backgroundName}`}>
                 {background}
             </div>
             <div className="Article">
@@ -19,6 +19,7 @@ function SectionHeader({ background, title, content }) {
 
 SectionHeader.propTypes = {
     background: PropTypes.object.isRequired,
+    backgroundName: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     content: PropTypes.object.isRequired
 };

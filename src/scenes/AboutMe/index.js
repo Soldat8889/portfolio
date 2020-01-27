@@ -4,7 +4,7 @@ import React, { useEffect, Fragment, useContext, useState } from "react";
 // Components
 import Hero from "../../components/Hero/components/AboutMe";
 import Footer from "../../components/Footer";
-import Gauge from "../../components/Gauge";
+// import Gauge from "../../components/Gauge";
 import ZoomImage from "../../components/Modal/components/ZoomImage";
 import { ScrollParallax } from "../../components/Animations/Parallax";
 
@@ -19,7 +19,7 @@ import HandleHash from "../../components/Article/services/handleHash";
 import Link from "../../components/Article/components/Link";
 
 // Contexts
-import { ThemeContext, LanguageContext } from "../../services/contexts";
+import { ThemeContext } from "../../services/contexts";
 import Placeholder from "../../components/Placeholder";
 
 function AboutMe() {
@@ -72,6 +72,7 @@ function Article() {
                             <img src="/images/minds.jpg" alt="Minds - Painting © SYHANATH Lucas" title="Minds - Painting © SYHANATH Lucas" className={`${theme.theme === "light" ? "Article_background_minds" : "Article_background_minds_dark"}`} />
                         </ScrollParallax>
                     }
+                    backgroundName="AboutMe__background_minds"
                     title="Qui suis-je ?"
                     content={<FirstPart />}
                 />
@@ -86,6 +87,7 @@ function Article() {
                             <img src="/images/minds.jpg" alt="Minds - Painting © SYHANATH Lucas" title="Minds - Painting © SYHANATH Lucas" className={`${theme.theme === "light" ? "Article_background_minds" : "Article_background_minds_dark"}`} />
                         </ScrollParallax>
                     }
+                    backgroundName="AboutMe__background_minds"
                     title="En savoir plus sur moi"
                     content={<SecondPart />}
                 />
@@ -143,7 +145,7 @@ function SecondPart() {
 function Profile() {
     return (
         <Fragment>
-            <div className="Article__section_theme Article__container Article__section_both-space">
+            <div className="Article__section_theme Article__container Article__section_top-space">
                 <ArticleCheckpoints 
                     title="À propos de moi"
                 />
@@ -172,26 +174,26 @@ function Profile() {
 }
 
 function Interest() {
-    const [interestIndex, setInterestIndex] = useState(5);
+    // const [interestIndex, setInterestIndex] = useState(5);
 
-    useEffect(function selectedIndex() {
-        const section = document.querySelector(`[data-section="hobbies-section"]`);
-        const interest = section.children[interestIndex].children[0];
+    // useEffect(function selectedIndex() {
+    //     const section = document.querySelector(`[data-section="hobbies-section"]`);
+    //     const interest = section.children[interestIndex].children[0];
 
-        // eslint-disable-next-line no-unused-vars
-        for (const item of section.children) {
-            item.children[0].style.transform = null;
-        }
+    //     // eslint-disable-next-line no-unused-vars
+    //     for (const item of section.children) {
+    //         item.children[0].style.transform = null;
+    //     }
 
-        interest.style.transform = "scale(1.2)";
-    }, [interestIndex]);
+    //     interest.style.transform = "scale(1.2)";
+    // }, [interestIndex]);
 
     return (
         <div className="Article__section_theme Article__container">
             <PartHeader short="Centres d'intérêt" title="Centres d'intérêt" id="interest" />
             <div className="Article_indent">
                 <div className="Article__section">
-                    <div className="col-m-6">
+                    {/* <div className="col-m-6">
                         <ul className="circle-container" data-section="hobbies-section"> 
                             <Gauge 
                                 percent="100"
@@ -249,7 +251,7 @@ function Interest() {
                                 </p>
                             )}
                         </LanguageContext.Consumer>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>
@@ -259,7 +261,7 @@ function Interest() {
 function Experience() {
     return (
         <Fragment>
-            <div className="Article__section_theme Article__container Article__section_bottom-space">
+            <div className="Article__section_theme Article__container">
                 <PartHeader short="Expérience pro." title="Expérience professionnelle" id="experience" />
                 <div className="Article_indent">
                     <div className="Article__section">
@@ -284,7 +286,7 @@ function Experience() {
                         </p>
                     </div>
                 </div>
-                <div className="timeline">
+                {/* <div className="timeline">
                     <Link href="https://www.lafourchette.com/restaurant/suan-siam/217757" className="Article__section_theme Article__box timeline__mark">
                         <h3 className="Article__title_level-3 Article__box__title">Designer du restaurant Suan Siam</h3>
                         <div className="Article__box__sections">
@@ -308,7 +310,7 @@ function Experience() {
                             </div>
                         </div>
                     </Link>
-                </div>
+                </div> */}
             </div>
             <Attachment type="inline">
                 <div className="Article__attachment_image_wrapper col-s-3">
@@ -334,7 +336,7 @@ function Experience() {
 function Project() {
     return (
         <Fragment>
-            <div className="Article__section_theme Article__container Article__section_top-space">
+            <div className="Article__section_theme Article__container">
                 <PartHeader short="Projets" title="Projets" id="project" />
                 <div className="Article_indent">
                     <div className="Article__section">
@@ -343,7 +345,7 @@ function Project() {
                 </div>
             </div>
             <div className="Article__section_theme Article__container">
-                <div className="timeline">
+                {/* <div className="timeline">
                     <Link href="https://lucassyhan.netlify.com" className="Article__section_theme Article__box timeline__mark">
                         <h3 className="Article__title_level-3 Article__box__title">Lucas SYHANATH : Portfolio</h3>
                         <div className="Article__box__sections">
@@ -367,7 +369,7 @@ function Project() {
                             </div>
                         </div>
                     </Link>
-                </div>
+                </div> */}
             </div>
         </Fragment>
     );

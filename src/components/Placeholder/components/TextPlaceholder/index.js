@@ -1,7 +1,7 @@
-import React, { useEffect, useState, Fragment } from 'react';
-import PropTypes from 'prop-types';
+// import React, { useEffect, useState, Fragment } from 'react';
+// import PropTypes from 'prop-types';
 
-function TextPlaceholder({ children }) {
+function TextPlaceholder() {
     return null;
 }
 

@@ -10,7 +10,7 @@
 }
 
 $Article__space: 30px;
-$Article__title_lvl1: 3.6vw;
+$Article__title_lvl1: calc(3.8rem + 1vw);
 $Article__title_lvl2: 3.3rem;
 $Article__title_lvl3: 2.7rem;
 $Article__text: 1.75rem;
@@ -25,8 +25,6 @@ $Article__caption: 1.45rem;
 @import "./components/ScrollToTop/styles";
 @import "./components/SectionHeader/styles";
 @import "./components/Timeline/styles";
-
-@import "./medias";
 
 .Article {
     margin-top: $Article__space;
@@ -190,3 +188,5 @@ $Article__caption: 1.45rem;
         }
     }
 }
+
+@import "./medias";

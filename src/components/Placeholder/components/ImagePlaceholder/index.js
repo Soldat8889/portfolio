@@ -22,7 +22,7 @@ function ImagePlaceholder({ children }) {
 
     useEffect(() => {
         handleImageLoad();
-    }, []);
+    });
 
     return (
         <div className="Placeholder_wrapper Placeholder_image" data-loaded={isLoaded}>

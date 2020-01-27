@@ -35,12 +35,12 @@
         &_minds {
             width: 100%;
 
-            filter: blur(2px);
+            filter: blur(calc(0.5px + 0.08vw));
             
             &_dark {
                 width: 100%;
 
-                filter: blur(2px) grayscale(1) brightness(0.75);
+                filter: blur(calc(0.5px + 0.08vw)) grayscale(1) brightness(0.75);
             }
         }
     }
@@ -66,9 +66,12 @@
                 color: $--main-icon-color-contrast;
                 color: var(--main-icon-color-contrast);
                 text-transform: uppercase;
+                text-align: center;
 
                 @extend %Article__title;
             }
         }
     }
 }
+
+@import "medias";

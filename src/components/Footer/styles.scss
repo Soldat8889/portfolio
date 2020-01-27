@@ -24,15 +24,18 @@ $color: #f3f3f3;
     overflow: hidden;
     z-index: 1;
 
-    &__parallax-background {
+    &__background {
         position: absolute;
+        height: 100%;
+        width: 100%;
+
+        background: none;
 
         z-index: -1;
+        filter: grayscale(100%);
         
-        &__image {
+        & img {
             width: 100%;
-        
-            filter: grayscale(100%);
         }
     }
 

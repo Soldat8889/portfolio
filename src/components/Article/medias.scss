@@ -4,4 +4,10 @@
             max-width: 100%;
         }
     }
+
+    @media screen and (max-width: $landscape_tablet_size) {
+        &__text {
+            font-size: 1.6rem;
+        }
+    }
 }

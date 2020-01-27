@@ -7,13 +7,13 @@ import { ScrollParallax } from "../Animations/Parallax";
 function Footer() {
     return (
         <footer className="Footer page-part-wrapper">
-            <div className="Footer__parallax-background">
+            <div className="Footer__background">
                 <ScrollParallax
-                    name="Footer__parallax-background"
+                    name="Footer__background"
                     speedX={0}
                     speedY={0.5}
                 >
-                    <img src="/images/test.jpg" alt="Meal" className="Footer__parallax-background__image" />
+                    <img src="/images/test.jpg" alt="Meal" />
                 </ScrollParallax>
             </div>
             <div className="Footer__wrapper container">

@@ -1,4 +1,17 @@
+%Background {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
 .AboutMe {
+    &__background {
+        &_minds {
+            @extend %Background;
+            background-image: url("/images/minds.jpg");
+        }
+    }
+
     &__section {
         &_interest {
             height: 100%;

@@ -5,7 +5,7 @@ function PartHeader({ id, short, title }) {
     return (
         <div className="Article__header">
             <h2 id={id} className="Article__title_level-2" data-article-checkpoint data-short-title={short}>{title}</h2>
-            <img src="/images/utils/delimiter.svg" alt="Delimiter" />
+            <img className="Article__header__cubic" src="/images/utils/delimiter.svg" alt="Delimiter" />
         </div>
     );
 }
