@@ -1,0 +1,29 @@
+.Article {
+    &__header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: $separate_margin;
+
+        &__cubic {
+            max-width: 341px;
+            width: 100%;
+            
+            fill: $--main-gold-color;
+        }
+    }
+
+    &__title {
+        &_level {
+            &-2 {
+                font-size: $Article__title_lvl2;
+                color: $--main-gold-color;
+                text-transform: uppercase;
+                text-align: center;
+    
+                @extend %Article__title;
+            }
+        }
+    }
+}

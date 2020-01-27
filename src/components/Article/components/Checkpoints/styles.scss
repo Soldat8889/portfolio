@@ -1,0 +1,146 @@
+.Article {
+    &__checkpoints {
+        position: absolute;
+        width: 300px;
+
+        font-size: 3rem;
+        color: $--main-txt-color;
+        color: var(--main-txt-color);
+
+        transform: translateX(-100%) translateX(-$Article__space) translateX(-30px);
+        transition: 
+            ease-in-out transform 330ms,
+            ease-out opacity $sm_tr;
+        z-index: $sidebar_index;
+
+        &__container {
+            padding: $box_margin;
+
+            background-color: $--main-bg-color-box;
+            background-color: var(--main-bg-color-box);
+        }
+
+        &_outside {
+            transform: translateX(-150%);
+            opacity: 0;
+        }
+
+        &__title {
+            &_1 {
+                margin-bottom: $basic_margin;
+
+                font: {
+                    family: $title_font;
+                    size: 2.6rem;
+                }
+                text-transform: uppercase;
+            }
+
+            &_2 {
+                margin-bottom: $basic_margin;
+
+                font: {
+                    family: $title_font;
+                    size: 1.9rem;
+                }
+                text-transform: uppercase;
+            }
+        }
+
+        &__bar {
+            height: 2px;
+            width: 100%;
+            margin-bottom: $inline_margin;
+
+            background-color: $--main-light-gray;
+
+            &_filled {
+                height: 100%;
+                min-width: 0.1%;
+                max-width: 100%;
+
+                background-color: $--main-gold-color;
+            }
+        }
+
+        &__menu {
+            display: inline-flex;
+            flex-direction: column;
+            margin-right: $basic_margin;
+
+            transition: transform 0.2s;
+            
+            &__item {
+                &:hover {
+                    color: $--main-gold-color;
+
+                    transition: color 0.1s;
+                }
+
+                &::before {
+                    content: "";
+                    display: inline-block;
+                    width: 16px;
+                    height: 16px;
+                    margin-right: $basic_margin;
+                }
+                height: 25px;
+                margin-bottom: 4px;
+
+                font: {
+                    size: 1.9rem;
+                    family: $title_font;
+                }
+                text-transform: uppercase;
+                color: $--main-txt-color-sub;
+                color: var(--main-txt-color-sub);
+
+                opacity: 0;
+                visibility: hidden;
+
+                &_active {
+                    &::before {
+                        content: "";
+                        display: inline-block;
+                        width: 16px;
+                        height: 16px;
+                        margin-right: $basic_margin;
+
+                        background: {
+                            image: url("/images/utils/bullet.svg");
+                            size: contain;
+                        }
+                    }
+
+                    color: $--main-gold-color;
+                    
+                    opacity: 1;
+                    visibility: visible;
+
+                    transition: opacity ease-out $sm_tr;
+                }
+
+                &_unfold {
+                    opacity: 1;
+                    visibility: visible;
+
+                    transition: opacity ease-out $sm_tr;
+                }
+            }
+        }
+
+        &__btn_fold {
+            display: inline-flex;
+            
+            cursor: pointer;
+
+            i {
+                color: $--main-gold-color;
+
+                font-size: 1.8rem;
+            }
+        }
+    }
+}
+
+@import "medias";

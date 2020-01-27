@@ -1,0 +1,17 @@
+.zoom-image {
+    &__element {
+        cursor: zoom-in;
+    }
+
+    &__modal {
+        position: absolute;
+        z-index: $all-width_index;
+
+        transition: transform $sm_tr cubic-bezier(.2,0,.2,1);
+        cursor: zoom-out;
+    }
+}
+
+[data-zoom-image="false"] {
+    cursor: default;
+}
