@@ -6,12 +6,15 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
-    "node-sass": "^4.12.0",
+    "mobile-detect": "^1.4.4",
+    "node-sass": "^4.13.1",
+    "nprogress": "^0.2.0",
     "prop-types": "^15.7.2",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
     "react-meta-tags": "^0.7.4",
-    "react-scripts": "3.1.1"
+    "react-router-hash-link": "^1.2.2",
+    "react-scripts": "^3.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -35,6 +38,6 @@
     ]
   },
   "devDependencies": {
-    "react-router-dom": "^5.0.1"
+    "react-router-dom": "^5.1.2"
   }
 }

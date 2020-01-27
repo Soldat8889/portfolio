@@ -1,0 +1,50 @@
+.Home {
+    @media screen and (max-width: $big_desktop_size) {
+        &__hero {
+            display: none;
+        }
+
+        &__background {
+            &-element_mq {
+                &__particles {
+                    left: 5vw;
+                }
+
+                &__switch {
+                    left: 0;
+                }
+
+                &__skull {
+                    right: 30vw;
+                }
+
+                &__meal {
+                    right: 30vw;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: $landscape_tablet_size) {
+        &__hero {
+            display: block;
+            width: 100%;
+
+            &::before {
+                background-size: 100%;
+            }
+
+            &__banner {
+                left: 0;
+                right: unset;
+                width: 5%;
+            }
+        }
+
+        &__background {
+            &-element_mq {
+                display: none;
+            }
+        }
+    }
+}

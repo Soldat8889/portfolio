@@ -1,0 +1,77 @@
+.Article {
+    &_background {
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+    
+            background: none;
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(255, 255, 255, 0) 100%);
+            
+            z-index: 1;
+        }
+
+        position: absolute;
+        top: -50vh;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+
+        overflow: hidden;
+        z-index: -1;
+        transition: filter $sm_tr;
+
+        &_top-space {
+            margin-top: 50vh;
+
+            &_first {
+                margin-top: 37vh;
+            }
+        }
+
+        &_minds {
+            width: 100%;
+
+            filter: blur(calc(0.5px + 0.08vw));
+            
+            &_dark {
+                width: 100%;
+
+                filter: blur(calc(0.5px + 0.08vw)) grayscale(1) brightness(0.75);
+            }
+        }
+    }
+
+    &__title {
+        &_wrapper {
+            position: absolute;
+            top: -25vh;
+            left: 50%;
+            padding: 15px;
+
+            background-color: #ffde595c;
+
+            transform: translate(-50%, -50%);
+        }
+
+        &_level {
+            &-1 {
+                font: {
+                    size: $Article__title_lvl1;
+                    weight: 700;
+                }
+                color: $--main-icon-color-contrast;
+                color: var(--main-icon-color-contrast);
+                text-transform: uppercase;
+                text-align: center;
+
+                @extend %Article__title;
+            }
+        }
+    }
+}
+
+@import "medias";

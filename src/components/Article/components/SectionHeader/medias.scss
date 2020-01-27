@@ -1,0 +1,19 @@
+.Article {
+    @media screen and (min-width: $desktop_size) {
+        &_background {
+            background: none;
+        }
+    }
+
+    @media screen and (max-width: $desktop_size) {
+        &_background {
+            height: 50vh;
+
+            filter: blur(calc(.5px + 0.08vw));
+
+            & > * {
+                display: none;
+            }
+        }
+    }
+}

@@ -1,0 +1,7 @@
+.Article {
+    @media screen and (max-width: 1740px) {
+        &__checkpoints {
+            display: none;
+        }
+    }
+}

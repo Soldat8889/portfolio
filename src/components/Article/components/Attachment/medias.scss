@@ -1,0 +1,11 @@
+@media screen and (max-width: $portrait_tablet_size) {
+    .Article {
+        &__attachment {
+            &__wrapper {
+                &_inline {
+                    flex-direction: column;
+                }
+            }
+        }
+    }
+}

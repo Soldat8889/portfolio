@@ -1,0 +1,28 @@
+.Article {
+    &__link {
+        display: inline;
+        position: relative;
+
+        &.Article__box {
+            &::after {
+                display: none;
+            }
+        }
+
+        &::after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 2px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+
+            background-color: $--main-gold-color;
+        }
+        
+        &:hover::after {
+            height: 3px;
+        }
+    }
+}

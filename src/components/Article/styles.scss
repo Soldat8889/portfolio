@@ -1,0 +1,192 @@
+%Article__title {
+    margin-bottom: $basic_margin;
+
+    color: $--main-txt-color;
+    color: var(--main-txt-color);
+    font: {
+        family: $title_font;
+        weight: 500;
+    }
+}
+
+$Article__space: 30px;
+$Article__title_lvl1: calc(3.8rem + 1vw);
+$Article__title_lvl2: 3.3rem;
+$Article__title_lvl3: 2.7rem;
+$Article__text: 1.75rem;
+$Article__caption: 1.45rem;
+
+// Components
+@import "./components/Breadcrumb/styles";
+@import "./components/Checkpoints/styles";
+@import "./components/Link/styles";
+@import "./components/PartHeader/styles";
+@import "./components/Attachment/styles";
+@import "./components/ScrollToTop/styles";
+@import "./components/SectionHeader/styles";
+@import "./components/Timeline/styles";
+
+.Article {
+    margin-top: $Article__space;
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        max-width: $max-width_size;
+        margin: 0 auto;
+        padding: 0 $Article__space;
+
+        background-color: $--main-bg-color;
+        background-color: var(--main-bg-color);
+
+        z-index: 2;
+    }
+
+    &__section {
+        position: relative;
+        margin-bottom: $box_margin;
+
+        &_theme {
+            position: relative;
+        }
+
+        &_top-space {
+            padding: $Article__space $Article__space 0 $Article__space;
+        }
+
+        &_bottom-space {
+            padding: 0 $Article__space $Article__space;
+        }
+
+        &_both-space {
+            padding: $Article__space;
+        }
+    }
+
+    &__delimiter {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        padding: 40px 0;
+
+        background-color: $--main-bg-color;
+        background-color: var(--main-bg-color);
+    }
+
+    &__image {
+        display: inline-block;
+        margin: 0 20px;
+        height: 270px;
+    }
+
+    &__box {
+        display: block !important;
+        padding: 15px;
+        
+        box-shadow: 0px 0px 10px -7px $--main-shadow-color;
+        box-shadow: 0px 0px 10px -7px var(--main-shadow-color);
+
+        &:hover {
+            box-shadow: 0px 0px 10px -5px $--main-shadow-color;
+            box-shadow: 0px 0px 10px -5px var(--main-shadow-color);
+        }
+
+        transition: box-shadow $sm_tr;
+
+        &__sections {
+            display: flex;
+            flex-direction: row;
+        }
+
+        &__title {
+            text-decoration: underline;
+        }
+
+        &__resume {
+            font-size: 2.2rem !important;
+        }
+
+        &__image {
+            padding: 0 40px 0 25px;
+            max-width: 240px;
+            align-self: center;
+        }
+    }
+
+    &_indent {
+        position: relative;
+        margin: 0 auto 30px auto;
+        max-width: $max-width-text_size;
+    }
+
+    &__title {
+        &_level {
+            &-3 {
+                font-size: $Article__title_lvl3;
+                @extend %Article__title;
+            }
+        }
+    }
+
+    &__text {
+        margin: $inline_margin 0;
+
+        font: {
+            size: $Article__text;
+            weight: 400;
+            family: $text_font;
+        }
+        line-height: 1.55;
+
+        &_indent {
+            text-indent: 3rem;
+        }
+
+        &_bold {
+            font: {
+                size: inherit;
+                weight: 600;
+            }
+        }
+
+        &_sub {
+            font: {
+                size: inherit;
+            }
+
+            color: $--main-txt-color-sub;
+            color: var(--main-txt-color-sub);
+        }
+    }
+
+    &__list {
+        &__item {
+            margin-left: 2rem;
+            
+            font: {
+                size: $Article__text;
+                family: $text_font;
+            }
+            list-style-type: disc;
+        }
+    }
+
+    &__quotes {
+        position: relative;
+        
+        &::before {
+            content: "“";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            font: {
+                size: 3.5rem;
+                family: $title_font;
+            }
+        }
+    }
+}
+
+@import "./medias";

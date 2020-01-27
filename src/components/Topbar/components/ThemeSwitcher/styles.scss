@@ -1,0 +1,13 @@
+.theme-switcher {
+    margin-right: $box_margin;
+
+    &__button {
+        height: 64px;
+    }
+    
+    &__icon {
+        font-size: calc(0.2vw + 3.25rem);
+        color: $--main-icon-color;
+        color: var(--main-icon-color);
+    }
+}

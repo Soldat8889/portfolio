@@ -1,0 +1,13 @@
+.Article {
+    @media screen and (max-width: $desktop_size) {
+        &__container {
+            max-width: 100%;
+        }
+    }
+
+    @media screen and (max-width: $landscape_tablet_size) {
+        &__text {
+            font-size: 1.6rem;
+        }
+    }
+}
