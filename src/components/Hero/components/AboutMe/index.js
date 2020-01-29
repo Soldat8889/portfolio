@@ -140,9 +140,9 @@ function ArticleFooter() {
     return (
         <div className="Article__hero__misc">
             <div className="Article__hero__misc__col">
-                <a href="https://www.instagram.com/pata.tartiner/" className="fab fa-instagram" target="_blank" rel="noopener noreferrer"></a>
-                <a href="https://github.com/Soldat8889" className="fab fa-github" target="_blank" rel="noopener noreferrer"></a>
-                <a href="https://www.artstation.com/pata-tartiner" className="fab fa-artstation" target="_blank" rel="noopener noreferrer"></a>
+                <a href="https://www.instagram.com/pata.tartiner/" className="fab" target="_blank" rel="noopener noreferrer"></a>
+                <a href="https://github.com/Soldat8889" className="fab" target="_blank" rel="noopener noreferrer"></a>
+                <a href="https://www.artstation.com/pata-tartiner" className="fab" target="_blank" rel="noopener noreferrer"></a>
             </div>
             <div className="Article__hero__misc__col">
                 <Author imagePath="/images/utils/author.jpg" author="SYHANATH Lucas" />
