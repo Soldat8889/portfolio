@@ -21,12 +21,12 @@ function HeroHome(props) {
                                     <NightMode />
                                 }
                             </div>
-                            <div className="Slider__title">
-                                <h1 className="Slider__title_text" style={{color: "#fff"}}>
+                            <div className="Hero__title">
+                                <h1 className="Hero__title_text" style={{color: "#fff"}}>
                                     <Parallax
                                         speedX={0.08}
                                         speedY={0.08}
-                                        name="Slider__title"
+                                        name="Hero__title"
                                     >
                                         SYHANATH Lucas <br />
                                         {languageConfig.Slider.Home.Title}

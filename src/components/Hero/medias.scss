@@ -1,0 +1,19 @@
+.Hero {
+    @media screen and (max-width: $big_desktop_size) {
+        &__title {
+            &_text {
+                font-size: 6rem;
+            }
+        }
+
+        &__subtitle {
+            &_text {
+                font-size: 2.75rem;
+            }
+        }
+
+        &__btn {
+            font-size: 1.5rem;
+        }
+    }
+}

@@ -1,0 +1,20 @@
+@media screen and (max-width: $landscape_tablet_size) {
+    .Article__hero {
+        & .Hero__subtitle_text {
+            margin-top: $basic_margin;
+        }
+    }
+}
+
+@media screen and (max-width: $portrait_tablet_size) {
+    .Article__hero {
+        &__misc {
+            height: unset;
+            flex-direction: column-reverse;
+
+            & .Article__author {
+                justify-content: space-between;
+            }
+        }
+    }
+}
