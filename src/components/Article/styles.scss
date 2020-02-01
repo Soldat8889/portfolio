@@ -17,8 +17,10 @@ $Article__text: 1.75rem;
 $Article__caption: 1.45rem;
 
 // Components
+@import "./components/Author/styles";
 @import "./components/Breadcrumb/styles";
 @import "./components/Checkpoints/styles";
+@import "./components/Hero/styles";
 @import "./components/Link/styles";
 @import "./components/PartHeader/styles";
 @import "./components/Attachment/styles";

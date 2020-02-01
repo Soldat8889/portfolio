@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 // Components
 import Parallax from "../../../../services/animations/Parallax";
+import Author from "../../../Article/components/Author";
 
 // Contexts
 import { LanguageContext, ThemeContext } from "../../../../services/contexts";
@@ -17,27 +18,39 @@ function Circle() {
 }
 
 function AboutMeHero({ slide }) {
+    const isArticle = !slide;
+    
     return (
         <LanguageContext.Consumer>
             {({ languageConfig }) => (
                 <ThemeContext.Consumer>
                     {({theme}) => (
-                        <section className="Slider__section Slider_wrapper container" data-slide={slide}>
+                        <section 
+                            className={`${isArticle ? "Article__hero" : "Slider__section Slider_wrapper"}`} 
+                            data-slide={slide}
+                        >
                             <div className="Hero__background Hero__background__scene_aboutme" style={theme === "dark" ? {backgroundColor: "unset"} : null}>
-                                <Hero />
+                                <DynamicContent />
                             </div>
-                            <div className="Slider__title Slider__box">
-                                <h1 className="Slider__title_text Hero__color_aboutme" style={{fontFamily: "Lora, serif"}}>
+                            <div className="Hero__title Hero__box">
+                                <h1 className="Hero__title_text Hero__color_aboutme">
                                     {languageConfig.Slider.About.Title}                   
                                 </h1>
-                                <hr style={{borderTop: "1px solid #fff"}} />
-                                <h2 className="Slider__subtitle_text">
+                                <hr className="Hero__delimiter" />
+                                <h2 className="Hero__subtitle_text">
                                     {languageConfig.Slider.About.Subtitle}
                                 </h2>
-                                <Link to="/aboutme/" className="Slider__btn">
+                                <Link 
+                                    to="/aboutme/" 
+                                    className="Hero__button" 
+                                    rel={`${isArticle ? "nofollow" : "next"}`}
+                                >
                                     {languageConfig.Slider.About.Btn}               
                                 </Link>
                             </div>
+                            {
+                                isArticle ? <ArticleFooter /> : null
+                            }
                         </section>
                     )}
                 </ThemeContext.Consumer>
@@ -50,7 +63,7 @@ AboutMeHero.propTypes = {
     slide: PropTypes.number
 };
 
-function Hero() {
+function DynamicContent() {
     return(
         <Fragment>
             <div className="Hero__display Hero__display_aboutme">
@@ -120,6 +133,21 @@ function Hero() {
                 </Parallax>
             </div>
         </Fragment>
+    );
+}
+
+function ArticleFooter() {
+    return (
+        <div className="Article__hero__misc">
+            <div className="Article__hero__misc__col">
+                <a href="https://www.instagram.com/pata.tartiner/" className="fab" target="_blank" rel="noopener noreferrer"></a>
+                <a href="https://github.com/Soldat8889" className="fab" target="_blank" rel="noopener noreferrer"></a>
+                <a href="https://www.artstation.com/pata-tartiner" className="fab" target="_blank" rel="noopener noreferrer"></a>
+            </div>
+            <div className="Article__hero__misc__col">
+                <Author imagePath="/images/utils/author.jpg" author="SYHANATH Lucas" />
+            </div>
+        </div>
     );
 }
 

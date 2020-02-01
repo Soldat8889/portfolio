@@ -70,6 +70,8 @@ function ScrollParallax({name = "undefined", speedX = 0, speedY = 0, children = 
         document.addEventListener("scroll", handleScrollParallax);
         window.addEventListener("resize", handleScrollParallax);
 
+        handleScrollParallax();
+
         return () => { 
             document.removeEventListener("scroll", handleScrollParallax);
             window.removeEventListener("resize", handleScrollParallax);

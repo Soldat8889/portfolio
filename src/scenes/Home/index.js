@@ -1,8 +1,7 @@
 import React, { useEffect, useCallback, useState } from "react";
 
 // Scenes
-import Home    from "../../components/Hero/components/Home";
-import AboutMe from "../../components/Hero/components/AboutMe";
+import { HomeHero as Home, AboutMeHero as AboutMe } from "../../components/Hero";
 
 // Tools
 import { loTr } from '../../services/tools/GlobalVariables';

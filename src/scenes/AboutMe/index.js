@@ -5,7 +5,7 @@ import React, { useEffect, Fragment, useContext, useState } from "react";
 import { smTr } from '../../services/tools/GlobalVariables';
 
 // Components
-import Hero from "../../components/Hero/components/AboutMe";
+import { AboutMeHero } from "../../components/Hero";
 import Footer from "../../components/Footer";
 // import Gauge from "../../components/Gauge";
 import ZoomImage from "../../components/Modal/components/ZoomImage";
@@ -13,6 +13,7 @@ import ZoomImage from "../../components/Modal/components/ZoomImage";
 // Article Components
 import Breadcrumb from "./../../components/Article/components/Breadcrumb";
 import ArticleCheckpoints from "../../components/Article/components/Checkpoints";
+import Hero from "../../components/Article/components/Hero";
 import SectionHeader from "../../components/Article/components/SectionHeader";
 import PartHeader from "../../components/Article/components/PartHeader";
 import Attachment from "../../components/Article/components/Attachment";
@@ -30,18 +31,6 @@ import { ScrollParallax } from "../../services/animations/Parallax";
 function AboutMe() {
     const [isReady, setIsReady] = useState(false);
 
-    useEffect(function componentDidMount() {
-        const pageContent = document.querySelector(".page-content");
-
-        pageContent.classList.add("page-fullscreen");
-
-        setIsReady(true);
-
-        return () => {
-            pageContent.classList.remove("page-fullscreen");
-        };
-    }, []);
-
     useEffect(() => {
         if(isReady) HandleHash("smooth", smTr);
     }, [isReady]);
@@ -49,11 +38,9 @@ function AboutMe() {
     return (
         <Fragment>
             <main id="main-content" className="spacing-top">
-                <div className="page-content page-part-wrapper">
-                    <div className="Slider Slider_template" style={{transform: `translateY(-50%)`}}>
-                        <Hero />
-                    </div>
-                </div>
+                <Hero>
+                    <AboutMeHero />
+                </Hero>
                 <Article />
             </main>
             <Footer />
@@ -67,7 +54,7 @@ function Article() {
 
     return (
         <div className="Article_wrapper">
-            <section className="page-content page-part-wrapper Article_background_top-space_first">
+            <section className="page-content page-part-wrapper Article_background_top-space">
                 <SectionHeader 
                     background={
                         <ScrollParallax
