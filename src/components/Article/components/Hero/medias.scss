@@ -8,6 +8,10 @@
 
 @media screen and (max-width: $portrait_tablet_size) {
     .Article__hero {
+        &_wrapper {
+            min-height: 600px;
+        }
+        
         &__misc {
             height: unset;
             flex-direction: column-reverse;

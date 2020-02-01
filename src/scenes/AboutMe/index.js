@@ -31,18 +31,6 @@ import { ScrollParallax } from "../../services/animations/Parallax";
 function AboutMe() {
     const [isReady, setIsReady] = useState(false);
 
-    useEffect(function componentDidMount() {
-        const pageContent = document.querySelector(".page-content");
-
-        pageContent.classList.add("page-fullscreen");
-
-        setIsReady(true);
-
-        return () => {
-            pageContent.classList.remove("page-fullscreen");
-        };
-    }, []);
-
     useEffect(() => {
         if(isReady) HandleHash("smooth", smTr);
     }, [isReady]);
@@ -66,7 +54,7 @@ function Article() {
 
     return (
         <div className="Article_wrapper">
-            <section className="page-content page-part-wrapper Article_background_top-space_first">
+            <section className="page-content page-part-wrapper Article_background_top-space">
                 <SectionHeader 
                     background={
                         <ScrollParallax

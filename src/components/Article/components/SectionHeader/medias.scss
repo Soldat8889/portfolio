@@ -1,3 +1,5 @@
+$spacing: 60vh;
+
 .Article {
     @media screen and (min-width: $desktop_size) {
         &_background {
@@ -7,13 +9,22 @@
 
     @media screen and (max-width: $desktop_size) {
         &_background {
-            height: 50vh;
+            &_top-space {
+                margin-top: $spacing;
+            }
+
+            height: $spacing;
+            top: -$spacing;
 
             filter: blur(calc(.5px + 0.08vw));
 
             & > * {
                 display: none;
             }
+        }
+
+        &__title_wrapper {
+            top: -$spacing / 2;
         }
     }
 }

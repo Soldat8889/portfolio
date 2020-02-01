@@ -1,12 +1,16 @@
 .Article__hero_wrapper {
     @extend .Slider;
     width: 100%;
+    top: 0 !important;
+    position: static !important;
+    margin-top: 114px;
+    height: 100vh !important;
+    min-height: 450px;
 
-    transform: translateY(-50%);
+    transform: translateY(0) !important;
 }
 
 $bullet_width: calc(0.8vw + 25px);
-$footer_width: 15%;
 
 .Article__hero {
     width: 100%;
@@ -19,6 +23,8 @@ $footer_width: 15%;
     background-image: url(https://images.unsplash.com/photo-1491245338813-c6832976196e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80);
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
+    background-color: unset;
 
     & .Hero__background {
         display: none;
@@ -100,7 +106,6 @@ $footer_width: 15%;
     &__misc {
         margin-top: auto;
         width: 100%;
-        height: $footer_width;
         display: flex;
         justify-content: space-between;
 
@@ -123,6 +128,10 @@ $footer_width: 15%;
                 font-size: calc(1.65rem + 0.8vw);
                 color: $--main-icon-color;
                 color: var(--main-icon-color);
+            }
+
+            & .Article__author_name {
+                font-size: calc(2rem + 0.2vw);
             }
         }
         

@@ -22,17 +22,3 @@
         }
     }
 }
-
-#main-content.spacing-top {
-    @for $i from 1 through 5 {
-        @if $i != 1 {
-            @media screen and (max-height: 670px - 85px * ($i - 1)) {
-                margin-top: 15px * $i;
-            }
-        } @else {
-            @media screen and (max-height: 670px) {
-                margin-top: 15px;
-            }
-        }
-    }
-}
